@@ -1,0 +1,813 @@
+{
+  "environmentId": "REEMPLAZAR_CON_TU_ENVIRONMENT_ID",
+  "name": "Evaluación Técnica Intermedia - Moldeo 360",
+  "type": "link",
+  "status": "draft",
+  "displayOption": "displayOnce",
+  "languages": [],
+  "welcomeCard": {
+    "enabled": true,
+    "headline": {
+      "default": "Evaluación Técnica Integral - Moldeo 360"
+    },
+    "html": {
+      "default": "<b>Nivel Intermedio</b><br>Esta evaluación cubre 7 categorías clave: Máquina, Proceso, Calidad, Seguridad, Materiales, Eficiencia y Desperdicios.<br><br>Preguntas: 60"
+    },
+    "showResponseCount": false,
+    "timeToFinish": false
+  },
+  "endings": [
+    {
+      "id": "end_screen",
+      "type": "endScreen",
+      "headline": {
+        "default": "Evaluación Finalizada"
+      },
+      "subheader": {
+        "default": "Tus respuestas han sido enviadas para calificación. Gracias."
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "mach_1",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué mide exactamente un termopar (thermocouple) en el barril de calefacción?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La temperatura real del plástico fundido" } },
+        { "id": "c1", "label": { "default": "La temperatura del metal del barril" } },
+        { "id": "c2", "label": { "default": "La presión del aceite hidráulico" } },
+        { "id": "c3", "label": { "default": "La temperatura del tornillo" } }
+      ]
+    },
+    {
+      "id": "mach_2",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Si el ratio de intensificación (RI) es 10:1 y el manómetro hidráulico marca 1,000 PSI, ¿cuánta presión hay en la punta del tornillo?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "1,000 PSI" } },
+        { "id": "c1", "label": { "default": "10,000 PSI" } },
+        { "id": "c2", "label": { "default": "100 PSI" } },
+        { "id": "c3", "label": { "default": "2,000 PSI" } }
+      ]
+    },
+    {
+      "id": "mach_3",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Durante la fase de sostenimiento (hold), el tornillo sigue avanzando lentamente (creeping). ¿Cuál es la causa más probable?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La temperatura de la boquilla es alta" } },
+        { "id": "c1", "label": { "default": "La válvula check (anillo de cierre) tiene fugas o desgaste" } },
+        { "id": "c2", "label": { "default": "El molde está muy frío" } },
+        { "id": "c3", "label": { "default": "La presión de inyección es demasiado alta" } }
+      ]
+    },
+    {
+      "id": "mach_4",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué significa la relación L/D en un tornillo de inyección?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Longitud total efectiva entre Diámetro del tornillo" } },
+        { "id": "c1", "label": { "default": "Largo de la boquilla entre Diámetro de la tolva" } },
+        { "id": "c2", "label": { "default": "Límite de Desgaste del acero" } },
+        { "id": "c3", "label": { "default": "La relación entre el largo del barril y la distancia entre platinas" } }
+      ]
+    },
+    {
+      "id": "mach_5",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es la consecuencia de tener una temperatura demasiado alta en la garganta de alimentación (hopper throat)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El plástico se funde más rápido" } },
+        { "id": "c1", "label": { "default": "Los pellets se pegan y forman un puente, impidiendo que el material baje" } },
+        { "id": "c2", "label": { "default": "La pieza sale con más brillo" } },
+        { "id": "c3", "label": { "default": "Los pellets fluyen mejor sin formar puentes" } }
+      ]
+    },
+    {
+      "id": "mach_6",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "En una máquina hidráulica de última generación, ¿qué componente es el encargado de suministrar el flujo y presión de aceite?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Las válvulas de alivio" } },
+        { "id": "c1", "label": { "default": "La bomba (fija o variable)" } },
+        { "id": "c2", "label": { "default": "Los actuadores neumáticos" } },
+        { "id": "c3", "label": { "default": "Los sensores de temperatura" } }
+      ]
+    },
+    {
+      "id": "mach_7",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál de estas platinas NO existe en una máquina de moldeo estándar?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Platina fija" } },
+        { "id": "c1", "label": { "default": "Platina móvil" } },
+        { "id": "c2", "label": { "default": "Platina rotativa de expulsión" } },
+        { "id": "c3", "label": { "default": "Platina de soporte (en máquinas de 3 platinas)" } }
+      ]
+    },
+    {
+      "id": "mach_8",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Si cambias un termopar Tipo J por uno Tipo K en un controlador de zona:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "No pasa nada, ambos miden igual" } },
+        { "id": "c1", "label": { "default": "La lectura será errónea y causará problemas críticos de proceso" } },
+        { "id": "c2", "label": { "default": "El controlador se quemará instantáneamente" } },
+        { "id": "c3", "label": { "default": "La lectura será más precisa automáticamente" } }
+      ]
+    },
+    {
+      "id": "mach_9",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es la función de los pernos de retorno en el sistema de expulsión del molde?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Sacar la pieza del molde" } },
+        { "id": "c1", "label": { "default": "Asegurar que la placa de botadores regrese antes de que el molde cierre totalmente" } },
+        { "id": "c2", "label": { "default": "Enfriar la placa trasera" } },
+        { "id": "c3", "label": { "default": "Sujetar el molde a la platina móvil" } }
+      ]
+    },
+    {
+      "id": "proc_10",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué determina el punto de transferencia VPT (Velocity-to-Pressure)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Cuándo termina el llenado por velocidad y empieza la compactación por presión" } },
+        { "id": "c1", "label": { "default": "La velocidad a la que se abre el molde" } },
+        { "id": "c2", "label": { "default": "La temperatura de la boquilla" } },
+        { "id": "c3", "label": { "default": "La presión de empaque únicamente" } }
+      ]
+    },
+    {
+      "id": "proc_11",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Para convertir 350 Bar a PSI aproximadamente (usando factor 14.5):" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "3500 PSI" } },
+        { "id": "c1", "label": { "default": "5075 PSI" } },
+        { "id": "c2", "label": { "default": "2400 PSI" } },
+        { "id": "c3", "label": { "default": "4,000 PSI" } }
+      ]
+    },
+    {
+      "id": "proc_12",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Durante un estudio de viscosidad, ¿qué sucede con la viscosidad del polímero al aumentar la velocidad de inyección?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Aumenta linealmente" } },
+        { "id": "c1", "label": { "default": "Disminuye debido al adelgazamiento por corte (shear thinning)" } },
+        { "id": "c2", "label": { "default": "Se mantiene constante" } },
+        { "id": "c3", "label": { "default": "Cambia el índice de fluidez del material virgen" } }
+      ]
+    },
+    {
+      "id": "proc_13",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es el objetivo primordial de un estudio de sellado de compuerta (Gate Seal Study)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Medir la fuerza de cierre" } },
+        { "id": "c1", "label": { "default": "Determinar el tiempo mínimo de sostenimiento para que la pieza no pierda peso" } },
+        { "id": "c2", "label": { "default": "Calcular el tiempo de enfriamiento total" } },
+        { "id": "c3", "label": { "default": "Revisar el color de la pieza" } }
+      ]
+    },
+    {
+      "id": "proc_14",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es el impacto de un \"Cojín\" (Cushion) que llega a 0 de forma errática?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Ahorro de material" } },
+        { "id": "c1", "label": { "default": "Incapacidad de transferir la presión de sostenimiento a la cavidad" } },
+        { "id": "c2", "label": { "default": "Mejora el brillo superficial" } },
+        { "id": "c3", "label": { "default": "Reduce el tiempo de ciclo" } }
+      ]
+    },
+    {
+      "id": "proc_15",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué variable plástica es la más crítica para controlar la contracción y dimensiones finales de la pieza?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Velocidad de inyección" } },
+        { "id": "c1", "label": { "default": "Presión de sostenimiento (Hold Pressure)" } },
+        { "id": "c2", "label": { "default": "Temperatura de la tolva" } },
+        { "id": "c3", "label": { "default": "Velocidad de rotación del husillo" } }
+      ]
+    },
+    {
+      "id": "proc_16",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Para qué sirve la descompresión (Suck-back) después de la carga?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para enfriar la boquilla" } },
+        { "id": "c1", "label": { "default": "Para liberar presión en la punta y evitar que el plástico gotee (drooling)" } },
+        { "id": "c2", "label": { "default": "Para mezclar mejor el color" } },
+        { "id": "c3", "label": { "default": "Para aumentar el tiempo de ciclo" } }
+      ]
+    },
+    {
+      "id": "proc_17",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué sucede si la contrapresión (Back Pressure) es demasiado baja?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El husillo se detiene" } },
+        { "id": "c1", "label": { "default": "Pobre homogeneidad térmica y posible presencia de aire atrapado en el fundido" } },
+        { "id": "c2", "label": { "default": "El ciclo se acelera demasiado" } },
+        { "id": "c3", "label": { "default": "La pieza sale con rebaba" } }
+      ]
+    },
+    {
+      "id": "proc_18",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cómo se define el 'Tiempo de Residencia' del material?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El tiempo que la pieza tarda en enfriarse" } },
+        { "id": "c1", "label": { "default": "El tiempo total que el material permanece expuesto al calor dentro del barril" } },
+        { "id": "c2", "label": { "default": "El tiempo de secado en la tolva" } },
+        { "id": "c3", "label": { "default": "El tiempo de turno del operador" } }
+      ]
+    },
+    {
+      "id": "qual_19",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Si una pieza presenta rebaba (flash) pero el peso de la pieza es bajo, ¿cuál es la causa probable?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Mucha presión de empaque" } },
+        { "id": "c1", "label": { "default": "Desalineación o daño en las caras de cierre del molde" } },
+        { "id": "c2", "label": { "default": "Velocidad de inyección lenta" } },
+        { "id": "c3", "label": { "default": "Material muy frío" } }
+      ]
+    },
+    {
+      "id": "qual_20",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué defecto es causado típicamente por una velocidad de inyección excesiva al entrar por una compuerta pequeña?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Rechupado" } },
+        { "id": "c1", "label": { "default": "Jetting (serpenteo)" } },
+        { "id": "c2", "label": { "default": "Pandeo" } },
+        { "id": "c3", "label": { "default": "Delaminación" } }
+      ]
+    },
+    {
+      "id": "qual_21",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Un 'Efecto Diésel' o marca de quemadura al final del llenado indica generalmente:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Exceso de desmoldante" } },
+        { "id": "c1", "label": { "default": "Mala ventilación o venteos obstruidos que comprimen aire/gases" } },
+        { "id": "c2", "label": { "default": "Falta de presión de inyección" } },
+        { "id": "c3", "label": { "default": "Temperatura de molde muy alta" } }
+      ]
+    },
+    {
+      "id": "qual_22",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "El defecto conocido como 'Ráfaga' (Splay) plateada en la superficie suele ser causado por:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Humedad en el material o degradación térmica" } },
+        { "id": "c1", "label": { "default": "Fuerza de cierre excesiva" } },
+        { "id": "c2", "label": { "default": "Molde muy caliente" } },
+        { "id": "c3", "label": { "default": "Piezas pegadas" } }
+      ]
+    },
+    {
+      "id": "qual_23",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es la diferencia entre una línea de unión (weld line) y una línea de fusión (meld line)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "No hay diferencia" } },
+        { "id": "c1", "label": { "default": "El ángulo de encuentro de los frentes de flujo (menor a 135° para weld line)" } },
+        { "id": "c2", "label": { "default": "Una es por material reciclado y la otra por virgen" } },
+        { "id": "c3", "label": { "default": "Una ocurre en la compuerta y la otra al final de la pieza" } }
+      ]
+    },
+    {
+      "id": "qual_24",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Si una pieza plana presenta 'Pandeo' (Warpage), el ajuste práctico más efectivo suele ser:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Subir la presión de inyección" } },
+        { "id": "c1", "label": { "default": "Equilibrar o ajustar las temperaturas de enfriamiento entre cavidad y corazón" } },
+        { "id": "c2", "label": { "default": "Cambiar la resina" } },
+        { "id": "c3", "label": { "default": "Aumentar el cojín" } }
+      ]
+    },
+    {
+      "id": "qual_25",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué causa el defecto de 'Delaminación' (capas de piel de cebolla)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Inyección rápida" } },
+        { "id": "c1", "label": { "default": "Contaminación con materiales incompatibles o exceso de humedad" } },
+        { "id": "c2", "label": { "default": "Fuerza de cierre baja" } },
+        { "id": "c3", "label": { "default": "Molde muy frío" } }
+      ]
+    },
+    {
+      "id": "qual_26",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Los 'Puntos Negros' intermitentes en piezas claras suelen provenir de:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La tolva sucia" } },
+        { "id": "c1", "label": { "default": "Material degradado o carbonizado en las paredes del barril o husillo" } },
+        { "id": "c2", "label": { "default": "Falta de concentrado de color" } },
+        { "id": "c3", "label": { "default": "Agua en el molde" } }
+      ]
+    },
+    {
+      "id": "qual_27",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué herramienta estadística se usa en moldeo para verificar la estabilidad de un proceso a largo plazo?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Diagrama de flujo" } },
+        { "id": "c1", "label": { "default": "Gráficas de control SPC (Cpk / Ppk)" } },
+        { "id": "c2", "label": { "default": "Análisis de Pareto" } },
+        { "id": "c3", "label": { "default": "Hoja de recolección de datos" } }
+      ]
+    },
+    {
+      "id": "safe_28",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es la regla de oro antes de realizar mantenimiento a un molde montado en máquina?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Solo avisar al operador" } },
+        { "id": "c1", "label": { "default": "Aplicar candado y etiqueta (LOTO) en fuentes de energía eléctrica e hidráulica" } },
+        { "id": "c2", "label": { "default": "Apagar el monitor" } },
+        { "id": "c3", "label": { "default": "Cerrar la llave de agua" } }
+      ]
+    },
+    {
+      "id": "safe_29",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Por qué es peligroso purgar una máquina de inyección sin el escudo de seguridad abajo?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Porque se gasta material" } },
+        { "id": "c1", "label": { "default": "Riesgo de salpicaduras violentas de plástico caliente o gases a presión" } },
+        { "id": "c2", "label": { "default": "Porque la máquina marca alarma" } },
+        { "id": "c3", "label": { "default": "Porque el material se enfría en el suelo" } }
+      ]
+    },
+    {
+      "id": "safe_30",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Al ajustar la 'Protección de Molde' (baja presión de cierre), el objetivo es que:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El molde cierre más rápido" } },
+        { "id": "c1", "label": { "default": "La máquina se detenga si encuentra una obstrucción de pocos milímetros" } },
+        { "id": "c2", "label": { "default": "Se use menos aceite hidráulico" } },
+        { "id": "c3", "label": { "default": "Los botadores no se desgasten" } }
+      ]
+    },
+    {
+      "id": "safe_31",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "En caso de una fuga masiva de aceite hidráulico, la acción inmediata es:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Limpiar con trapos" } },
+        { "id": "c1", "label": { "default": "Presionar el Paro de Emergencia y contener el derrame" } },
+        { "id": "c2", "label": { "default": "Llamar al proveedor de aceite" } },
+        { "id": "c3", "label": { "default": "Seguir produciendo hasta terminar el lote" } }
+      ]
+    },
+    {
+      "id": "safe_32",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué equipo de protección (EPP) es indispensable al manipular purgas calientes?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Lentes de seguridad únicamente" } },
+        { "id": "c1", "label": { "default": "Guantes de protección térmica y careta facial" } },
+        { "id": "c2", "label": { "default": "Casco y botas" } },
+        { "id": "c3", "label": { "default": "Faja lumbar" } }
+      ]
+    },
+    {
+      "id": "safe_33",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Durante el cambio de molde, ¿cuál es el uso correcto de los cáncamos (o-rings de carga)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Usar cualquier tamaño que entre" } },
+        { "id": "c1", "label": { "default": "Verificar que la capacidad de carga del cáncamo sea mayor al peso del molde" } },
+        { "id": "c2", "label": { "default": "Sujetarlos con cinta adhesiva" } },
+        { "id": "c3", "label": { "default": "Usar solo uno para moldes de más de 5 toneladas" } }
+      ]
+    },
+    {
+      "id": "safe_34",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Para qué sirve el sensor de la puerta de seguridad trasera de la máquina?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para que no entre polvo" } },
+        { "id": "c1", "label": { "default": "Interrumpir los movimientos de la máquina si alguien abre la puerta de ese lado" } },
+        { "id": "c2", "label": { "default": "Para ventilar el motor" } },
+        { "id": "c3", "label": { "default": "Para que el supervisor vigile" } }
+      ]
+    },
+    {
+      "id": "safe_35",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Un incendio en el tablero eléctrico de la máquina debe combatirse con extintor tipo:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "A (Agua)" } },
+        { "id": "c1", "label": { "default": "C (CO2 o Polvo Químico Seco para equipo eléctrico)" } },
+        { "id": "c2", "label": { "default": "K (Grasas)" } },
+        { "id": "c3", "label": { "default": "D (Metales)" } }
+      ]
+    },
+    {
+      "id": "safe_36",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué norma mexicana rige la seguridad en maquinaria y sus dispositivos en centros de trabajo?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "NOM-001" } },
+        { "id": "c1", "label": { "default": "NOM-004-STPS" } },
+        { "id": "c2", "label": { "default": "NOM-017" } },
+        { "id": "c3", "label": { "default": "NOM-019" } }
+      ]
+    },
+    {
+      "id": "mat_37",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué propiedad indica la facilidad de un polímero fundido para fluir?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Densidad" } },
+        { "id": "c1", "label": { "default": "MFI (Melt Flow Index)" } },
+        { "id": "c2", "label": { "default": "Dureza Shore" } },
+        { "id": "c3", "label": { "default": "Resistencia a la tracción" } }
+      ]
+    },
+    {
+      "id": "mat_38",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué sucede químicamente con un material higroscópico (como PA o PC) si no se seca?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Se vuelve más pesado" } },
+        { "id": "c1", "label": { "default": "Sufre hidrólisis, rompiendo sus cadenas moleculares y perdiendo resistencia" } },
+        { "id": "c2", "label": { "default": "Cambia de color a azul" } },
+        { "id": "c3", "label": { "default": "Se funde a menor temperatura" } }
+      ]
+    },
+    {
+      "id": "mat_39",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es la principal diferencia entre un plástico Amorfo y uno Semicristalino?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El color" } },
+        { "id": "c1", "label": { "default": "El patrón de orden molecular y su tasa de contracción (shrinkage)" } },
+        { "id": "c2", "label": { "default": "El precio por kilo" } },
+        { "id": "c3", "label": { "default": "Que uno es reciclado y el otro no" } }
+      ]
+    },
+    {
+      "id": "mat_40",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "El uso excesivo de material molido (regrind) en un proceso automotriz suele causar:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Inestabilidad en el proceso y caída en las propiedades de impacto de la pieza" } },
+        { "id": "c1", "label": { "default": "Piezas con más peso" } },
+        { "id": "c2", "label": { "default": "Menor tiempo de ciclo" } },
+        { "id": "c3", "label": { "default": "Mejora en la textura superficial" } }
+      ]
+    },
+    {
+      "id": "mat_41",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿A qué temperatura se debe medir el punto de rocío (dew point) de un secador para asegurar eficiencia?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "0°C" } },
+        { "id": "c1", "label": { "default": "-40°C a -20°C" } },
+        { "id": "c2", "label": { "default": "40°C" } },
+        { "id": "c3", "label": { "default": "100°C" } }
+      ]
+    },
+    {
+      "id": "mat_42",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es el porcentaje máximo recomendado de Masterbatch (colorante) para no afectar el proceso?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "10%" } },
+        { "id": "c1", "label": { "default": "Normalmente entre 1% y 5%" } },
+        { "id": "c2", "label": { "default": "0.1%" } },
+        { "id": "c3", "label": { "default": "20%" } }
+      ]
+    },
+    {
+      "id": "mat_43",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Un material con alta viscosidad requiere típicamente:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Mayores presiones de inyección y temperaturas" } },
+        { "id": "c1", "label": { "default": "Velocidades de inyección lentas únicamente" } },
+        { "id": "c2", "label": { "default": "Menor fuerza de cierre" } },
+        { "id": "c3", "label": { "default": "Menor tiempo de enfriamiento" } }
+      ]
+    },
+    {
+      "id": "mat_44",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué significa que una resina sea 'Grado Ingeniería'?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Que es barata" } },
+        { "id": "c1", "label": { "default": "Que posee propiedades mecánicas/térmicas superiores para aplicaciones estructurales" } },
+        { "id": "c2", "label": { "default": "Que solo la usan los ingenieros" } },
+        { "id": "c3", "label": { "default": "Que se usa para hacer juguetes" } }
+      ]
+    },
+    {
+      "id": "eff_45",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuáles son los tres pilares para calcular el OEE (Overall Equipment Effectiveness)?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Temperatura, Presión y Tiempo" } },
+        { "id": "c1", "label": { "default": "Disponibilidad, Desempeño y Calidad" } },
+        { "id": "c2", "label": { "default": "Operadores, Máquinas y Moldes" } },
+        { "id": "c3", "label": { "default": "Scrap, Purga y Colada" } }
+      ]
+    },
+    {
+      "id": "eff_46",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "El objetivo primordial de la técnica SMED es:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Limpiar la máquina" } },
+        { "id": "c1", "label": { "default": "Realizar cambios de molde en menos de 10 minutos (un solo dígito)" } },
+        { "id": "c2", "label": { "default": "Aumentar el sueldo de los técnicos" } },
+        { "id": "c3", "label": { "default": "Comprar moldes nuevos" } }
+      ]
+    },
+    {
+      "id": "eff_47",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Si una máquina tiene un tiempo de ciclo teórico de 20s pero está corriendo a 25s, el factor afectado es:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Disponibilidad" } },
+        { "id": "c1", "label": { "default": "Desempeño (Performance)" } },
+        { "id": "c2", "label": { "default": "Calidad" } },
+        { "id": "c3", "label": { "default": "Seguridad" } }
+      ]
+    },
+    {
+      "id": "eff_48",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué actividad se considera 'Externa' en un evento SMED?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Quitar las mangueras de agua con el molde parado" } },
+        { "id": "c1", "label": { "default": "Preparar las herramientas y precalentar el siguiente molde mientras la máquina produce" } },
+        { "id": "c2", "label": { "default": "Aflojar los clamps del molde actual" } },
+        { "id": "c3", "label": { "default": "Limpiar las caras del molde en la máquina" } }
+      ]
+    },
+    {
+      "id": "eff_49",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Un OEE de \"Clase Mundial\" se sitúa por encima del:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "50%" } },
+        { "id": "c1", "label": { "default": "85%" } },
+        { "id": "c2", "label": { "default": "100%" } },
+        { "id": "c3", "label": { "default": "70%" } }
+      ]
+    },
+    {
+      "id": "eff_50",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cómo afecta una mala cavitación (una cavidad tapada en molde de 4) a la eficiencia?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Mejora la calidad" } },
+        { "id": "c1", "label": { "default": "Reduce el Desempeño y aumenta el costo unitario de la pieza" } },
+        { "id": "c2", "label": { "default": "Reduce el tiempo de ciclo automáticamente" } },
+        { "id": "c3", "label": { "default": "No afecta el OEE" } }
+      ]
+    },
+    {
+      "id": "eff_51",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "El 'Takt Time' se define como:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El tiempo de descanso del operador" } },
+        { "id": "c1", "label": { "default": "El ritmo al que se debe producir para satisfacer la demanda del cliente" } },
+        { "id": "c2", "label": { "default": "El tiempo de carga del husillo" } },
+        { "id": "c3", "label": { "default": "La suma de todos los tiempos muertos" } }
+      ]
+    },
+    {
+      "id": "eff_52",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "El mantenimiento 'Predictivo' utiliza:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Herramientas manuales únicamente" } },
+        { "id": "c1", "label": { "default": "Sensores y datos (termografía, vibración) para anticipar fallas antes de que ocurran" } },
+        { "id": "c2", "label": { "default": "Solo personal externo" } },
+        { "id": "c3", "label": { "default": "Bitácoras de papel antiguas" } }
+      ]
+    },
+    {
+      "id": "wast_53",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es el orden correcto de las 5S?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Limpiar, Ordenar, Disciplina, Estandarizar, Clasificar" } },
+        { "id": "c1", "label": { "default": "Clasificar, Ordenar, Limpiar, Estandarizar, Disciplina" } },
+        { "id": "c2", "label": { "default": "Ordenar, Limpiar, Clasificar, Disciplina, Estandarizar" } },
+        { "id": "c3", "label": { "default": "Disciplina primero, luego las demás" } }
+      ]
+    },
+    {
+      "id": "wast_54",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Qué tipo de desperdicio (Muda) es producir más piezas de las requeridas por el cliente?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Espera" } },
+        { "id": "c1", "label": { "default": "Sobreproducción" } },
+        { "id": "c2", "label": { "default": "Movimiento" } },
+        { "id": "c3", "label": { "default": "Defectos" } }
+      ]
+    },
+    {
+      "id": "wast_55",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Realizar un 'Rebabeo manual' permanente en la línea de producción se considera:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una mejora de calidad" } },
+        { "id": "c1", "label": { "default": "Desperdicio por sobreprocesamiento (el proceso no es robusto)" } },
+        { "id": "c2", "label": { "default": "Trabajo estándar obligatorio" } },
+        { "id": "c3", "label": { "default": "Eficiencia de mano de obra" } }
+      ]
+    },
+    {
+      "id": "wast_56",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cómo impacta el exceso de inventario de materia prima en la planta?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Ayuda a que se vea llena" } },
+        { "id": "c1", "label": { "default": "Oculta problemas de flujo y genera costos de almacenamiento innecesarios" } },
+        { "id": "c2", "label": { "default": "Mejora el OEE" } },
+        { "id": "c3", "label": { "default": "Reduce el scrap" } }
+      ]
+    },
+    {
+      "id": "wast_57",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "Una 'Ayuda Visual' efectiva en una estación de moldeo debe mostrar:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Solo el nombre de la empresa" } },
+        { "id": "c1", "label": { "default": "Criterios claros de piezas buenas vs. piezas malas (defectos comunes)" } },
+        { "id": "c2", "label": { "default": "El reglamento interno de trabajo" } },
+        { "id": "c3", "label": { "default": "Fotos de la gerencia" } }
+      ]
+    },
+    {
+      "id": "wast_58",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "El 'Scrap' acumulado debajo de la banda transportadora es una falla de:" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Máquina" } },
+        { "id": "c1", "label": { "default": "Orden y Limpieza (Seiton / Seiso)" } },
+        { "id": "c2", "label": { "default": "Proceso científico" } },
+        { "id": "c3", "label": { "default": "Compras" } }
+      ]
+    },
+    {
+      "id": "wast_59",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "En Lean Manufacturing, ¿qué significa 'Poka-Yoke'?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Limpieza profunda" } },
+        { "id": "c1", "label": { "default": "Mecanismo a prueba de errores para evitar que ocurra un defecto" } },
+        { "id": "c2", "label": { "default": "Junta rápida de 5 minutos" } },
+        { "id": "c3", "label": { "default": "Producir rápido" } }
+      ]
+    },
+    {
+      "id": "wast_60",
+      "type": "multipleChoiceSingle",
+      "inputType": "radio",
+      "headline": { "default": "¿Cuál es el impacto final de reducir los desperdicios en el piso de moldeo?" },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Que el operador trabaje más" } },
+        { "id": "c1", "label": { "default": "Mejorar la rentabilidad y competitividad de la planta" } },
+        { "id": "c2", "label": { "default": "Que la máquina brille" } },
+        { "id": "c3", "label": { "default": "Reducir el consumo de agua únicamente" } }
+      ]
+    }
+  ]
+}

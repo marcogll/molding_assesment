@@ -1,0 +1,728 @@
+{
+  "name": "Evaluación Técnica de Moldeo v2",
+  "questions": [
+    {
+      "id": "welcome",
+      "type": "welcome",
+      "headline": {
+        "default": "Evaluación Técnica de Moldeo"
+      },
+      "html": {
+        "default": "Bienvenido a la evaluación de certificación básica.<br>Esta prueba consta de 50 preguntas.<br>Tiempo estimado: 45 minutos."
+      },
+      "buttonLabel": {
+        "default": "Comenzar"
+      }
+    },
+    {
+      "id": "mach_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué componente de la máquina transporta y funde el material plástico?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La tolva" } },
+        { "id": "c1", "label": { "default": "El tornillo (husillo)" } },
+        { "id": "c2", "label": { "default": "La platina móvil" } },
+        { "id": "c3", "label": { "default": "La bomba hidráulica" } }
+      ]
+    },
+    {
+      "id": "mach_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿En qué parte de la máquina se deposita la materia prima (pellets) antes de entrar al barril?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "En la boquilla" } },
+        { "id": "c1", "label": { "default": "En la unidad de cierre" } },
+        { "id": "c2", "label": { "default": "En la tolva" } },
+        { "id": "c3", "label": { "default": "En el barril" } }
+      ]
+    },
+    {
+      "id": "mach_3",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Para qué sirven las bandas calefactoras del barril?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para enfriar el plástico" } },
+        { "id": "c1", "label": { "default": "Para calentar el material y mantenerlo fundido" } },
+        { "id": "c2", "label": { "default": "Para sujetar el tornillo" } },
+        { "id": "c3", "label": { "default": "Para medir la presión" } }
+      ]
+    },
+    {
+      "id": "mach_4",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Cuál es la función principal de la unidad de cierre?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Inyectar el plástico" } },
+        { "id": "c1", "label": { "default": "Mantener el molde cerrado contra la presión de inyección" } },
+        { "id": "c2", "label": { "default": "Mezclar el colorante" } },
+        { "id": "c3", "label": { "default": "Secar el material" } }
+      ]
+    },
+    {
+      "id": "mach_5",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué componente del molde permite que la pieza sea expulsada?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Los venteos" } },
+        { "id": "c1", "label": { "default": "La cavidad" } },
+        { "id": "c2", "label": { "default": "Los botadores (ejectores)" } },
+        { "id": "c3", "label": { "default": "El bebedero" } }
+      ]
+    },
+    {
+      "id": "proc_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'tiempo de ciclo'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "El tiempo que el operador descansa" } },
+        { "id": "c1", "label": { "default": "El tiempo total para producir una pieza completa" } },
+        { "id": "c2", "label": { "default": "El tiempo de calentamiento de la máquina" } },
+        { "id": "c3", "label": { "default": "El tiempo de vida del molde" } }
+      ]
+    },
+    {
+      "id": "qual_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es un 'tiro corto' (short shot)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una pieza que pesa demasiado" } },
+        { "id": "c1", "label": { "default": "Una pieza incompleta por falta de material o presión" } },
+        { "id": "c2", "label": { "default": "Una pieza con rebaba" } },
+        { "id": "c3", "label": { "default": "Un disparo de purga" } }
+      ]
+    },
+    {
+      "id": "qual_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué causa comúnmente la 'rebaba' (flash)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Falta de material" } },
+        { "id": "c1", "label": { "default": "Exceso de presión o molde mal cerrado" } },
+        { "id": "c2", "label": { "default": "Material muy frío" } },
+        { "id": "c3", "label": { "default": "Molde muy sucio" } }
+      ]
+    },
+    {
+      "id": "qual_3",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'rechupado' (sink mark)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una mancha negra" } },
+        { "id": "c1", "label": { "default": "Una depresión o hundimiento en la superficie de la pieza" } },
+        { "id": "c2", "label": { "default": "Una grieta" } },
+        { "id": "c3", "label": { "default": "Una pieza pegada" } }
+      ]
+    },
+    {
+      "id": "safe_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Cuál es el riesgo de purgar la máquina sin protección?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Que la pieza salga fea" } },
+        { "id": "c1", "label": { "default": "Salpicaduras de material caliente y quemaduras severas" } },
+        { "id": "c2", "label": { "default": "Que el material se desperdicie" } },
+        { "id": "c3", "label": { "default": "Que el tornillo se rompa" } }
+      ]
+    },
+    {
+      "id": "safe_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Para qué sirve el botón de paro de emergencia?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para abrir la puerta" } },
+        { "id": "c1", "label": { "default": "Para detener todos los movimientos de la máquina ante un peligro" } },
+        { "id": "c2", "label": { "default": "Para llamar al supervisor" } },
+        { "id": "c3", "label": { "default": "Para apagar las resistencias" } }
+      ]
+    },
+    {
+      "id": "safe_3",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué significa 'LOTO' en seguridad industrial?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Lotería de seguridad" } },
+        { "id": "c1", "label": { "default": "Bloqueo y Etiquetado de energías peligrosas" } },
+        { "id": "c2", "label": { "default": "Limpieza de Operaciones y Trabajo Organizado" } },
+        { "id": "c3", "label": { "default": "Logística de Operaciones de Torneado" } }
+      ]
+    },
+    {
+      "id": "qual_4",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es una 'quemadura' (burn mark) en la pieza?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Mancha causada por gas atrapado que se comprime y se calienta" } },
+        { "id": "c1", "label": { "default": "Raspadura por el robot" } },
+        { "id": "c2", "label": { "default": "Falta de colorante" } },
+        { "id": "c3", "label": { "default": "Exceso de enfriamiento" } }
+      ]
+    },
+    {
+      "id": "qual_5",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué son las 'líneas de unión' (weld lines)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Cables eléctricos" } },
+        { "id": "c1", "label": { "default": "Marca donde se encuentran dos frentes de flujo de plástico" } },
+        { "id": "c2", "label": { "default": "Líneas de corte del operador" } },
+        { "id": "c3", "label": { "default": "El borde del molde" } }
+      ]
+    },
+    {
+      "id": "mat_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Por qué es importante el secado del material?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para que no pese tanto" } },
+        { "id": "c1", "label": { "default": "Para eliminar la humedad que causa defectos como ráfagas" } },
+        { "id": "c2", "label": { "default": "Para que el color cambie" } },
+        { "id": "c3", "label": { "default": "Para que el material dure más años" } }
+      ]
+    },
+    {
+      "id": "mat_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es un material 'higroscópico'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Un material que repele el agua" } },
+        { "id": "c1", "label": { "default": "Un material que absorbe humedad del aire en su estructura" } },
+        { "id": "c2", "label": { "default": "Un material que no se puede fundir" } },
+        { "id": "c3", "label": { "default": "Un material reciclado" } }
+      ]
+    },
+    {
+      "id": "proc_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Cuál es la función del enfriamiento en el molde?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Solidificar el plástico para que la pieza pueda ser expulsada" } },
+        { "id": "c1", "label": { "default": "Mantener el plástico líquido" } },
+        { "id": "c2", "label": { "default": "Limpiar la cavidad" } },
+        { "id": "c3", "label": { "default": "Reducir el ruido de la máquina" } }
+      ]
+    },
+    {
+      "id": "proc_3",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué sucede si el tiempo de enfriamiento es muy corto?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La pieza sale más brillante" } },
+        { "id": "c1", "label": { "default": "La pieza puede deformarse o quedarse pegada" } },
+        { "id": "c2", "label": { "default": "Se ahorra dinero" } },
+        { "id": "c3", "label": { "default": "El material se quema" } }
+      ]
+    },
+    {
+      "id": "proc_4",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'contrapresión' (back pressure)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Presión para cerrar el molde" } },
+        { "id": "c1", "label": { "default": "Presión que resiste el retroceso del tornillo para mejorar la mezcla" } },
+        { "id": "c2", "label": { "default": "Presión del aire ambiental" } },
+        { "id": "c3", "label": { "default": "Presión de los botadores" } }
+      ]
+    },
+    {
+      "id": "proc_5",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'cojín' (cushion)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una almohada para el operador" } },
+        { "id": "c1", "label": { "default": "La distancia que queda al final de la inyección para asegurar presión de empaque" } },
+        { "id": "c2", "label": { "default": "El material que cae al suelo" } },
+        { "id": "c3", "label": { "default": "Un tipo de empaque" } }
+      ]
+    },
+    {
+      "id": "proc_6",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué indica un cojín de 0 (cero)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Que la máquina es muy eficiente" } },
+        { "id": "c1", "label": { "default": "Que no hay control de presión y la pieza puede salir inconsistente" } },
+        { "id": "c2", "label": { "default": "Que el molde está limpio" } },
+        { "id": "c3", "label": { "default": "Que el tornillo se detuvo antes" } }
+      ]
+    },
+    {
+      "id": "mach_6",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Para qué sirven los venteos (vents) del molde?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para que entre aire a la pieza" } },
+        { "id": "c1", "label": { "default": "Para dejar salir el aire atrapado durante el llenado" } },
+        { "id": "c2", "label": { "default": "Para enfriar el molde con aire" } },
+        { "id": "c3", "label": { "default": "Para que el operador vea hacia adentro" } }
+      ]
+    },
+    {
+      "id": "mat_3",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 're-molido' o molido?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Plástico virgen" } },
+        { "id": "c1", "label": { "default": "Material recuperado de piezas malas o coladas trituradas" } },
+        { "id": "c2", "label": { "default": "Tierra y polvo" } },
+        { "id": "c3", "label": { "default": "Aceite usado" } }
+      ]
+    },
+    {
+      "id": "eff_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el OEE?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Un tipo de plástico" } },
+        { "id": "c1", "label": { "default": "Indicador de eficiencia: Disponibilidad, Desempeño y Calidad" } },
+        { "id": "c2", "label": { "default": "Una norma de seguridad" } },
+        { "id": "c3", "label": { "default": "Una herramienta de limpieza" } }
+      ]
+    },
+    {
+      "id": "eff_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué significa SMED?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Sistema de Medición de Energía Digital" } },
+        { "id": "c1", "label": { "default": "Cambio de molde en menos de 10 minutos" } },
+        { "id": "c2", "label": { "default": "Seguridad Máxima en el Departamento" } },
+        { "id": "c3", "label": { "default": "Siempre Mantener el Equipo Detenido" } }
+      ]
+    },
+    {
+      "id": "mach_7",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Cuál es la función del robot en una celda de moldeo?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Platicar con el operador" } },
+        { "id": "c1", "label": { "default": "Extraer piezas de forma constante y segura" } },
+        { "id": "c2", "label": { "default": "Arreglar la máquina" } },
+        { "id": "c3", "label": { "default": "Limpiar el suelo" } }
+      ]
+    },
+    {
+      "id": "proc_7",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'presión de sostenimiento' (hold pressure)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La presión para abrir el molde" } },
+        { "id": "c1", "label": { "default": "Presión que mantiene el llenado para compensar la contracción" } },
+        { "id": "c2", "label": { "default": "La presión de la purga" } },
+        { "id": "c3", "label": { "default": "La fuerza del operador" } }
+      ]
+    },
+    {
+      "id": "proc_8",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'velocidad de inyección'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Qué tan rápido gira el tornillo" } },
+        { "id": "c1", "label": { "default": "Qué tan rápido avanza el tornillo para llenar la cavidad" } },
+        { "id": "c2", "label": { "default": "Qué tan rápido camina el operador" } },
+        { "id": "c3", "label": { "default": "La velocidad del ventilador" } }
+      ]
+    },
+    {
+      "id": "proc_9",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'posición de transferencia' (V-P)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Cuando cambias de turno" } },
+        { "id": "c1", "label": { "default": "Punto donde se cambia de control de velocidad a presión" } },
+        { "id": "c2", "label": { "default": "El lugar donde guardas el molde" } },
+        { "id": "c3", "label": { "default": "El cambio de color" } }
+      ]
+    },
+    {
+      "id": "qual_6",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué causa la 'ráfaga' (splay) en la pieza?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Exceso de presión" } },
+        { "id": "c1", "label": { "default": "Humedad en el material o degradación térmica" } },
+        { "id": "c2", "label": { "default": "Molde muy frío" } },
+        { "id": "c3", "label": { "default": "Falta de botadores" } }
+      ]
+    },
+    {
+      "id": "qual_7",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'pandeo' (warpage)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una mancha de aceite" } },
+        { "id": "c1", "label": { "default": "Deformación de la pieza por enfriamiento irregular" } },
+        { "id": "c2", "label": { "default": "Un hueco en la pieza" } },
+        { "id": "c3", "label": { "default": "El ruido de la máquina" } }
+      ]
+    },
+    {
+      "id": "qual_8",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'delaminación'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Cuando la pieza brilla mucho" } },
+        { "id": "c1", "label": { "default": "Separación de capas en la pieza por contaminación" } },
+        { "id": "c2", "label": { "default": "Cuando la pieza se rompe" } },
+        { "id": "c3", "label": { "default": "El grabado del molde" } }
+      ]
+    },
+    {
+      "id": "mach_8",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'bebedero' (sprue)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Donde toma agua el operador" } },
+        { "id": "c1", "label": { "default": "El canal principal por donde entra el plástico al molde" } },
+        { "id": "c2", "label": { "default": "Una parte del robot" } },
+        { "id": "c3", "label": { "default": "Un tipo de tornillo" } }
+      ]
+    },
+    {
+      "id": "mach_9",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es una 'colada fría'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Un helado" } },
+        { "id": "c1", "label": { "default": "El plástico solidificado en los canales que no es parte de la pieza" } },
+        { "id": "c2", "label": { "default": "Material que se dejó enfriar en el barril" } },
+        { "id": "c3", "label": { "default": "Una fuga de agua" } }
+      ]
+    },
+    {
+      "id": "mach_10",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Para qué se usa el desmoldante?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Para limpiar la máquina" } },
+        { "id": "c1", "label": { "default": "Para ayudar a que la pieza no se pegue al molde" } },
+        { "id": "c2", "label": { "default": "Para que el plástico huela bien" } },
+        { "id": "c3", "label": { "default": "Para lubricar el tornillo" } }
+      ]
+    },
+    {
+      "id": "mach_11",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'fuerza de cierre' (clamping force)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La fuerza del brazo del operador" } },
+        { "id": "c1", "label": { "default": "La presión que mantiene el molde cerrado" } },
+        { "id": "c2", "label": { "default": "El peso del molde" } },
+        { "id": "c3", "label": { "default": "La fuerza de los botadores" } }
+      ]
+    },
+    {
+      "id": "qual_9",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es un 'punto negro' (black speck)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una marca del molde" } },
+        { "id": "c1", "label": { "default": "Contaminación o material quemado en la pieza" } },
+        { "id": "c2", "label": { "default": "Un sensor de la máquina" } },
+        { "id": "c3", "label": { "default": "El color de la resina" } }
+      ]
+    },
+    {
+      "id": "proc_10",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué significa el término 'disparo' (shot)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Un ruido fuerte" } },
+        { "id": "c1", "label": { "default": "Una carga completa de plástico inyectada en el molde" } },
+        { "id": "c2", "label": { "default": "Un error del sistema" } },
+        { "id": "c3", "label": { "default": "Limpiar la boquilla" } }
+      ]
+    },
+    {
+      "id": "desp_1",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Cuál es el orden de las 5S?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Seleccionar, Ordenar, Limpiar, Estandarizar, Disciplina" } },
+        { "id": "c1", "label": { "default": "Salir, Sentarse, Saludar, Sonreír, Servir" } },
+        { "id": "c2", "label": { "default": "Solo Ser Seguro Siempre Sonriendo" } },
+        { "id": "c3", "label": { "default": "Sucio, Solo, Separado, Sin, Sistema" } }
+      ]
+    },
+    {
+      "id": "desp_2",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'scrap'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Material nuevo" } },
+        { "id": "c1", "label": { "default": "Piezas defectuosas que no cumplen con la calidad" } },
+        { "id": "c2", "label": { "default": "La caja de herramientas" } },
+        { "id": "c3", "label": { "default": "El uniforme del operador" } }
+      ]
+    },
+    {
+      "id": "qual_10",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es una 'ayuda visual'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Unos lentes" } },
+        { "id": "c1", "label": { "default": "Documento con fotos de piezas buenas y malas" } },
+        { "id": "c2", "label": { "default": "La luz de la máquina" } },
+        { "id": "c3", "label": { "default": "Un espejo" } }
+      ]
+    },
+    {
+      "id": "mat_4",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'masterbatch' o concentrado de color?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Pintura líquida" } },
+        { "id": "c1", "label": { "default": "Pellets con alto contenido de pigmento" } },
+        { "id": "c2", "label": { "default": "El plástico transparente" } },
+        { "id": "c3", "label": { "default": "Una marca de máquinas" } }
+      ]
+    },
+    {
+      "id": "mach_12",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué componente de la máquina jala el material de la tolva?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "La boquilla" } },
+        { "id": "c1", "label": { "default": "El movimiento de rotación del tornillo" } },
+        { "id": "c2", "label": { "default": "El aire del ambiente" } },
+        { "id": "c3", "label": { "default": "El operador con una pala" } }
+      ]
+    },
+    {
+      "id": "mach_13",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es una 'platina'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Un plato de comida" } },
+        { "id": "c1", "label": { "default": "Placas de metal donde se monta el molde" } },
+        { "id": "c2", "label": { "default": "El piso de la fábrica" } },
+        { "id": "c3", "label": { "default": "Una parte del tornillo" } }
+      ]
+    },
+    {
+      "id": "mach_14",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es un 'perno guía'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Un tornillo largo" } },
+        { "id": "c1", "label": { "default": "Componente que asegura que las mitades del molde alineen" } },
+        { "id": "c2", "label": { "default": "Una señal de tránsito" } },
+        { "id": "c3", "label": { "default": "El mango de una puerta" } }
+      ]
+    },
+    {
+      "id": "proc_11",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es la 'descompresión' (suck back)?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Quitarle el aire a la máquina" } },
+        { "id": "c1", "label": { "default": "Retroceso del tornillo después de cargar para evitar goteo" } },
+        { "id": "c2", "label": { "default": "Apagar la bomba hidráulica" } },
+        { "id": "c3", "label": { "default": "Cuando se abre el molde" } }
+      ]
+    },
+    {
+      "id": "desp_3",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Qué es el 'purgado'?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Limpiar el sistema inyectando material nuevo" } },
+        { "id": "c1", "label": { "default": "Irse de la planta" } },
+        { "id": "c2", "label": { "default": "Lavar el molde con agua" } },
+        { "id": "c3", "label": { "default": "Cambiar el aceite" } }
+      ]
+    },
+    {
+      "id": "desp_4",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "Un exceso de purga durante los arranques se considera:"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Una buena práctica" } },
+        { "id": "c1", "label": { "default": "Desperdicio de dinero y material" } },
+        { "id": "c2", "label": { "default": "Necesario para calentar la máquina 1 hora" } },
+        { "id": "c3", "label": { "default": "Una consecuencia de mala programación" } }
+      ]
+    },
+    {
+      "id": "desp_5",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "¿Cómo ayuda el orden y limpieza (5S) a reducir desperdicios?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Evita contaminación y pérdida de herramientas" } },
+        { "id": "c1", "label": { "default": "Hace que la máquina se vea nueva" } },
+        { "id": "c2", "label": { "default": "No ayuda en nada al desperdicio" } },
+        { "id": "c3", "label": { "default": "Reduce el tiempo de búsqueda de herramientas" } }
+      ]
+    },
+    {
+      "id": "desp_6",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "Si una pieza cae al suelo lleno de aceite, ¿qué se debe hacer?"
+      },
+      "required": true,
+      "choices": [
+        { "id": "c0", "label": { "default": "Limpiarla con un trapo" } },
+        { "id": "c1", "label": { "default": "Considerarla scrap (contaminada)" } },
+        { "id": "c2", "label": { "default": "Meterla al molino así" } },
+        { "id": "c3", "label": { "default": "Lavarla con solvente" } }
+      ]
+    },
+    {
+      "id": "end",
+      "type": "thankYou",
+      "headline": {
+        "default": "Evaluación completada"
+      },
+      "html": {
+        "default": "Tus respuestas han sido registradas. El departamento de capacitación te informará tu resultado."
+      }
+    }
+  ]
+}

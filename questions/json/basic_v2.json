@@ -1,0 +1,802 @@
+[
+  {
+    "id": "mach_1",
+    "question_order_id": 1,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Qué componente de la máquina transporta y funde el material plástico?",
+    "options": [
+      "La tolva",
+      "El tornillo (husillo)",
+      "La platina móvil",
+      "La bomba hidráulica"
+    ],
+    "correct_index": 1,
+    "reasoning": "El husillo es el componente rotativo que utiliza fricción y calor para plastificar el material.",
+    "score": 1
+  },
+  {
+    "id": "mach_2",
+    "question_order_id": 2,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿En qué parte de la máquina se deposita la materia prima (pellets) antes de entrar al barril?",
+    "options": [
+      "En la boquilla",
+      "En la unidad de cierre",
+      "En la tolva",
+      "En el barril"
+    ],
+    "correct_index": 2,
+    "reasoning": "La tolva es el contenedor de suministro que alimenta el material por gravedad.",
+    "score": 1
+  },
+  {
+    "id": "mach_3",
+    "question_order_id": 3,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Para qué sirven las bandas calefactoras del barril?",
+    "options": [
+      "Para enfriar el plástico",
+      "Para calentar el material y mantenerlo fundido",
+      "Para sujetar el tornillo",
+      "Para medir la presión"
+    ],
+    "correct_index": 1,
+    "reasoning": "Las bandas mantienen la temperatura del barril para asegurar la fusión del polímero.",
+    "score": 1
+  },
+  {
+    "id": "mach_4",
+    "question_order_id": 4,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Cuál es la función principal de la unidad de cierre?",
+    "options": [
+      "Inyectar el plástico",
+      "Mantener el molde cerrado contra la presión de inyección",
+      "Mezclar el colorante",
+      "Secar el material"
+    ],
+    "correct_index": 1,
+    "reasoning": "Debe proporcionar suficiente fuerza para vencer la presión interna que genera el plástico al entrar.",
+    "score": 1
+  },
+  {
+    "id": "mach_5",
+    "question_order_id": 5,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Qué componente del molde permite que la pieza sea expulsada?",
+    "options": [
+      "Los venteos",
+      "La cavidad",
+      "Los botadores (ejectores)",
+      "El bebedero"
+    ],
+    "correct_index": 2,
+    "reasoning": "Son pernos mecánicos que empujan la pieza fuera de la cavidad.",
+    "score": 1
+  },
+  {
+    "id": "proc_1",
+    "question_order_id": 6,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es el 'tiempo de ciclo'?",
+    "options": [
+      "El tiempo que el operador descansa",
+      "El tiempo total para producir una pieza completa",
+      "El tiempo de calentamiento de la máquina",
+      "El tiempo de vida del molde"
+    ],
+    "correct_index": 1,
+    "reasoning": "Es el tiempo transcurrido desde que inicia un ciclo hasta que la máquina está lista para el siguiente.",
+    "score": 1
+  },
+  {
+    "id": "qual_1",
+    "question_order_id": 7,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es un 'tiro corto' (short shot)?",
+    "options": [
+      "Una pieza que pesa demasiado",
+      "Una pieza incompleta por falta de material o presión",
+      "Una pieza con rebaba",
+      "Un disparo de purga"
+    ],
+    "correct_index": 1,
+    "reasoning": "Identificar este defecto en piso es crucial para evitar embarques de material incompleto.",
+    "score": 1.5
+  },
+  {
+    "id": "qual_2",
+    "question_order_id": 8,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué causa comúnmente la 'rebaba' (flash)?",
+    "options": [
+      "Falta de material",
+      "Exceso de presión o molde mal cerrado",
+      "Material muy frío",
+      "Molde muy sucio"
+    ],
+    "correct_index": 1,
+    "reasoning": "Requiere diagnóstico práctico sobre la presión de inyección o el estado del molde.",
+    "score": 1.5
+  },
+  {
+    "id": "qual_3",
+    "question_order_id": 9,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es el 'rechupado' (sink mark)?",
+    "options": [
+      "Una mancha negra",
+      "Una depresión o hundimiento en la superficie de la pieza",
+      "Una grieta",
+      "Una pieza pegada"
+    ],
+    "correct_index": 1,
+    "reasoning": "Es un defecto visual común que requiere ajustar el empaque o enfriamiento en piso.",
+    "score": 1.5
+  },
+  {
+    "id": "safe_1",
+    "question_order_id": 10,
+    "category": "Seguridad",
+    "type": "Práctico",
+    "question": "¿Cuál es el riesgo de purgar la máquina sin protección?",
+    "options": [
+      "Que la pieza salga fea",
+      "Salpicaduras de material caliente y quemaduras severas",
+      "Que el material se desperdicie",
+      "Que el tornillo se rompa"
+    ],
+    "correct_index": 1,
+    "reasoning": "Es una situación de riesgo directo en la operación diaria.",
+    "score": 1.5
+  },
+  {
+    "id": "safe_2",
+    "question_order_id": 11,
+    "category": "Seguridad",
+    "type": "Práctico",
+    "question": "¿Para qué sirve el botón de paro de emergencia?",
+    "options": [
+      "Para abrir la puerta",
+      "Para detener todos los movimientos de la máquina ante un peligro",
+      "Para llamar al supervisor",
+      "Para apagar las resistencias"
+    ],
+    "correct_index": 1,
+    "reasoning": "Uso crítico del equipo de seguridad ante incidentes.",
+    "score": 1.5
+  },
+  {
+    "id": "safe_3",
+    "question_order_id": 12,
+    "category": "Seguridad",
+    "type": "Teórico",
+    "question": "¿Qué significa 'LOTO' en seguridad industrial?",
+    "options": [
+      "Lotería de seguridad",
+      "Bloqueo y Etiquetado de energías peligrosas",
+      "Limpieza de Operaciones y Trabajo Organizado",
+      "Logística de Operaciones de Torneado"
+    ],
+    "correct_index": 1,
+    "reasoning": "Conocimiento de la normativa estándar de seguridad (Lockout/Tagout).",
+    "score": 1
+  },
+  {
+    "id": "qual_4",
+    "question_order_id": 13,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es una 'quemadura' (burn mark) en la pieza?",
+    "options": [
+      "Mancha causada por gas atrapado que se comprime y se calienta",
+      "Raspadura por el robot",
+      "Falta de colorante",
+      "Exceso de enfriamiento"
+    ],
+    "correct_index": 0,
+    "reasoning": "Defecto operativo que indica falta de venteo o exceso de velocidad de inyección.",
+    "score": 1.5
+  },
+  {
+    "id": "qual_5",
+    "question_order_id": 14,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué son las 'líneas de unión' (weld lines)?",
+    "options": [
+      "Cables eléctricos",
+      "Marca donde se encuentran dos frentes de flujo de plástico",
+      "Líneas de corte del operador",
+      "El borde del molde"
+    ],
+    "correct_index": 1,
+    "reasoning": "Defecto común en piezas con geometrías complejas.",
+    "score": 1.5
+  },
+  {
+    "id": "mat_1",
+    "question_order_id": 15,
+    "category": "Materiales",
+    "type": "Teórico",
+    "question": "¿Por qué es importante el secado del material?",
+    "options": [
+      "Para que no pese tanto",
+      "Para eliminar la humedad que causa defectos como ráfagas",
+      "Para que el color cambie",
+      "Para que el material dure más años"
+    ],
+    "correct_index": 1,
+    "reasoning": "La humedad genera vapor y fallas estructurales por hidrólisis.",
+    "score": 1
+  },
+  {
+    "id": "mat_2",
+    "question_order_id": 16,
+    "category": "Materiales",
+    "type": "Teórico",
+    "question": "¿Qué es un material 'higroscópico'?",
+    "options": [
+      "Un material que repele el agua",
+      "Un material que absorbe humedad del aire en su estructura",
+      "Un material que no se puede fundir",
+      "Un material reciclado"
+    ],
+    "correct_index": 1,
+    "reasoning": "Conocimiento técnico sobre las propiedades de absorción de agua de los polímeros.",
+    "score": 1
+  },
+  {
+    "id": "proc_2",
+    "question_order_id": 17,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Cuál es la función del enfriamiento en el molde?",
+    "options": [
+      "Solidificar el plástico para que la pieza pueda ser expulsada",
+      "Mantener el plástico líquido",
+      "Limpiar la cavidad",
+      "Reducir el ruido de la máquina"
+    ],
+    "correct_index": 0,
+    "reasoning": "El calor debe ser extraído para dar rigidez a la pieza.",
+    "score": 1
+  },
+  {
+    "id": "proc_3",
+    "question_order_id": 18,
+    "category": "Proceso",
+    "type": "Práctico",
+    "question": "¿Qué sucede si el tiempo de enfriamiento es muy corto?",
+    "options": [
+      "La pieza sale más brillante",
+      "La pieza puede deformarse o quedarse pegada",
+      "Se ahorra dinero",
+      "El material se quema"
+    ],
+    "correct_index": 1,
+    "reasoning": "Impacto directo en la calidad física de la pieza durante la producción.",
+    "score": 1.5
+  },
+  {
+    "id": "proc_4",
+    "question_order_id": 19,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es la 'contrapresión' (back pressure)?",
+    "options": [
+      "Presión para cerrar el molde",
+      "Presión que resiste el retroceso del tornillo para mejorar la mezcla",
+      "Presión del aire ambiental",
+      "Presión de los botadores"
+    ],
+    "correct_index": 1,
+    "reasoning": "Concepto técnico sobre el control del husillo durante la carga.",
+    "score": 1
+  },
+  {
+    "id": "proc_5",
+    "question_order_id": 20,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es el 'cojín' (cushion)?",
+    "options": [
+      "Una almohada para el operador",
+      "La distancia que queda al final de la inyección para asegurar presión de empaque",
+      "El material que cae al suelo",
+      "Un tipo de empaque"
+    ],
+    "correct_index": 1,
+    "reasoning": "Es una métrica fundamental para asegurar que hubo transferencia de presión.",
+    "score": 1
+  },
+  {
+    "id": "proc_6",
+    "question_order_id": 21,
+    "category": "Proceso",
+    "type": "Práctico",
+    "question": "¿Qué indica un cojín de 0 (cero)?",
+    "options": [
+      "Que la máquina es muy eficiente",
+      "Que no hay control de presión y la pieza puede salir inconsistente",
+      "Que el molde está limpio",
+      "Que el tornillo se detuvo antes"
+    ],
+    "correct_index": 1,
+    "reasoning": "Un cojín en cero es una señal de alerta operativa crítica.",
+    "score": 1.5
+  },
+  {
+    "id": "mach_6",
+    "question_order_id": 22,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Para qué sirven los venteos (vents) del molde?",
+    "options": [
+      "Para que entre aire a la pieza",
+      "Para dejar salir el aire atrapado durante el llenado",
+      "Para enfriar el molde con aire",
+      "Para que el operador vea hacia adentro"
+    ],
+    "correct_index": 1,
+    "reasoning": "Evitan quemaduras y facilitan el llenado.",
+    "score": 1
+  },
+  {
+    "id": "mat_3",
+    "question_order_id": 23,
+    "category": "Materiales",
+    "type": "Práctico",
+    "question": "¿Qué es el 're-molido' o molido?",
+    "options": [
+      "Plástico virgen",
+      "Material recuperado de piezas malas o coladas trituradas",
+      "Tierra y polvo",
+      "Aceite usado"
+    ],
+    "correct_index": 1,
+    "reasoning": "Parte esencial del manejo de materiales en piso.",
+    "score": 1.5
+  },
+  {
+    "id": "eff_1",
+    "question_order_id": 24,
+    "category": "Eficiencia",
+    "type": "Teórico",
+    "question": "¿Qué es el OEE?",
+    "options": [
+      "Un tipo de plástico",
+      "Indicador de eficiencia: Disponibilidad, Desempeño y Calidad",
+      "Una norma de seguridad",
+      "Una herramienta de limpieza"
+    ],
+    "correct_index": 1,
+    "reasoning": "Concepto administrativo de eficiencia productiva.",
+    "score": 1
+  },
+  {
+    "id": "eff_2",
+    "question_order_id": 25,
+    "category": "Eficiencia",
+    "type": "Teórico",
+    "question": "¿Qué significa SMED?",
+    "options": [
+      "Sistema de Medición de Energía Digital",
+      "Cambio de molde en menos de 10 minutos",
+      "Seguridad Máxima en el Departamento",
+      "Siempre Mantener el Equipo Detenido"
+    ],
+    "correct_index": 1,
+    "reasoning": "Referencia a la rapidez de cambios de set-up.",
+    "score": 1
+  },
+  {
+    "id": "mach_7",
+    "question_order_id": 26,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Cuál es la función del robot en una celda de moldeo?",
+    "options": [
+      "Platicar con el operador",
+      "Extraer piezas de forma constante y segura",
+      "Arreglar la máquina",
+      "Limpiar el suelo"
+    ],
+    "correct_index": 1,
+    "reasoning": "Asegura la estabilidad del ciclo y seguridad del operador.",
+    "score": 1
+  },
+  {
+    "id": "proc_7",
+    "question_order_id": 27,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es la 'presión de sostenimiento' (hold pressure)?",
+    "options": [
+      "La presión para abrir el molde",
+      "Presión que mantiene el llenado para compensar la contracción",
+      "La presión de la purga",
+      "La fuerza del operador"
+    ],
+    "correct_index": 1,
+    "reasoning": "Fase del proceso para asegurar dimensiones.",
+    "score": 1
+  },
+  {
+    "id": "proc_8",
+    "question_order_id": 28,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es la 'velocidad de inyección'?",
+    "options": [
+      "Qué tan rápido gira el tornillo",
+      "Qué tan rápido avanza el tornillo para llenar la cavidad",
+      "Qué tan rápido camina el operador",
+      "La velocidad del ventilador"
+    ],
+    "correct_index": 1,
+    "reasoning": "Control de llenado dinámico.",
+    "score": 1
+  },
+  {
+    "id": "proc_9",
+    "question_order_id": 29,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es la 'posición de transferencia' (V-P)?",
+    "options": [
+      "Cuando cambias de turno",
+      "Punto donde se cambia de control de velocidad a presión",
+      "El lugar donde guardas el molde",
+      "El cambio de color"
+    ],
+    "correct_index": 1,
+    "reasoning": "Punto de control crítico en el llenado.",
+    "score": 1
+  },
+  {
+    "id": "qual_6",
+    "question_order_id": 30,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué causa la 'ráfaga' (splay) en la pieza?",
+    "options": [
+      "Exceso de presión",
+      "Humedad en el material o degradación térmica",
+      "Molde muy frío",
+      "Falta de botadores"
+    ],
+    "correct_index": 1,
+    "reasoning": "Defecto visual recurrente en piso que requiere acción correctiva.",
+    "score": 1.5
+  },
+  {
+    "id": "qual_7",
+    "question_order_id": 31,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es el 'pandeo' (warpage)?",
+    "options": [
+      "Una mancha de aceite",
+      "Deformación de la pieza por enfriamiento irregular",
+      "Un hueco en la pieza",
+      "El ruido de la máquina"
+    ],
+    "correct_index": 1,
+    "reasoning": "Requiere evaluación de la estabilidad dimensional de la pieza.",
+    "score": 1.5
+  },
+  {
+    "id": "qual_8",
+    "question_order_id": 32,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es la 'delaminación'?",
+    "options": [
+      "Cuando la pieza brilla mucho",
+      "Separación de capas en la pieza por contaminación",
+      "Cuando la pieza se rompe",
+      "El grabado del molde"
+    ],
+    "correct_index": 1,
+    "reasoning": "Falla de calidad crítica que indica contaminación grave.",
+    "score": 1.5
+  },
+  {
+    "id": "mach_8",
+    "question_order_id": 33,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Qué es el 'bebedero' (sprue)?",
+    "options": [
+      "Donde toma agua el operador",
+      "El canal principal por donde entra el plástico al molde",
+      "Una parte del robot",
+      "Un tipo de tornillo"
+    ],
+    "correct_index": 1,
+    "reasoning": "Parte de la arquitectura básica del molde.",
+    "score": 1
+  },
+  {
+    "id": "mach_9",
+    "question_order_id": 34,
+    "category": "Máquina",
+    "type": "Práctico",
+    "question": "¿Qué es una 'colada fría'?",
+    "options": [
+      "Un helado",
+      "El plástico solidificado en los canales que no es parte de la pieza",
+      "Material que se dejó enfriar en el barril",
+      "Una fuga de agua"
+    ],
+    "correct_index": 1,
+    "reasoning": "Identificación de desperdicios en piso para reciclaje.",
+    "score": 1.5
+  },
+  {
+    "id": "mach_10",
+    "question_order_id": 35,
+    "category": "Máquina",
+    "type": "Práctico",
+    "question": "¿Para qué se usa el desmoldante?",
+    "options": [
+      "Para limpiar la máquina",
+      "Para ayudar a que la pieza no se pegue al molde",
+      "Para que el plástico huela bien",
+      "Para lubricar el tornillo"
+    ],
+    "correct_index": 1,
+    "reasoning": "Herramienta auxiliar de uso diario en piso.",
+    "score": 1.5
+  },
+  {
+    "id": "mach_11",
+    "question_order_id": 36,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Qué es la 'fuerza de cierre' (clamping force)?",
+    "options": [
+      "La fuerza del brazo del operador",
+      "La presión que mantiene el molde cerrado",
+      "El peso del molde",
+      "La fuerza de los botadores"
+    ],
+    "correct_index": 1,
+    "reasoning": "Concepto técnico de capacidad de máquina.",
+    "score": 1
+  },
+  {
+    "id": "qual_9",
+    "question_order_id": 37,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es un 'punto negro' (black speck)?",
+    "options": [
+      "Una marca del molde",
+      "Contaminación o material quemado en la pieza",
+      "Un sensor de la máquina",
+      "El color de la resina"
+    ],
+    "correct_index": 1,
+    "reasoning": "Defecto que requiere limpieza (purga) o revisión del husillo.",
+    "score": 1.5
+  },
+  {
+    "id": "proc_10",
+    "question_order_id": 38,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué significa el término 'disparo' (shot)?",
+    "options": [
+      "Un ruido fuerte",
+      "Una carga completa de plástico inyectada en el molde",
+      "Un error del sistema",
+      "Limpiar la boquilla"
+    ],
+    "correct_index": 1,
+    "reasoning": "Unidad de medida de producción.",
+    "score": 1
+  },
+  {
+    "id": "desp_1",
+    "question_order_id": 39,
+    "category": "Desperdicios",
+    "type": "Práctico",
+    "question": "¿Cuál es el orden de las 5S?",
+    "options": [
+      "Seleccionar, Ordenar, Limpiar, Estandarizar, Disciplina",
+      "Salir, Sentarse, Saludar, Sonreír, Servir",
+      "Solo Ser Seguro Siempre Sonriendo",
+      "Sucio, Solo, Separado, Sin, Sistema"
+    ],
+    "correct_index": 0,
+    "reasoning": "Metodología de orden aplicada a la estación de trabajo.",
+    "score": 1.5
+  },
+  {
+    "id": "desp_2",
+    "question_order_id": 40,
+    "category": "Desperdicios",
+    "type": "Práctico",
+    "question": "¿Qué es el 'scrap'?",
+    "options": [
+      "Material nuevo",
+      "Piezas defectuosas que no cumplen con la calidad",
+      "La caja de herramientas",
+      "El uniforme del operador"
+    ],
+    "correct_index": 1,
+    "reasoning": "Término fundamental para el manejo de mermas.",
+    "score": 1.5
+  },
+  {
+    "id": "qual_10",
+    "question_order_id": 41,
+    "category": "Calidad",
+    "type": "Práctico",
+    "question": "¿Qué es una 'ayuda visual'?",
+    "options": [
+      "Unos lentes",
+      "Documento con fotos de piezas buenas y malas",
+      "La luz de la máquina",
+      "Un espejo"
+    ],
+    "correct_index": 1,
+    "reasoning": "Herramienta operativa para estandarizar la inspección.",
+    "score": 1.5
+  },
+  {
+    "id": "mat_4",
+    "question_order_id": 42,
+    "category": "Materiales",
+    "type": "Teórico",
+    "question": "¿Qué es el 'masterbatch' o concentrado de color?",
+    "options": [
+      "Pintura líquida",
+      "Pellets con alto contenido de pigmento",
+      "El plástico transparente",
+      "Una marca de máquinas"
+    ],
+    "correct_index": 1,
+    "reasoning": "Insumo técnico para la coloración de resinas.",
+    "score": 1
+  },
+  {
+    "id": "mach_12",
+    "question_order_id": 43,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Qué componente de la máquina jala el material de la tolva?",
+    "options": [
+      "La boquilla",
+      "El movimiento de rotación del tornillo",
+      "El aire del ambiente",
+      "El operador con una pala"
+    ],
+    "correct_index": 1,
+    "reasoning": "Mecánica básica de alimentación.",
+    "score": 1
+  },
+  {
+    "id": "mach_13",
+    "question_order_id": 44,
+    "category": "Máquina",
+    "type": "Teórico",
+    "question": "¿Qué es una 'platina'?",
+    "options": [
+      "Un plato de comida",
+      "Placas de metal donde se monta el molde",
+      "El piso de la fábrica",
+      "Una parte del tornillo"
+    ],
+    "correct_index": 1,
+    "reasoning": "Componente estructural de la prensa.",
+    "score": 1
+  },
+  {
+    "id": "mach_14",
+    "question_order_id": 45,
+    "category": "Máquina",
+    "type": "Práctico",
+    "question": "¿Qué es un 'perno guía'?",
+    "options": [
+      "Un tornillo largo",
+      "Componente que asegura que las mitades del molde alineen",
+      "Una señal de tránsito",
+      "El mango de una puerta"
+    ],
+    "correct_index": 1,
+    "reasoning": "Vital para prevenir daños en el molde durante el montaje u operación.",
+    "score": 1.5
+  },
+  {
+    "id": "proc_11",
+    "question_order_id": 46,
+    "category": "Proceso",
+    "type": "Teórico",
+    "question": "¿Qué es la 'descompresión' (suck back)?",
+    "options": [
+      "Quitarle el aire a la máquina",
+      "Retroceso del tornillo después de cargar para evitar goteo",
+      "Apagar la bomba hidráulica",
+      "Cuando se abre el molde"
+    ],
+    "correct_index": 1,
+    "reasoning": "Ajuste técnico para limpieza de boquilla.",
+    "score": 1
+  },
+  {
+    "id": "desp_3",
+    "question_order_id": 47,
+    "category": "Desperdicios",
+    "type": "Práctico",
+    "question": "¿Qué es el 'purgado'?",
+    "options": [
+      "Limpiar el sistema inyectando material nuevo",
+      "Irse de la planta",
+      "Lavar el molde con agua",
+      "Cambiar el aceite"
+    ],
+    "correct_index": 0,
+    "reasoning": "Actividad de limpieza necesaria en cambios de turno o material.",
+    "score": 1.5
+  },
+  {
+    "id": "desp_4",
+    "question_order_id": 48,
+    "category": "Desperdicios",
+    "type": "Práctico",
+    "question": "Un exceso de purga durante los arranques se considera:",
+    "options": [
+      "Una buena práctica",
+      "Desperdicio de dinero y material",
+      "Necesario para calentar la máquina 1 hora",
+      "Una consecuencia de mala programación"
+    ],
+    "correct_index": 1,
+    "reasoning": "Cultura de ahorro y reducción de mermas.",
+    "score": 1.5
+  },
+  {
+    "id": "desp_5",
+    "question_order_id": 49,
+    "category": "Desperdicios",
+    "type": "Práctico",
+    "question": "¿Cómo ayuda el orden y limpieza (5S) a reducir desperdicios?",
+    "options": [
+      "Evita contaminación y pérdida de herramientas",
+      "Hace que la máquina se vea nueva",
+      "No ayuda en nada al desperdicio",
+      "Reduce el tiempo de búsqueda de herramientas"
+    ],
+    "correct_index": 0,
+    "reasoning": "Prevención de riesgos y defectos por suciedad.",
+    "score": 1.5
+  },
+  {
+    "id": "desp_6",
+    "question_order_id": 50,
+    "category": "Desperdicios",
+    "type": "Práctico",
+    "question": "Si una pieza cae al suelo lleno de aceite, ¿qué se debe hacer?",
+    "options": [
+      "Limpiarla con un trapo",
+      "Considerarla scrap (contaminada)",
+      "Meterla al molino así",
+      "Lavarla con solvente"
+    ],
+    "correct_index": 1,
+    "reasoning": "Acción inmediata para prevenir la degradación de la calidad del lote reciclado.",
+    "score": 1.5
+  }
+]
