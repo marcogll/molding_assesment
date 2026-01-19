@@ -5,56 +5,34 @@
   "displayOption": "displayOnce",
   "welcomeCard": {
     "enabled": true,
-    "headline": {
-      "default": "Evaluacion Tecnica de Moldeo"
-    },
-    "html": {
-      "default": "<b>Nivel Avanzado</b><br>Prueba para Ingenieros y Tecnicos Sr. enfocada en optimizacion, reologia, defectos complejos y diseno de moldes.<br><br>• Preguntas: 43<br>• Tiempo estimado: 32 min"
-    },
+    "headline": "Evaluacion Tecnica de Moldeo",
+    "html": "<b>Nivel Avanzado</b><br>Prueba para Ingenieros y Tecnicos Sr. enfocada en optimizacion, reologia, defectos complejos y diseno de moldes.<br><br>• Preguntas: 43<br>• Tiempo estimado: 32 min",
     "showResponseCount": false,
     "timeToFinish": false,
-    "buttonLabel": {
-      "default": "Siguiente"
-    }
+    "buttonLabel": "Siguiente"
   },
   "questions": [
     {
       "id": "employee_number",
       "type": "openText",
-      "headline": {
-        "default": "Número de empleado"
-      },
-      "subheader": {
-        "default": ""
-      },
+      "headline": "Número de empleado",
+      "subheader": "",
       "required": true,
       "inputType": "text",
       "placeholder": {
         "default": "Ingresa tu número de empleado"
       },
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      }
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior"
     },
     {
       "id": "mach_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Con un ratio de intensificación de 10:1 y 1,500 PSI en el manómetro hidráulico, calcula la presión específica sobre el plástico:"
-      },
-      "subheader": {
-        "default": "La presión hidráulica se multiplica en la punta del husillo debido a la Ley de Pascal y la diferencia de áreas."
-      },
+      "headline": "Con un ratio de intensificación de 10:1 y 1,500 PSI en el manómetro hidráulico, calcula la presión específica sobre el plástico:",
+      "subheader": "La presión hidráulica se multiplica en la punta del husillo debido a la Ley de Pascal y la diferencia de áreas.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -86,19 +64,11 @@
     {
       "id": "mach_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "¿Cuál es la consecuencia físico-química de una descompresión (suck-back) excesiva en resinas sensibles como el Nylon?"
-      },
-      "subheader": {
-        "default": "El oxígeno a altas temperaturas reacciona rápidamente con polímeros orgánicos."
-      },
+      "headline": "¿Cuál es la consecuencia físico-química de una descompresión (suck-back) excesiva en resinas sensibles como el Nylon?",
+      "subheader": "El oxígeno a altas temperaturas reacciona rápidamente con polímeros orgánicos.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -130,19 +100,11 @@
     {
       "id": "mach_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Una variación del cojín (cushion) superior a +/- 10% ciclo a ciclo es un indicador primario de:"
-      },
-      "subheader": {
-        "default": "La consistencia del cojín es el mejor indicador de la repetibilidad volumétrica del proceso."
-      },
+      "headline": "Una variación del cojín (cushion) superior a +/- 10% ciclo a ciclo es un indicador primario de:",
+      "subheader": "La consistencia del cojín es el mejor indicador de la repetibilidad volumétrica del proceso.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -174,19 +136,11 @@
     {
       "id": "mach_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El 'Scan Time' o tiempo de respuesta del controlador de la máquina afecta críticamente a:"
-      },
-      "subheader": {
-        "default": "La velocidad de procesamiento de la CPU de la máquina influye en la precisión milimétrica."
-      },
+      "headline": "El 'Scan Time' o tiempo de respuesta del controlador de la máquina afecta críticamente a:",
+      "subheader": "La velocidad de procesamiento de la CPU de la máquina influye en la precisión milimétrica.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -218,19 +172,11 @@
     {
       "id": "mach_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Comparando un husillo L/D 24:1 contra uno 18:1, la principal ventaja técnica del 24:1 es:"
-      },
-      "subheader": {
-        "default": "La geometría del husillo determina la calidad de la homogeneización térmica."
-      },
+      "headline": "Comparando un husillo L/D 24:1 contra uno 18:1, la principal ventaja técnica del 24:1 es:",
+      "subheader": "La geometría del husillo determina la calidad de la homogeneización térmica.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -262,19 +208,11 @@
     {
       "id": "mach_6",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Además de aumentar la temperatura de la masa, ¿qué efecto mecánico negativo tiene la contrapresión excesiva?"
-      },
-      "subheader": {
-        "default": "La contrapresión genera calor por fricción, pero también estrés mecánico."
-      },
+      "headline": "Además de aumentar la temperatura de la masa, ¿qué efecto mecánico negativo tiene la contrapresión excesiva?",
+      "subheader": "La contrapresión genera calor por fricción, pero también estrés mecánico.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -306,19 +244,11 @@
     {
       "id": "proc_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "En la curva de viscosidad, la región 'Newtonian Flat' (Meseta Newtoniana) se caracteriza porque:"
-      },
-      "subheader": {
-        "default": "La reología de polímeros estudia cómo fluye la materia bajo fuerzas aplicadas."
-      },
+      "headline": "En la curva de viscosidad, la región 'Newtonian Flat' (Meseta Newtoniana) se caracteriza porque:",
+      "subheader": "La reología de polímeros estudia cómo fluye la materia bajo fuerzas aplicadas.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -350,19 +280,11 @@
     {
       "id": "proc_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El objetivo de un estudio de 'Caída de Presión' (Pressure Drop) es asegurar que:"
-      },
-      "subheader": {
-        "default": "Operar al límite de la capacidad de presión elimina la capacidad de control del proceso."
-      },
+      "headline": "El objetivo de un estudio de 'Caída de Presión' (Pressure Drop) es asegurar que:",
+      "subheader": "Operar al límite de la capacidad de presión elimina la capacidad de control del proceso.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -394,19 +316,11 @@
     {
       "id": "proc_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Un aumento repentino en la integral de presión o 'Trabajo de Inyección' sugiere:"
-      },
-      "subheader": {
-        "default": "El área bajo la curva de presión refleja la energía consumida para llenar el molde."
-      },
+      "headline": "Un aumento repentino en la integral de presión o 'Trabajo de Inyección' sugiere:",
+      "subheader": "El área bajo la curva de presión refleja la energía consumida para llenar el molde.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -438,19 +352,11 @@
     {
       "id": "proc_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El criterio técnico definitivo para confirmar el 'Sellado de Compuerta' (Gate Freeze) es:"
-      },
-      "subheader": {
-        "default": "Determinar cuándo se corta físicamente la conexión entre la pieza y el sistema de alimentación."
-      },
+      "headline": "El criterio técnico definitivo para confirmar el 'Sellado de Compuerta' (Gate Freeze) es:",
+      "subheader": "Determinar cuándo se corta físicamente la conexión entre la pieza y el sistema de alimentación.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -482,19 +388,11 @@
     {
       "id": "proc_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Debido al calentamiento por cizalla (Shear Heating), aumentar la velocidad de inyección provoca:"
-      },
-      "subheader": {
-        "default": "La fricción molecular a altas velocidades se convierte en energía térmica."
-      },
+      "headline": "Debido al calentamiento por cizalla (Shear Heating), aumentar la velocidad de inyección provoca:",
+      "subheader": "La fricción molecular a altas velocidades se convierte en energía térmica.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -526,19 +424,11 @@
     {
       "id": "proc_6",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "¿Por qué se prefiere el VPT (Transferencia) por Posición en lugar de por Tiempo o Presión?"
-      },
-      "subheader": {
-        "default": "La consistencia del proceso depende de cómo se controla el volumen inyectado."
-      },
+      "headline": "¿Por qué se prefiere el VPT (Transferencia) por Posición en lugar de por Tiempo o Presión?",
+      "subheader": "La consistencia del proceso depende de cómo se controla el volumen inyectado.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -570,19 +460,11 @@
     {
       "id": "qual_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "La solución técnica para eliminar el 'Jetting' (gusanito) es:"
-      },
-      "subheader": {
-        "default": "El flujo laminar es deseable para evitar marcas superficiales en la pieza."
-      },
+      "headline": "La solución técnica para eliminar el 'Jetting' (gusanito) es:",
+      "subheader": "El flujo laminar es deseable para evitar marcas superficiales en la pieza.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -614,19 +496,11 @@
     {
       "id": "qual_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "En polímeros semicristalinos, ¿qué factor determina el grado de cristalinidad y la contracción final?"
-      },
-      "subheader": {
-        "default": "La estructura molecular de los semicristalinos depende del tiempo que tienen para ordenarse."
-      },
+      "headline": "En polímeros semicristalinos, ¿qué factor determina el grado de cristalinidad y la contracción final?",
+      "subheader": "La estructura molecular de los semicristalinos depende del tiempo que tienen para ordenarse.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -658,19 +532,11 @@
     {
       "id": "qual_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Un Cpk de 0.8 en una dimensión crítica indica estadísticamente que:"
-      },
-      "subheader": {
-        "default": "Los índices de capacidad estadística predicen la tasa de rechazo a largo plazo."
-      },
+      "headline": "Un Cpk de 0.8 en una dimensión crítica indica estadísticamente que:",
+      "subheader": "Los índices de capacidad estadística predicen la tasa de rechazo a largo plazo.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -702,19 +568,11 @@
     {
       "id": "qual_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Una línea de soldadura (Weld Line) se convierte en una falla estructural crítica si:"
-      },
-      "subheader": {
-        "default": "La fusión de frentes de flujo requiere energía térmica para entrelazar las cadenas moleculares."
-      },
+      "headline": "Una línea de soldadura (Weld Line) se convierte en una falla estructural crítica si:",
+      "subheader": "La fusión de frentes de flujo requiere energía térmica para entrelazar las cadenas moleculares.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -746,19 +604,11 @@
     {
       "id": "qual_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Para prevenir el 'Efecto Diesel' en una costilla ciega (blind rib) donde no hay salida de aire, la solución de ingeniería es:"
-      },
-      "subheader": {
-        "default": "En zonas ciegas donde no es posible mecanizar un venteo tradicional, se requieren materiales especiales."
-      },
+      "headline": "Para prevenir el 'Efecto Diesel' en una costilla ciega (blind rib) donde no hay salida de aire, la solución de ingeniería es:",
+      "subheader": "En zonas ciegas donde no es posible mecanizar un venteo tradicional, se requieren materiales especiales.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -790,19 +640,11 @@
     {
       "id": "safe_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Al purgar POM (Acetal) degradado, el riesgo químico específico es:"
-      },
-      "subheader": {
-        "default": "Ciertos materiales liberan gases altamente peligrosos al descomponerse."
-      },
+      "headline": "Al purgar POM (Acetal) degradado, el riesgo químico específico es:",
+      "subheader": "Ciertos materiales liberan gases altamente peligrosos al descomponerse.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -834,19 +676,11 @@
     {
       "id": "safe_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "En un procedimiento LOTO avanzado, después de colocar el candado, ¿cuál es el paso final de verificación?"
-      },
-      "subheader": {
-        "default": "La seguridad moderna requiere validación activa, no solo colocar un candado."
-      },
+      "headline": "En un procedimiento LOTO avanzado, después de colocar el candado, ¿cuál es el paso final de verificación?",
+      "subheader": "La seguridad moderna requiere validación activa, no solo colocar un candado.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -878,19 +712,11 @@
     {
       "id": "safe_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El peligro latente de un acumulador hidráulico, incluso con la máquina apagada, es:"
-      },
-      "subheader": {
-        "default": "La energía hidráulica puede almacenarse incluso sin energía eléctrica."
-      },
+      "headline": "El peligro latente de un acumulador hidráulico, incluso con la máquina apagada, es:",
+      "subheader": "La energía hidráulica puede almacenarse incluso sin energía eléctrica.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -922,19 +748,11 @@
     {
       "id": "safe_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Extintor correcto para fuego en tableros electrónicos (Clase C):"
-      },
-      "subheader": {
-        "default": "El uso de agua en incendios eléctricos es fatal; se requieren agentes limpios."
-      },
+      "headline": "Extintor correcto para fuego en tableros electrónicos (Clase C):",
+      "subheader": "El uso de agua en incendios eléctricos es fatal; se requieren agentes limpios.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -966,19 +784,11 @@
     {
       "id": "safe_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Según la norma Euromap 67, ¿cuál es la función de los canales de seguridad redundantes (doble canal)?"
-      },
-      "subheader": {
-        "default": "La integración de robots requiere protocolos de comunicación de seguridad estandarizados."
-      },
+      "headline": "Según la norma Euromap 67, ¿cuál es la función de los canales de seguridad redundantes (doble canal)?",
+      "subheader": "La integración de robots requiere protocolos de comunicación de seguridad estandarizados.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1010,19 +820,11 @@
     {
       "id": "mat_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "La degradación por escisión de cadenas (Chain Scission) resulta en:"
-      },
-      "subheader": {
-        "default": "El corte de las cadenas poliméricas cambia radicalmente la reología del material."
-      },
+      "headline": "La degradación por escisión de cadenas (Chain Scission) resulta en:",
+      "subheader": "El corte de las cadenas poliméricas cambia radicalmente la reología del material.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1054,19 +856,11 @@
     {
       "id": "mat_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "La hidrólisis en materiales como PC o PBT es una reacción química donde el agua:"
-      },
-      "subheader": {
-        "default": "El agua actúa como un agente reactivo que destruye el polímero a nivel molecular."
-      },
+      "headline": "La hidrólisis en materiales como PC o PBT es una reacción química donde el agua:",
+      "subheader": "El agua actúa como un agente reactivo que destruye el polímero a nivel molecular.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1098,19 +892,11 @@
     {
       "id": "mat_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Diferencia térmica clave: Los semicristalinos poseen Calor Latente de Fusión, lo que implica:"
-      },
-      "subheader": {
-        "default": "El cambio de fase de sólido a líquido requiere más energía en materiales ordenados."
-      },
+      "headline": "Diferencia térmica clave: Los semicristalinos poseen Calor Latente de Fusión, lo que implica:",
+      "subheader": "El cambio de fase de sólido a líquido requiere más energía en materiales ordenados.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1142,19 +928,11 @@
     {
       "id": "mat_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "¿Por qué el MFI no es representativo del comportamiento dentro del molde?"
-      },
-      "subheader": {
-        "default": "Las pruebas de laboratorio estáticas no siempre reflejan la realidad dinámica de la inyección."
-      },
+      "headline": "¿Por qué el MFI no es representativo del comportamiento dentro del molde?",
+      "subheader": "Las pruebas de laboratorio estáticas no siempre reflejan la realidad dinámica de la inyección.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1186,19 +964,11 @@
     {
       "id": "mat_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "En un diagrama pvT, ¿qué representa la 'rodilla' o cambio brusco de pendiente en la curva de enfriamiento isobárico?"
-      },
-      "subheader": {
-        "default": "El comportamiento pvT (Presión-Volumen-Temperatura) es fundamental para predecir dimensiones."
-      },
+      "headline": "En un diagrama pvT, ¿qué representa la 'rodilla' o cambio brusco de pendiente en la curva de enfriamiento isobárico?",
+      "subheader": "El comportamiento pvT (Presión-Volumen-Temperatura) es fundamental para predecir dimensiones.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1230,19 +1000,11 @@
     {
       "id": "eff_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El factor limitante físico (Cuello de botella) más común para reducir el tiempo de ciclo es:"
-      },
-      "subheader": {
-        "default": "La termodinámica impone límites físicos a la velocidad de producción."
-      },
+      "headline": "El factor limitante físico (Cuello de botella) más común para reducir el tiempo de ciclo es:",
+      "subheader": "La termodinámica impone límites físicos a la velocidad de producción.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1274,19 +1036,11 @@
     {
       "id": "eff_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "En SMED, un ejemplo de actividad INTERNA es:"
-      },
-      "subheader": {
-        "default": "Distinguir entre tareas que detienen la máquina y las que no es la base del SMED."
-      },
+      "headline": "En SMED, un ejemplo de actividad INTERNA es:",
+      "subheader": "Distinguir entre tareas que detienen la máquina y las que no es la base del SMED.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1318,19 +1072,11 @@
     {
       "id": "eff_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Si tu OEE es 60% pero la Calidad es 99% y la Disponibilidad 98%, el problema está en:"
-      },
-      "subheader": {
-        "default": "El cálculo del OEE revela dónde se pierden las oportunidades de producción."
-      },
+      "headline": "Si tu OEE es 60% pero la Calidad es 99% y la Disponibilidad 98%, el problema está en:",
+      "subheader": "El cálculo del OEE revela dónde se pierden las oportunidades de producción.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1362,19 +1108,11 @@
     {
       "id": "eff_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El MTBF (Mean Time Between Failures) mide:"
-      },
-      "subheader": {
-        "default": "La confiabilidad del equipo se mide por la frecuencia de sus averías."
-      },
+      "headline": "El MTBF (Mean Time Between Failures) mide:",
+      "subheader": "La confiabilidad del equipo se mide por la frecuencia de sus averías.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1406,19 +1144,11 @@
     {
       "id": "eff_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El Costo Real de la 'No Calidad' incluye:"
-      },
-      "subheader": {
-        "default": "Los costos de mala calidad van mucho más allá del material tirado."
-      },
+      "headline": "El Costo Real de la 'No Calidad' incluye:",
+      "subheader": "Los costos de mala calidad van mucho más allá del material tirado.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1450,19 +1180,11 @@
     {
       "id": "wast_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El sobre-empaque (overpacking) que causa piezas pesadas y estrés interno es un desperdicio de tipo:"
-      },
-      "subheader": {
-        "default": "Agregar valor es lo único por lo que el cliente paga; el resto es desperdicio."
-      },
+      "headline": "El sobre-empaque (overpacking) que causa piezas pesadas y estrés interno es un desperdicio de tipo:",
+      "subheader": "Agregar valor es lo único por lo que el cliente paga; el resto es desperdicio.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1494,19 +1216,11 @@
     {
       "id": "wast_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El exceso de inventario (WIP o Terminado) es negativo porque:"
-      },
-      "subheader": {
-        "default": "El inventario excesivo actúa como un amortiguador que esconde problemas operativos."
-      },
+      "headline": "El exceso de inventario (WIP o Terminado) es negativo porque:",
+      "subheader": "El inventario excesivo actúa como un amortiguador que esconde problemas operativos.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1538,19 +1252,11 @@
     {
       "id": "wast_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Un mantenimiento deficiente de venteos genera desperdicio principalmente por:"
-      },
-      "subheader": {
-        "default": "La falta de mantenimiento preventivo en moldes genera tiempos muertos reactivos."
-      },
+      "headline": "Un mantenimiento deficiente de venteos genera desperdicio principalmente por:",
+      "subheader": "La falta de mantenimiento preventivo en moldes genera tiempos muertos reactivos.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1582,19 +1288,11 @@
     {
       "id": "wast_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "Técnicamente, usar Colada Fría en lugar de Colada Caliente implica:"
-      },
-      "subheader": {
-        "default": "El diseño del sistema de alimentación impacta la eficiencia del material."
-      },
+      "headline": "Técnicamente, usar Colada Fría en lugar de Colada Caliente implica:",
+      "subheader": "El diseño del sistema de alimentación impacta la eficiencia del material.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1626,19 +1324,11 @@
     {
       "id": "wast_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "¿Qué métrica se utiliza comúnmente para comparar la eficiencia energética entre diferentes máquinas de inyección?"
-      },
-      "subheader": {
-        "default": "La eficiencia energética es un indicador clave de sostenibilidad y costo."
-      },
+      "headline": "¿Qué métrica se utiliza comúnmente para comparar la eficiencia energética entre diferentes máquinas de inyección?",
+      "subheader": "La eficiencia energética es un indicador clave de sostenibilidad y costo.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1670,19 +1360,11 @@
     {
       "id": "spec_1",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "En refrigeración de moldes, un Número de Reynolds > 4,000 garantiza:"
-      },
-      "subheader": {
-        "default": "La dinámica de fluidos dicta la eficiencia de la transferencia de calor."
-      },
+      "headline": "En refrigeración de moldes, un Número de Reynolds > 4,000 garantiza:",
+      "subheader": "La dinámica de fluidos dicta la eficiencia de la transferencia de calor.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1714,19 +1396,11 @@
     {
       "id": "spec_2",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "La 'Deflexión de Platinas' causa rebaba central aunque el tonelaje sea correcto debido a:"
-      },
-      "subheader": {
-        "default": "La rigidez de la máquina interactúa con la estructura del molde."
-      },
+      "headline": "La 'Deflexión de Platinas' causa rebaba central aunque el tonelaje sea correcto debido a:",
+      "subheader": "La rigidez de la máquina interactúa con la estructura del molde.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1758,19 +1432,11 @@
     {
       "id": "spec_3",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "¿En qué etapa es más rentable utilizar simulación CAE (Moldflow)?"
-      },
-      "subheader": {
-        "default": "La simulación predictiva ahorra costos al identificar errores antes de cortar acero."
-      },
+      "headline": "¿En qué etapa es más rentable utilizar simulación CAE (Moldflow)?",
+      "subheader": "La simulación predictiva ahorra costos al identificar errores antes de cortar acero.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1802,19 +1468,11 @@
     {
       "id": "spec_4",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "La ventaja técnica principal de una compuerta valvulada (Valve Gate) es:"
-      },
-      "subheader": {
-        "default": "Los sistemas de colada caliente avanzados permiten control secuencial."
-      },
+      "headline": "La ventaja técnica principal de una compuerta valvulada (Valve Gate) es:",
+      "subheader": "Los sistemas de colada caliente avanzados permiten control secuencial.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1846,19 +1504,11 @@
     {
       "id": "spec_5",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "El 'Efecto de Esquina' (Corner Effect) en refrigeración provoca puntos calientes porque:"
-      },
-      "subheader": {
-        "default": "La geometría de la pieza afecta la disipación de calor."
-      },
+      "headline": "El 'Efecto de Esquina' (Corner Effect) en refrigeración provoca puntos calientes porque:",
+      "subheader": "La geometría de la pieza afecta la disipación de calor.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {
@@ -1890,19 +1540,11 @@
     {
       "id": "spec_6",
       "type": "multipleChoiceSingle",
-      "headline": {
-        "default": "¿Por qué el monitoreo del 'Cojín' es más crítico que el 'Tiempo de Inyección' para la consistencia dimensional?"
-      },
-      "subheader": {
-        "default": "La presión efectiva sobre la pieza depende de la reserva de material."
-      },
+      "headline": "¿Por qué el monitoreo del 'Cojín' es más crítico que el 'Tiempo de Inyección' para la consistencia dimensional?",
+      "subheader": "La presión efectiva sobre la pieza depende de la reserva de material.",
       "required": true,
-      "buttonLabel": {
-        "default": "Siguiente"
-      },
-      "backButtonLabel": {
-        "default": "Anterior"
-      },
+      "buttonLabel": "Siguiente",
+      "backButtonLabel": "Anterior",
       "shuffleOption": "none",
       "choices": [
         {

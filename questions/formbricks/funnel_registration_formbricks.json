@@ -1,0 +1,221 @@
+{
+  "name": "Registro de Perfil y Autoevaluación",
+  "type": "link",
+  "status": "draft",
+  "displayOption": "displayOnce",
+  "welcomeCard": {
+    "enabled": true,
+    "headline": {
+      "default": "Registro de Perfil y Autoevaluación"
+    },
+    "html": {
+      "default": "Por favor completa tu información para asignarte la evaluación técnica adecuada."
+    },
+    "showResponseCount": false,
+    "timeToFinish": false,
+    "buttonLabel": {
+      "default": "Siguiente"
+    }
+  },
+  "questions": [
+    {
+      "id": "full_name",
+      "type": "openText",
+      "inputType": "text",
+      "headline": {
+        "default": "Nombre Completo"
+      },
+      "subheader": {
+        "default": ""
+      },
+      "required": true,
+      "placeholder": {
+        "default": "Ingresa tu nombre completo"
+      },
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      }
+    },
+    {
+      "id": "employee_id",
+      "type": "openText",
+      "inputType": "text",
+      "headline": {
+        "default": "Número de Empleado"
+      },
+      "subheader": {
+        "default": ""
+      },
+      "required": true,
+      "placeholder": {
+        "default": "Ingresa tu número de empleado"
+      },
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      }
+    },
+    {
+      "id": "department",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "Departamento"
+      },
+      "subheader": {
+        "default": ""
+      },
+      "required": true,
+      "choices": [
+        {
+          "id": "c0",
+          "label": {
+            "default": "Producción"
+          }
+        },
+        {
+          "id": "c1",
+          "label": {
+            "default": "Mantenimiento"
+          }
+        },
+        {
+          "id": "c2",
+          "label": {
+            "default": "Calidad"
+          }
+        },
+        {
+          "id": "c3",
+          "label": {
+            "default": "Ingeniería"
+          }
+        },
+        {
+          "id": "c4",
+          "label": {
+            "default": "Taller de Moldes"
+          }
+        }
+      ],
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
+      "shuffleOption": "none"
+    },
+    {
+      "id": "job_role",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "Puesto Actual"
+      },
+      "subheader": {
+        "default": ""
+      },
+      "required": true,
+      "choices": [
+        {
+          "id": "c0",
+          "label": {
+            "default": "Operador General"
+          }
+        },
+        {
+          "id": "c1",
+          "label": {
+            "default": "Técnico de Montaje"
+          }
+        },
+        {
+          "id": "c2",
+          "label": {
+            "default": "Técnico de Procesos"
+          }
+        },
+        {
+          "id": "c3",
+          "label": {
+            "default": "Ingeniero de Procesos"
+          }
+        },
+        {
+          "id": "c4",
+          "label": {
+            "default": "Supervisor"
+          }
+        }
+      ],
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
+      "shuffleOption": "none"
+    },
+    {
+      "id": "years_experience",
+      "type": "openText",
+      "inputType": "number",
+      "headline": {
+        "default": "Años de Experiencia en Moldeo"
+      },
+      "subheader": {
+        "default": ""
+      },
+      "required": true,
+      "placeholder": {
+        "default": "Ingresa el número de años"
+      },
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      }
+    },
+    {
+      "id": "self_evaluation",
+      "type": "openText",
+      "inputType": "number",
+      "headline": {
+        "default": "¿Cómo calificarías tu nivel de conocimiento técnico actual?"
+      },
+      "subheader": {
+        "default": "0% = Principiante, 100% = Experto Mundial"
+      },
+      "required": true,
+      "placeholder": {
+        "default": "Ingresa un valor entre 0 y 100"
+      },
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "end_screen",
+      "type": "endScreen",
+      "headline": {
+        "default": "¡Gracias!"
+      },
+      "subheader": {
+        "default": "Tu información ha sido registrada. Recibirás la evaluación correspondiente pronto."
+      },
+      "buttonLabel": {
+        "default": "Finalizar"
+      }
+    }
+  ]
+}

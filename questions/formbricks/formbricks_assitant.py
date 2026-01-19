@@ -1,5 +1,6 @@
 import os
 import json
+import uuid
 import requests
 from rich.console import Console
 from rich.prompt import Prompt
@@ -37,107 +38,130 @@ if not all([BASEURL, API_KEY, ENV_ID]):
     raise RuntimeError("Variables de entorno incompletas")
 
 LEVEL_FILE_MAP = {
+    "0": "funnel_registration_formbricks.json",
     "1": "basic_v2_formbricks.json",
     "2": "medium_v2_formbricks.json",
     "3": "advanced_v2_formbricks.json",
 }
 
-def parse_survey(raw_items):
+
+def convert_to_object_format(data):
+    """Recursively convert string text fields to object format required by Formbricks API"""
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if key in [
+                "headline",
+                "subheader",
+                "buttonLabel",
+                "backButtonLabel",
+                "placeholder",
+                "label",
+                "html",
+            ] and isinstance(value, str):
+                data[key] = {"default": value}
+            elif key == "choices" and isinstance(value, list):
+                for choice in value:
+                    if (
+                        isinstance(choice, dict)
+                        and "label" in choice
+                        and isinstance(choice["label"], str)
+                    ):
+                        choice["label"] = {"default": choice["label"]}
+            else:
+                convert_to_object_format(value)
+    elif isinstance(data, list):
+        for item in data:
+            convert_to_object_format(item)
+
+
+def parse_questions(raw_items):
     questions = []
-    welcome_card = None
-    ending = None
 
     for i, item in enumerate(raw_items):
-        t = item.get("type")
+        q = item.copy()
+        if "id" not in q:
+            q["id"] = f"q{i}"
+        questions.append(q)
 
-        if t == "welcome":
-            welcome_card = {
-                "enabled": True,
-                "headline": item.get("headline"),
-                "html": item.get("html"),
-                "showResponseCount": False,
-                "timeToFinish": False,
-            }
+    return questions
 
-        elif t == "thankYou":
-            ending = {
-                "id": item.get("id", "end_default"),
-                "type": "endScreen",
-                "headline": item.get("headline"),
-                "subheader": item.get("html"),
-            }
 
-        else:
-            q = {
-                "id": item.get("id", f"q{i}"),
-                "type": item.get("type"),
-                "required": item.get("required", True),
-                "headline": item.get("headline"),
-                "shuffleOption": item.get("shuffleOption", "none"),
-                "choices": [
-                    {
-                        "id": c.get("id", f"{i}_{idx}"),
-                        "label": c.get("label"),
-                    }
-                    for idx, c in enumerate(item.get("choices", []))
-                ],
-            }
-            questions.append(q)
+def main():
+    # ───────── Inputs ─────────
+    company = Prompt.ask("🏭 Compañía", default="Empresa")
+    level = Prompt.ask("🎚️ Nivel [0/1/2/3]", choices=["0", "1", "2", "3"], default="1")
+    start_date = Prompt.ask("📅 Fecha inicio (YYYY-MM-DD o vacío)", default="")
+    end_date = Prompt.ask("📅 Fecha término (YYYY-MM-DD o vacío)", default="")
 
-    return questions, welcome_card, ending
+    file_name = LEVEL_FILE_MAP[level]
 
-# ───────── Inputs ─────────
-company = Prompt.ask("🏭 Compañía", default="Empresa")
-level = Prompt.ask("🎚️ Nivel [1/2/3]", choices=["1", "2", "3"], default="1")
-start_date = Prompt.ask("📅 Fecha inicio (YYYY-MM-DD o vacío)", default="")
-end_date = Prompt.ask("📅 Fecha término (YYYY-MM-DD o vacío)", default="")
+    with open(file_name, "r", encoding="utf-8") as f:
+        raw_file = json.load(f)
 
-file_name = LEVEL_FILE_MAP[level]
+    raw_questions = raw_file.get("questions", [])
+    if not raw_questions:
+        raise RuntimeError("El archivo no contiene preguntas")
 
-with open(file_name, "r", encoding="utf-8") as f:
-    raw_file = json.load(f)
+    questions = parse_questions(raw_questions)
+    convert_to_object_format(questions)
 
-raw_questions = raw_file.get("questions", [])
-if not raw_questions:
-    raise RuntimeError("El archivo no contiene preguntas")
+    welcome_card = raw_file.get("welcomeCard")
+    if welcome_card:
+        convert_to_object_format(welcome_card)
 
-questions, welcome_card, ending = parse_survey(raw_questions)
+    endings = raw_file.get("endings", [])
+    # Set valid id and add required fields for endings
+    for ending in endings:
+        ending["id"] = "p73t62dgwq0cvmtt6ug0hmfc"
+        if "buttonLabel" not in ending:
+            ending["buttonLabel"] = {"default": "Completar"}
+        if "buttonLink" not in ending:
+            ending["buttonLink"] = "https://example.com"
+    convert_to_object_format(endings)
 
-title = f"{company} | Evaluacion de moldeo L{level}"
+    if level == "0":
+        title = f"{company} | Funnel L0"
+    else:
+        title = f"{company} | Evaluacion de moldeo L{level}"
 
-payload = {
-    "environmentId": ENV_ID,
-    "name": title,
-    "status": "draft",
-    "type": "link",
-    "displayOption": "displayOnce",
-    "languages": [],
-    "questions": questions,
-}
+    payload = {
+        "environmentId": ENV_ID,
+        "name": title,
+        "status": "draft",
+        "type": "link",
+        "displayOption": "displayOnce",
+        "languages": [],
+        "questions": questions,
+    }
 
-if welcome_card:
-    payload["welcomeCard"] = welcome_card
-if ending:
-    payload["endings"] = [ending]
+    if welcome_card:
+        payload["welcomeCard"] = welcome_card
+    if endings:
+        payload["endings"] = endings
 
-headers = {
-    "Content-Type": "application/json",
-    "x-api-key": API_KEY,
-}
+    headers = {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY,
+    }
 
-console.print(Panel(f"📄 {file_name}", title="Archivo seleccionado"))
-console.print(Panel(f"📝 {title}", title="Creando encuesta (DRAFT)"))
+    console.print(Panel(f"📄 {file_name}", title="Archivo seleccionado"))
+    console.print(Panel(f"📝 {title}", title="Creando encuesta (DRAFT)"))
 
-response = requests.post(
-    f"{BASEURL}/api/v1/management/surveys",
-    json=payload,
-    headers=headers,
-    timeout=30,
-)
+    response = requests.post(
+        f"{BASEURL}/api/v1/management/surveys",
+        json=payload,
+        headers=headers,
+        timeout=30,
+    )
 
-if response.ok:
-    console.print(Panel("✅ Encuesta creada correctamente", border_style=COLORS["green"]))
-else:
-    console.print(Panel("❌ Error al crear encuesta", border_style=COLORS["red"]))
-    console.print(response.status_code, response.text)
+    if response.ok:
+        console.print(
+            Panel("✅ Encuesta creada correctamente", border_style=COLORS["green"])
+        )
+    else:
+        console.print(Panel("❌ Error al crear encuesta", border_style=COLORS["red"]))
+        console.print(response.status_code, response.text)
 
+
+if __name__ == "__main__":
+    main()
