@@ -20,6 +20,14 @@ El nombre representa los pilares fundamentales del proyecto:
 - **Dashboards Interactivos**: Visualización de resultados en tiempo real mediante Square UI.
 - **Seguimiento a Largo Plazo**: Monitoreo del crecimiento técnico en periodos de 6 a 12 meses.
 
+## 📚 Módulos de Evaluación
+
+Los assessments están disponibles en los siguientes niveles:
+
+- **[Nivel Básico](questions/markdown/Basic_assesment.md)**: Evaluación para operadores de piso y personal de nuevo ingreso.
+- **[Nivel Intermedio](questions/markdown/Medium_assesment.md)**: Evaluación para técnicos de procesos y ajustadores.
+- **[Nivel Avanzado](questions/markdown/Advanced_assesment.md)**: Evaluación para ingenieros de procesos y gerentes.
+
 ## 🧠 Áreas Técnicas a Evaluar
 
 El assessment analiza el desempeño en los siguientes sectores críticos del moldeo:

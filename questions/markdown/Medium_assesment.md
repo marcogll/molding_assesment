@@ -1,5 +1,5 @@
 # Code Carol: Nivel Medio (Técnicos de Proceso)
-← Regresar al Inicio
+[← Regresar al Inicio](../../readme.md)
 
 ## ℹ️ Información General
 Esta evaluación está diseñada para certificar las competencias de técnicos de proceso y supervisores con experiencia en moldeo por inyección. Se enfoca en diagnóstico de problemas, ajuste de parámetros y conocimientos técnicos profundos.

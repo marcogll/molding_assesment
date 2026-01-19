@@ -1,5 +1,5 @@
 # Code Carol: Nivel Avanzado (Ingenieros y Líderes)
-← Regresar al Inicio
+[← Regresar al Inicio](../../readme.md)
 
 ## ℹ️ Información General
 Esta evaluación está diseñada para certificar las competencias de ingenieros de procesos, líderes técnicos y especialistas en moldeo por inyección. Se enfoca en análisis profundo de termodinámica, estadística de calidad y optimización avanzada.

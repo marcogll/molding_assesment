@@ -1,5 +1,5 @@
 # Code Carol: Nivel Básico (Operaciones de Piso)
-← Regresar al Inicio
+[← Regresar al Inicio](../../readme.md)
 
 ## ℹ️ Información General
 Esta evaluación está diseñada para certificar las competencias fundamentales del personal operativo de piso. Se centra en la seguridad, la operación básica de la máquina y la identificación visual de defectos.
