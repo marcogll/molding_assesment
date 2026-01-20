@@ -489,3 +489,95 @@ Este error ocurre cuando los campos de texto no tienen el formato correcto de ob
 
 ### Solución
 Ejecuta el script `formbricks_assitant.py` - maneja automáticamente la conversión de formato.
+
+## Carga y Visualización de Encuestas
+
+Para responder a consultas sobre Formbricks, es importante distinguir entre obtener los datos (API) y mostrar la encuesta (Renderizado).
+
+### ¿Cuál es la forma correcta de cargar encuestas?
+
+Aunque mencionas la REST API, la forma estándar y recomendada para cargar encuestas en una aplicación web no es llamando manualmente a los endpoints REST, sino utilizando el SDK de Formbricks (@formbricks/js).
+
+El SDK se encarga automáticamente de llamar a la API correcta (Client API), verificar si el usuario debe ver una encuesta (basado en triggers) y renderizar la interfaz.
+
+**Código de inicialización estándar (SDK):**
+
+```javascript
+import formbricks from "@formbricks/js";
+
+if (typeof window !== "undefined") {
+  formbricks.init({
+    environmentId: "TU_ENV_ID",
+    apiHost: "https://app.formbricks.com", // O tu propia URL si usas self-hosting
+    userId: "ID_DEL_USUARIO", // Opcional: para identificar al usuario
+  });
+}
+```
+
+Si realmente necesitas usar la REST API manual:
+Si tu caso de uso es muy personalizado (ej. un backend propio que sirve encuestas), tendrías que llamar al endpoint de Displays para saber qué encuesta mostrar:
+
+- **Endpoint**: POST /api/v1/client/displays
+- **Respuesta**: Te devuelve el objeto de la encuesta (preguntas, lógica y estilos).
+
+**Desventaja**: Tendrás que construir tú mismo todo el HTML y la lógica del formulario basándote en ese JSON.
+
+### ¿Es posible definir el color principal y usar otros backgrounds?
+
+Sí, es totalmente posible. Tienes dos caminos principales para lograrlo:
+
+**Opción A: Sobrescribir estilos vía CSS (Recomendado para desarrolladores)**
+
+Esta es la forma más flexible si usas el SDK. Formbricks utiliza variables CSS que puedes redefinir en tu hoja de estilos global (globals.css o similar) para forzar tus colores y fondos sin importar lo que diga la configuración de la encuesta.
+
+Añade esto a tu CSS:
+
+```css
+:root {
+  /* Color principal (botones, bordes activos, etc.) */
+  --fb-brand-color: #ff5733;
+
+  /* Color del texto sobre el color principal */
+  --fb-brand-text-color: #ffffff;
+
+  /* Fondo de la tarjeta de la encuesta */
+  --fb-card-bg: #ffffff;
+
+  /* Fondo general (detrás de la tarjeta en encuestas de enlace o modales) */
+  --fb-survey-background-color: #f0f0f0;
+
+  /* Bordes */
+  --fb-border-color: #e2e8f0;
+}
+```
+
+Al definir estas variables en tu proyecto, el SDK de Formbricks las usará automáticamente.
+
+**Opción B: Definirlo en la configuración de la encuesta (UI o API)**
+
+Si prefieres que el estilo venga definido desde la base de datos de Formbricks:
+
+- **Desde la Interfaz (UI)**: Ve a la pestaña "Styling" (o "Look & Feel") dentro del editor de tu encuesta. Ahí puedes definir el Brand Color y el Background Styling (puedes subir una imagen, usar un degradado o un color sólido).
+
+- **Desde la API (Payload)**: Si estás creando la encuesta programáticamente (POST /api/v1/management/surveys), el objeto JSON de la encuesta incluye una propiedad `styling`. Puedes enviarla así:
+
+```json
+{
+  "name": "Mi Encuesta",
+  "styling": {
+    "brandColor": "#ff5733",
+    "cardBackgroundColor": "#ffffff",
+    "cardBorderColor": "#e2e8f0",
+    "background": {
+       "bg": "#f0f0f0", // Color de fondo sólido
+       "bgType": "color" // o "image" / "animation"
+    }
+  },
+  "questions": [...]
+}
+```
+
+**Resumen**
+
+- **Carga**: Usa el SDK (`formbricks.init`) para la integración más fácil. Usa la API REST solo si vas a construir tu propia interfaz de usuario desde cero.
+- **Estilos**: La forma más robusta de "definir" el color es usando las variables CSS (`--fb-brand-color`) en tu sitio web. Esto asegura que la encuesta siempre coincida con tu marca, independientemente de la configuración individual de la encuesta.

@@ -28,7 +28,7 @@
         "default": ""
       },
       "required": true,
-      "inputType": "text",
+       "inputType": "text",
       "placeholder": {
         "default": "Ingresa tu número de empleado"
       },

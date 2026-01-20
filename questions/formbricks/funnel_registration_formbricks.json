@@ -39,13 +39,13 @@
         "default": "Anterior"
       }
     },
-    {
-      "id": "employee_id",
-      "type": "openText",
-      "inputType": "text",
-      "headline": {
-        "default": "Número de Empleado"
-      },
+     {
+       "id": "employee_id",
+       "type": "openText",
+       "inputType": "text",
+       "headline": {
+         "default": "Número de Empleado"
+       },
       "subheader": {
         "default": ""
       },

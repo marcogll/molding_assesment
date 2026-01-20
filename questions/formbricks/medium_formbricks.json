@@ -5,34 +5,56 @@
   "displayOption": "displayOnce",
   "welcomeCard": {
     "enabled": true,
-    "headline": "Evaluacion Tecnica de Moldeo",
-    "html": "<b>Nivel Intermedio</b><br>Evaluacion de diagnostico de fallas, parametros de proceso y eficiencia operativa.<br><br>• Preguntas: 60<br>• Tiempo estimado: 45 min",
+    "headline": {
+      "default": "Evaluacion Tecnica de Moldeo"
+    },
+    "html": {
+      "default": "<b>Nivel Intermedio</b><br>Evaluacion de diagnostico de fallas, parametros de proceso y eficiencia operativa.<br><br>• Preguntas: 60<br>• Tiempo estimado: 45 min"
+    },
     "showResponseCount": false,
     "timeToFinish": false,
-    "buttonLabel": "Siguiente"
+    "buttonLabel": {
+      "default": "Siguiente"
+    }
   },
   "questions": [
     {
       "id": "employee_number",
       "type": "openText",
-      "headline": "Número de empleado",
-      "subheader": "",
+      "headline": {
+        "default": "Número de empleado"
+      },
+      "subheader": {
+        "default": ""
+      },
       "required": true,
-      "inputType": "text",
+       "inputType": "text",
       "placeholder": {
         "default": "Ingresa tu número de empleado"
       },
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior"
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      }
     },
     {
       "id": "mach_1",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué variable física mide realmente un termopar insertado en una zona del barril de plastificación?",
-      "subheader": "Los sensores de temperatura son los ojos del sistema de control.",
+      "headline": {
+        "default": "¿Qué variable física mide realmente un termopar insertado en una zona del barril de plastificación?"
+      },
+      "subheader": {
+        "default": "Los sensores de temperatura son los ojos del sistema de control."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -64,11 +86,19 @@
     {
       "id": "mach_2",
       "type": "multipleChoiceSingle",
-      "headline": "Si el manómetro hidráulico marca 1,000 PSI y la máquina tiene un ratio de intensificación de 10:1, ¿cuál es la presión plástica aplicada?",
-      "subheader": "La presión hidráulica no es equivalente a la presión ejercida sobre el polímero.",
+      "headline": {
+        "default": "Si el manómetro hidráulico marca 1,000 PSI y la máquina tiene un ratio de intensificación de 10:1, ¿cuál es la presión plástica aplicada?"
+      },
+      "subheader": {
+        "default": "La presión hidráulica no es equivalente a la presión ejercida sobre el polímero."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -100,11 +130,19 @@
     {
       "id": "mach_3",
       "type": "multipleChoiceSingle",
-      "headline": "Durante la fase de sostenimiento, observas que el husillo sigue avanzando lentamente (creeping) sin detenerse. Diagnóstico probable:",
-      "subheader": "La válvula antirretorno es crítica para mantener la presión durante el empaque.",
+      "headline": {
+        "default": "Durante la fase de sostenimiento, observas que el husillo sigue avanzando lentamente (creeping) sin detenerse. Diagnóstico probable:"
+      },
+      "subheader": {
+        "default": "La válvula antirretorno es crítica para mantener la presión durante el empaque."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -136,11 +174,19 @@
     {
       "id": "mach_4",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué indica la relación L/D (Longitud/Diámetro) en la especificación de un husillo?",
-      "subheader": "La geometría del tornillo determina su capacidad para fundir y mezclar.",
+      "headline": {
+        "default": "¿Qué indica la relación L/D (Longitud/Diámetro) en la especificación de un husillo?"
+      },
+      "subheader": {
+        "default": "La geometría del tornillo determina su capacidad para fundir y mezclar."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -172,11 +218,19 @@
     {
       "id": "mach_5",
       "type": "multipleChoiceSingle",
-      "headline": "Si la temperatura en la garganta de alimentación no se controla y sube demasiado, ¿qué problema de proceso se genera?",
-      "subheader": "La alimentación del material depende de condiciones específicas de fricción y temperatura.",
+      "headline": {
+        "default": "Si la temperatura en la garganta de alimentación no se controla y sube demasiado, ¿qué problema de proceso se genera?"
+      },
+      "subheader": {
+        "default": "La alimentación del material depende de condiciones específicas de fricción y temperatura."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -208,11 +262,19 @@
     {
       "id": "mach_6",
       "type": "multipleChoiceSingle",
-      "headline": "En un sistema hidráulico, ¿qué componente es responsable de generar el caudal necesario para el movimiento?",
-      "subheader": "La unidad de potencia es la encargada de convertir energía eléctrica en energía de fluido.",
+      "headline": {
+        "default": "En un sistema hidráulico, ¿qué componente es responsable de generar el caudal necesario para el movimiento?"
+      },
+      "subheader": {
+        "default": "La unidad de potencia es la encargada de convertir energía eléctrica en energía de fluido."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -244,11 +306,19 @@
     {
       "id": "mach_7",
       "type": "multipleChoiceSingle",
-      "headline": "Identifica cuál de las siguientes NO es una platina estándar en una inyectora:",
-      "subheader": "La integridad estructural de la máquina depende de placas de acero específicas.",
+      "headline": {
+        "default": "Identifica cuál de las siguientes NO es una platina estándar en una inyectora:"
+      },
+      "subheader": {
+        "default": "La integridad estructural de la máquina depende de placas de acero específicas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -280,11 +350,19 @@
     {
       "id": "mach_8",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué consecuencia tiene conectar un termopar Tipo J en una tarjeta configurada para Tipo K?",
-      "subheader": "La compatibilidad entre sensores y controladores es esencial para lecturas precisas.",
+      "headline": {
+        "default": "¿Qué consecuencia tiene conectar un termopar Tipo J en una tarjeta configurada para Tipo K?"
+      },
+      "subheader": {
+        "default": "La compatibilidad entre sensores y controladores es esencial para lecturas precisas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -316,11 +394,19 @@
     {
       "id": "mach_9",
       "type": "multipleChoiceSingle",
-      "headline": "¿Cuál es la función crítica de los 'Return Pins' (Pernos de retorno) en el molde?",
-      "subheader": "Los mecanismos del molde deben coordinarse para evitar colisiones internas.",
+      "headline": {
+        "default": "¿Cuál es la función crítica de los 'Return Pins' (Pernos de retorno) en el molde?"
+      },
+      "subheader": {
+        "default": "Los mecanismos del molde deben coordinarse para evitar colisiones internas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -352,11 +438,19 @@
     {
       "id": "proc_10",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué define exactamente el punto de conmutación o transferencia (VPT)?",
-      "subheader": "La inyección se divide en dos fases de control distintas.",
+      "headline": {
+        "default": "¿Qué define exactamente el punto de conmutación o transferencia (VPT)?"
+      },
+      "subheader": {
+        "default": "La inyección se divide en dos fases de control distintas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -388,11 +482,19 @@
     {
       "id": "proc_11",
       "type": "multipleChoiceSingle",
-      "headline": "Calcula rápidamente: Si tienes 350 Bar, ¿cuál es su equivalente aproximado en PSI? (Factor x14.5)",
-      "subheader": "La maquinaria global requiere manejar diferentes sistemas de unidades.",
+      "headline": {
+        "default": "Calcula rápidamente: Si tienes 350 Bar, ¿cuál es su equivalente aproximado en PSI? (Factor x14.5)"
+      },
+      "subheader": {
+        "default": "La maquinaria global requiere manejar diferentes sistemas de unidades."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -424,11 +526,19 @@
     {
       "id": "proc_12",
       "type": "multipleChoiceSingle",
-      "headline": "Debido al comportamiento pseudoplástico (Shear Thinning), ¿qué pasa con la viscosidad al aumentar la velocidad de inyección?",
-      "subheader": "El comportamiento del plástico fundido no es lineal como el del agua.",
+      "headline": {
+        "default": "Debido al comportamiento pseudoplástico (Shear Thinning), ¿qué pasa con la viscosidad al aumentar la velocidad de inyección?"
+      },
+      "subheader": {
+        "default": "El comportamiento del plástico fundido no es lineal como el del agua."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -460,11 +570,19 @@
     {
       "id": "proc_13",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué determina un 'Estudio de Sellado de Compuerta' (Gate Freeze Study)?",
-      "subheader": "Determinar el tiempo correcto de sostenimiento es un proceso científico.",
+      "headline": {
+        "default": "¿Qué determina un 'Estudio de Sellado de Compuerta' (Gate Freeze Study)?"
+      },
+      "subheader": {
+        "default": "Determinar el tiempo correcto de sostenimiento es un proceso científico."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -496,11 +614,19 @@
     {
       "id": "proc_14",
       "type": "multipleChoiceSingle",
-      "headline": "Técnicamente, ¿por qué es grave que el cojín llegue a cero durante el proceso?",
-      "subheader": "La transferencia efectiva de presión requiere un colchón de material.",
+      "headline": {
+        "default": "Técnicamente, ¿por qué es grave que el cojín llegue a cero durante el proceso?"
+      },
+      "subheader": {
+        "default": "La transferencia efectiva de presión requiere un colchón de material."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -532,11 +658,19 @@
     {
       "id": "proc_15",
       "type": "multipleChoiceSingle",
-      "headline": "¿Cuál es la variable de proceso más influyente para controlar la contracción final de la pieza?",
-      "subheader": "El plástico reduce su volumen significativamente al enfriarse.",
+      "headline": {
+        "default": "¿Cuál es la variable de proceso más influyente para controlar la contracción final de la pieza?"
+      },
+      "subheader": {
+        "default": "El plástico reduce su volumen significativamente al enfriarse."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -568,11 +702,19 @@
     {
       "id": "proc_16",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué defecto en la pieza o problema en el molde se genera por una falta de descompresión (suck-back)?",
-      "subheader": "El control del estado del material fundido al finalizar la dosificación evita problemas en el siguiente ciclo.",
+      "headline": {
+        "default": "¿Qué defecto en la pieza o problema en el molde se genera por una falta de descompresión (suck-back)?"
+      },
+      "subheader": {
+        "default": "El control del estado del material fundido al finalizar la dosificación evita problemas en el siguiente ciclo."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -604,11 +746,19 @@
     {
       "id": "proc_17",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué defecto esperarías si la contrapresión (Back Pressure) es excesivamente baja?",
-      "subheader": "La compactación del fundido antes de la inyección asegura la consistencia.",
+      "headline": {
+        "default": "¿Qué defecto esperarías si la contrapresión (Back Pressure) es excesivamente baja?"
+      },
+      "subheader": {
+        "default": "La compactación del fundido antes de la inyección asegura la consistencia."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -640,11 +790,19 @@
     {
       "id": "proc_18",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué es el 'Tiempo de Residencia' en inyección?",
-      "subheader": "La historia térmica del material afecta sus propiedades finales.",
+      "headline": {
+        "default": "¿Qué es el 'Tiempo de Residencia' en inyección?"
+      },
+      "subheader": {
+        "default": "La historia térmica del material afecta sus propiedades finales."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -676,11 +834,19 @@
     {
       "id": "qual_19",
       "type": "multipleChoiceSingle",
-      "headline": "Tienes una pieza con Rebaba (Flash) pero con Peso Bajo (Short shot). ¿Qué indica esta contradicción?",
-      "subheader": "Defectos contradictorios suelen apuntar a problemas mecánicos del herramental.",
+      "headline": {
+        "default": "Tienes una pieza con Rebaba (Flash) pero con Peso Bajo (Short shot). ¿Qué indica esta contradicción?"
+      },
+      "subheader": {
+        "default": "Defectos contradictorios suelen apuntar a problemas mecánicos del herramental."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -712,11 +878,19 @@
     {
       "id": "qual_20",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué defecto causa un 'gusanito' o serpenteo visible en la superficie de la pieza frente a la compuerta?",
-      "subheader": "El comportamiento del flujo depende de la velocidad de entrada a la cavidad.",
+      "headline": {
+        "default": "¿Qué defecto causa un 'gusanito' o serpenteo visible en la superficie de la pieza frente a la compuerta?"
+      },
+      "subheader": {
+        "default": "El comportamiento del flujo depende de la velocidad de entrada a la cavidad."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -748,11 +922,19 @@
     {
       "id": "qual_21",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué fenómeno físico causa el 'Efecto Diesel' (quemadura en el borde de la pieza)?",
-      "subheader": "La compresión rápida de gases genera temperaturas extremas.",
+      "headline": {
+        "default": "¿Qué fenómeno físico causa el 'Efecto Diesel' (quemadura en el borde de la pieza)?"
+      },
+      "subheader": {
+        "default": "La compresión rápida de gases genera temperaturas extremas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -784,11 +966,19 @@
     {
       "id": "qual_22",
       "type": "multipleChoiceSingle",
-      "headline": "Las ráfagas plateadas (Silver streaks) distribuidas por toda la pieza suelen indicar:",
-      "subheader": "Los volátiles en el material se expanden violentamente al perder presión.",
+      "headline": {
+        "default": "Las ráfagas plateadas (Silver streaks) distribuidas por toda la pieza suelen indicar:"
+      },
+      "subheader": {
+        "default": "Los volátiles en el material se expanden violentamente al perder presión."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -820,11 +1010,19 @@
     {
       "id": "qual_23",
       "type": "multipleChoiceSingle",
-      "headline": "¿Cuál es la diferencia técnica entre Línea de Soldadura (Weld) y Línea de Fusión (Meld)?",
-      "subheader": "La forma en que se unen los frentes de flujo determina la resistencia mecánica.",
+      "headline": {
+        "default": "¿Cuál es la diferencia técnica entre Línea de Soldadura (Weld) y Línea de Fusión (Meld)?"
+      },
+      "subheader": {
+        "default": "La forma en que se unen los frentes de flujo determina la resistencia mecánica."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -856,11 +1054,19 @@
     {
       "id": "qual_24",
       "type": "multipleChoiceSingle",
-      "headline": "Para corregir un problema de Pandeo (Warpage) en una pieza plana, ¿qué ajuste es más efectivo?",
-      "subheader": "El enfriamiento desigual crea tensiones internas que deforman la pieza.",
+      "headline": {
+        "default": "Para corregir un problema de Pandeo (Warpage) en una pieza plana, ¿qué ajuste es más efectivo?"
+      },
+      "subheader": {
+        "default": "El enfriamiento desigual crea tensiones internas que deforman la pieza."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -892,11 +1098,19 @@
     {
       "id": "qual_25",
       "type": "multipleChoiceSingle",
-      "headline": "La 'Delaminación' (capas que se desprenden) es síntoma inequívoco de:",
-      "subheader": "La compatibilidad química es esencial para que el material se funda como una sola masa.",
+      "headline": {
+        "default": "La 'Delaminación' (capas que se desprenden) es síntoma inequívoco de:"
+      },
+      "subheader": {
+        "default": "La compatibilidad química es esencial para que el material se funda como una sola masa."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -928,11 +1142,19 @@
     {
       "id": "qual_26",
       "type": "multipleChoiceSingle",
-      "headline": "¿Cuál es la fuente más común de 'Puntos Negros' aleatorios en producción continua?",
-      "subheader": "El material degradado puede acumularse en el sistema y desprenderse aleatoriamente.",
+      "headline": {
+        "default": "¿Cuál es la fuente más común de 'Puntos Negros' aleatorios en producción continua?"
+      },
+      "subheader": {
+        "default": "El material degradado puede acumularse en el sistema y desprenderse aleatoriamente."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -964,11 +1186,19 @@
     {
       "id": "qual_27",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué herramienta de Calidad se utiliza para monitorear la estabilidad estadística (Cpk) del proceso?",
-      "subheader": "La calidad moderna se basa en datos y prevención, no solo en inspección.",
+      "headline": {
+        "default": "¿Qué herramienta de Calidad se utiliza para monitorear la estabilidad estadística (Cpk) del proceso?"
+      },
+      "subheader": {
+        "default": "La calidad moderna se basa en datos y prevención, no solo en inspección."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1000,11 +1230,19 @@
     {
       "id": "safe_28",
       "type": "multipleChoiceSingle",
-      "headline": "Antes de meter el cuerpo entre las platinas para mantenimiento, ¿qué paso es INNEGOCIABLE?",
-      "subheader": "Los dispositivos electrónicos pueden fallar; las barreras físicas son la única garantía.",
+      "headline": {
+        "default": "Antes de meter el cuerpo entre las platinas para mantenimiento, ¿qué paso es INNEGOCIABLE?"
+      },
+      "subheader": {
+        "default": "Los dispositivos electrónicos pueden fallar; las barreras físicas son la única garantía."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1036,11 +1274,19 @@
     {
       "id": "safe_29",
       "type": "multipleChoiceSingle",
-      "headline": "¿Por qué la purga de material degradado representa un riesgo de explosión?",
-      "subheader": "La descomposición térmica de polímeros genera presión interna peligrosa.",
+      "headline": {
+        "default": "¿Por qué la purga de material degradado representa un riesgo de explosión?"
+      },
+      "subheader": {
+        "default": "La descomposición térmica de polímeros genera presión interna peligrosa."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1072,11 +1318,19 @@
     {
       "id": "safe_30",
       "type": "multipleChoiceSingle",
-      "headline": "El sistema de 'Protección de Molde' (baja presión) sirve para:",
-      "subheader": "El cierre del molde debe ser monitoreado para evitar daños costosos.",
+      "headline": {
+        "default": "El sistema de 'Protección de Molde' (baja presión) sirve para:"
+      },
+      "subheader": {
+        "default": "El cierre del molde debe ser monitoreado para evitar daños costosos."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1108,11 +1362,19 @@
     {
       "id": "safe_31",
       "type": "multipleChoiceSingle",
-      "headline": "Ante una ruptura de manguera hidráulica con fuga de aceite a alta presión, lo primero es:",
-      "subheader": "Los fluidos a alta presión pueden causar lesiones graves e incendios.",
+      "headline": {
+        "default": "Ante una ruptura de manguera hidráulica con fuga de aceite a alta presión, lo primero es:"
+      },
+      "subheader": {
+        "default": "Los fluidos a alta presión pueden causar lesiones graves e incendios."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1144,11 +1406,19 @@
     {
       "id": "safe_32",
       "type": "multipleChoiceSingle",
-      "headline": "Para manipular purgas calientes, el EPP mínimo requerido incluye:",
-      "subheader": "El equipo de protección estándar es insuficiente para temperaturas extremas.",
+      "headline": {
+        "default": "Para manipular purgas calientes, el EPP mínimo requerido incluye:"
+      },
+      "subheader": {
+        "default": "El equipo de protección estándar es insuficiente para temperaturas extremas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1180,11 +1450,19 @@
     {
       "id": "safe_33",
       "type": "multipleChoiceSingle",
-      "headline": "Al izar un molde, ¿qué condición deben cumplir los cáncamos (eyebolts)?",
-      "subheader": "El izaje de cargas pesadas requiere componentes certificados.",
+      "headline": {
+        "default": "Al izar un molde, ¿qué condición deben cumplir los cáncamos (eyebolts)?"
+      },
+      "subheader": {
+        "default": "El izaje de cargas pesadas requiere componentes certificados."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1216,11 +1494,19 @@
     {
       "id": "safe_34",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué función cumple el interbloqueo (interlock) de la puerta trasera?",
-      "subheader": "Las zonas no visibles de la máquina requieren sistemas de seguridad automáticos.",
+      "headline": {
+        "default": "¿Qué función cumple el interbloqueo (interlock) de la puerta trasera?"
+      },
+      "subheader": {
+        "default": "Las zonas no visibles de la máquina requieren sistemas de seguridad automáticos."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1252,11 +1538,19 @@
     {
       "id": "safe_35",
       "type": "multipleChoiceSingle",
-      "headline": "Para un fuego eléctrico en el gabinete de control, ¿qué extintor usas?",
-      "subheader": "El agente extintor incorrecto puede agravar un incendio eléctrico.",
+      "headline": {
+        "default": "Para un fuego eléctrico en el gabinete de control, ¿qué extintor usas?"
+      },
+      "subheader": {
+        "default": "El agente extintor incorrecto puede agravar un incendio eléctrico."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1288,11 +1582,19 @@
     {
       "id": "safe_36",
       "type": "multipleChoiceSingle",
-      "headline": "En México, la norma STPS que regula los dispositivos de seguridad en maquinaria es:",
-      "subheader": "Las regulaciones locales dictan los estándares mínimos de protección.",
+      "headline": {
+        "default": "En México, la norma STPS que regula los dispositivos de seguridad en maquinaria es:"
+      },
+      "subheader": {
+        "default": "Las regulaciones locales dictan los estándares mínimos de protección."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1324,11 +1626,19 @@
     {
       "id": "mat_37",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué indica el índice MFI (Melt Flow Index) de una resina?",
-      "subheader": "La fluidez es una propiedad fundamental para determinar la procesabilidad.",
+      "headline": {
+        "default": "¿Qué indica el índice MFI (Melt Flow Index) de una resina?"
+      },
+      "subheader": {
+        "default": "La fluidez es una propiedad fundamental para determinar la procesabilidad."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1360,11 +1670,19 @@
     {
       "id": "mat_38",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué fenómeno químico sufre el Policarbonato (PC) o Nylon (PA) si se inyecta húmedo?",
-      "subheader": "Ciertos polímeros sufren daños moleculares irreversibles en presencia de agua.",
+      "headline": {
+        "default": "¿Qué fenómeno químico sufre el Policarbonato (PC) o Nylon (PA) si se inyecta húmedo?"
+      },
+      "subheader": {
+        "default": "Ciertos polímeros sufren daños moleculares irreversibles en presencia de agua."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1396,11 +1714,19 @@
     {
       "id": "mat_39",
       "type": "multipleChoiceSingle",
-      "headline": "Diferencia clave de procesamiento entre amorfos (ej. ABS) y semicristalinos (ej. PP):",
-      "subheader": "La estructura molecular define cómo cambia el volumen al solidificar.",
+      "headline": {
+        "default": "Diferencia clave de procesamiento entre amorfos (ej. ABS) y semicristalinos (ej. PP):"
+      },
+      "subheader": {
+        "default": "La estructura molecular define cómo cambia el volumen al solidificar."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1432,11 +1758,19 @@
     {
       "id": "mat_40",
       "type": "multipleChoiceSingle",
-      "headline": "El uso de 'Regrind' (molido) por encima del 20% suele ocasionar:",
-      "subheader": "El reprocesamiento de material afecta la integridad de las cadenas poliméricas.",
+      "headline": {
+        "default": "El uso de 'Regrind' (molido) por encima del 20% suele ocasionar:"
+      },
+      "subheader": {
+        "default": "El reprocesamiento de material afecta la integridad de las cadenas poliméricas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1468,11 +1802,19 @@
     {
       "id": "mat_41",
       "type": "multipleChoiceSingle",
-      "headline": "Para un secado eficiente, el 'Punto de Rocío' (Dew Point) del aire debe ser:",
-      "subheader": "El aire de secado debe tener muy baja humedad relativa para ser efectivo.",
+      "headline": {
+        "default": "Para un secado eficiente, el 'Punto de Rocío' (Dew Point) del aire debe ser:"
+      },
+      "subheader": {
+        "default": "El aire de secado debe tener muy baja humedad relativa para ser efectivo."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1504,11 +1846,19 @@
     {
       "id": "mat_42",
       "type": "multipleChoiceSingle",
-      "headline": "¿Cuál es el rango típico de dosificación de Masterbatch (color)?",
-      "subheader": "Los concentrados de color son potentes y deben usarse con precisión.",
+      "headline": {
+        "default": "¿Cuál es el rango típico de dosificación de Masterbatch (color)?"
+      },
+      "subheader": {
+        "default": "Los concentrados de color son potentes y deben usarse con precisión."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1540,11 +1890,19 @@
     {
       "id": "mat_43",
       "type": "multipleChoiceSingle",
-      "headline": "Procesar materiales de alta viscosidad (duros de fluir) requiere:",
-      "subheader": "La resistencia al flujo del material dicta los requisitos de la máquina.",
+      "headline": {
+        "default": "Procesar materiales de alta viscosidad (duros de fluir) requiere:"
+      },
+      "subheader": {
+        "default": "La resistencia al flujo del material dicta los requisitos de la máquina."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1576,11 +1934,19 @@
     {
       "id": "mat_44",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué distingue a un plástico de 'Ingeniería' de un 'Commodity'?",
-      "subheader": "La clasificación de los plásticos depende de sus prestaciones mecánicas y térmicas.",
+      "headline": {
+        "default": "¿Qué distingue a un plástico de 'Ingeniería' de un 'Commodity'?"
+      },
+      "subheader": {
+        "default": "La clasificación de los plásticos depende de sus prestaciones mecánicas y térmicas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1612,11 +1978,19 @@
     {
       "id": "eff_45",
       "type": "multipleChoiceSingle",
-      "headline": "Si una máquina produce piezas buenas, pero corre a 30s de ciclo en lugar de los 25s estándar, ¿qué factor del OEE cae?",
-      "subheader": "El OEE se ve afectado cuando la máquina no opera a su velocidad de diseño.",
+      "headline": {
+        "default": "Si una máquina produce piezas buenas, pero corre a 30s de ciclo en lugar de los 25s estándar, ¿qué factor del OEE cae?"
+      },
+      "subheader": {
+        "default": "El OEE se ve afectado cuando la máquina no opera a su velocidad de diseño."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1648,11 +2022,19 @@
     {
       "id": "eff_46",
       "type": "multipleChoiceSingle",
-      "headline": "En la técnica SMED, ¿cómo se define una operación 'Interna'?",
-      "subheader": "Clasificar las tareas de preparación es el primer paso para reducir tiempos.",
+      "headline": {
+        "default": "En la técnica SMED, ¿cómo se define una operación 'Interna'?"
+      },
+      "subheader": {
+        "default": "Clasificar las tareas de preparación es el primer paso para reducir tiempos."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1684,11 +2066,19 @@
     {
       "id": "eff_47",
       "type": "multipleChoiceSingle",
-      "headline": "Si la máquina produce piezas buenas, pero corre a 30s de ciclo en lugar de los 25s estándar, ¿qué indicador del OEE cae?",
-      "subheader": "La pérdida de velocidad es uno de los desperdicios más difíciles de detectar.",
+      "headline": {
+        "default": "Si la máquina produce piezas buenas, pero corre a 30s de ciclo en lugar de los 25s estándar, ¿qué indicador del OEE cae?"
+      },
+      "subheader": {
+        "default": "La pérdida de velocidad es uno de los desperdicios más difíciles de detectar."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1720,11 +2110,19 @@
     {
       "id": "eff_48",
       "type": "multipleChoiceSingle",
-      "headline": "En un cambio SMED, ¿qué es una actividad 'Externa'?",
-      "subheader": "La preparación anticipada es clave para minimizar el tiempo de paro.",
+      "headline": {
+        "default": "En un cambio SMED, ¿qué es una actividad 'Externa'?"
+      },
+      "subheader": {
+        "default": "La preparación anticipada es clave para minimizar el tiempo de paro."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1756,11 +2154,19 @@
     {
       "id": "eff_49",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué porcentaje de OEE se considera 'Clase Mundial'?",
-      "subheader": "La comparación con los mejores de la industria establece la meta a seguir.",
+      "headline": {
+        "default": "¿Qué porcentaje de OEE se considera 'Clase Mundial'?"
+      },
+      "subheader": {
+        "default": "La comparación con los mejores de la industria establece la meta a seguir."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1792,11 +2198,19 @@
     {
       "id": "eff_50",
       "type": "multipleChoiceSingle",
-      "headline": "Operar un molde de 4 cavidades con 1 cavidad bloqueada afecta principalmente:",
-      "subheader": "Ignorar la capacidad total del molde tiene costos ocultos altos.",
+      "headline": {
+        "default": "Operar un molde de 4 cavidades con 1 cavidad bloqueada afecta principalmente:"
+      },
+      "subheader": {
+        "default": "Ignorar la capacidad total del molde tiene costos ocultos altos."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1828,11 +2242,19 @@
     {
       "id": "eff_51",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué es el 'Takt Time'?",
-      "subheader": "El ritmo de producción debe sincronizarse con la demanda del cliente.",
+      "headline": {
+        "default": "¿Qué es el 'Takt Time'?"
+      },
+      "subheader": {
+        "default": "El ritmo de producción debe sincronizarse con la demanda del cliente."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1864,11 +2286,19 @@
     {
       "id": "eff_52",
       "type": "multipleChoiceSingle",
-      "headline": "El Mantenimiento Predictivo se basa en:",
-      "subheader": "El mantenimiento moderno se basa en datos reales, no en suposiciones.",
+      "headline": {
+        "default": "El Mantenimiento Predictivo se basa en:"
+      },
+      "subheader": {
+        "default": "El mantenimiento moderno se basa en datos reales, no en suposiciones."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1900,11 +2330,19 @@
     {
       "id": "wast_53",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué principio de las 5S implica que limpiar no es solo embellecer, sino inspeccionar fallas potenciales?",
-      "subheader": "La limpieza profunda revela anomalías antes de que causen fallas.",
+      "headline": {
+        "default": "¿Qué principio de las 5S implica que limpiar no es solo embellecer, sino inspeccionar fallas potenciales?"
+      },
+      "subheader": {
+        "default": "La limpieza profunda revela anomalías antes de que causen fallas."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1936,11 +2374,19 @@
     {
       "id": "wast_54",
       "type": "multipleChoiceSingle",
-      "headline": "¿Cuál se considera el 'peor' desperdicio porque oculta a los demás?",
-      "subheader": "Producir más de lo necesario genera una cadena de problemas ocultos.",
+      "headline": {
+        "default": "¿Cuál se considera el 'peor' desperdicio porque oculta a los demás?"
+      },
+      "subheader": {
+        "default": "Producir más de lo necesario genera una cadena de problemas ocultos."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -1972,11 +2418,19 @@
     {
       "id": "wast_55",
       "type": "multipleChoiceSingle",
-      "headline": "Tener que recortar rebaba a todas las piezas saliendo de la máquina es un ejemplo de:",
-      "subheader": "Realizar tareas que el cliente no valora es una pérdida neta.",
+      "headline": {
+        "default": "Tener que recortar rebaba a todas las piezas saliendo de la máquina es un ejemplo de:"
+      },
+      "subheader": {
+        "default": "Realizar tareas que el cliente no valora es una pérdida neta."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -2008,11 +2462,19 @@
     {
       "id": "wast_56",
       "type": "multipleChoiceSingle",
-      "headline": "El exceso de Inventario en proceso (WIP) causa:",
-      "subheader": "El material estancado representa capital inmovilizado y riesgo.",
+      "headline": {
+        "default": "El exceso de Inventario en proceso (WIP) causa:"
+      },
+      "subheader": {
+        "default": "El material estancado representa capital inmovilizado y riesgo."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -2044,11 +2506,19 @@
     {
       "id": "wast_57",
       "type": "multipleChoiceSingle",
-      "headline": "¿Qué hace que una Ayuda Visual sea ineficaz o peligrosa para la calidad?",
-      "subheader": "Las herramientas de estandarización deben estar vigentes para ser útiles.",
+      "headline": {
+        "default": "¿Qué hace que una Ayuda Visual sea ineficaz o peligrosa para la calidad?"
+      },
+      "subheader": {
+        "default": "Las herramientas de estandarización deben estar vigentes para ser útiles."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -2080,11 +2550,19 @@
     {
       "id": "wast_58",
       "type": "multipleChoiceSingle",
-      "headline": "Encontrar herramientas tiradas y piezas mezcladas bajo la máquina indica falla en:",
-      "subheader": "El desorden en el área de trabajo es un indicador de falta de disciplina.",
+      "headline": {
+        "default": "Encontrar herramientas tiradas y piezas mezcladas bajo la máquina indica falla en:"
+      },
+      "subheader": {
+        "default": "El desorden en el área de trabajo es un indicador de falta de disciplina."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -2116,11 +2594,19 @@
     {
       "id": "wast_59",
       "type": "multipleChoiceSingle",
-      "headline": "Un dispositivo 'Poka-Yoke' sirve para:",
-      "subheader": "Los sistemas a prueba de error previenen defectos desde su origen.",
+      "headline": {
+        "default": "Un dispositivo 'Poka-Yoke' sirve para:"
+      },
+      "subheader": {
+        "default": "Los sistemas a prueba de error previenen defectos desde su origen."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {
@@ -2152,11 +2638,19 @@
     {
       "id": "wast_60",
       "type": "multipleChoiceSingle",
-      "headline": "El objetivo final de eliminar desperdicios (Muda) es:",
-      "subheader": "La filosofía Lean busca la optimización de los recursos.",
+      "headline": {
+        "default": "El objetivo final de eliminar desperdicios (Muda) es:"
+      },
+      "subheader": {
+        "default": "La filosofía Lean busca la optimización de los recursos."
+      },
       "required": true,
-      "buttonLabel": "Siguiente",
-      "backButtonLabel": "Anterior",
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
       "shuffleOption": "none",
       "choices": [
         {

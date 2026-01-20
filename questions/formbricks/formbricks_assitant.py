@@ -39,9 +39,9 @@ if not all([BASEURL, API_KEY, ENV_ID]):
 
 LEVEL_FILE_MAP = {
     "0": "funnel_registration_formbricks.json",
-    "1": "basic_v2_formbricks.json",
-    "2": "medium_v2_formbricks.json",
-    "3": "advanced_v2_formbricks.json",
+    "1": "basic_formbricks.json",
+    "2": "medium_formbricks.json",
+    "3": "advanced_formbricks.json",
 }
 
 
@@ -93,6 +93,34 @@ def main():
     start_date = Prompt.ask("📅 Fecha inicio (YYYY-MM-DD o vacío)", default="")
     end_date = Prompt.ask("📅 Fecha término (YYYY-MM-DD o vacío)", default="")
 
+    # ───────── Styling ─────────
+    console.print(
+        Panel(
+            "🎨 Configuración de colores (opcional - presiona Enter para usar defaults)",
+            border_style=COLORS["blue"],
+        )
+    )
+    brand_color = Prompt.ask(
+        "🎨 Color principal (brand color, ej: #ff5733)", default="#ff5733"
+    )
+    card_bg = Prompt.ask(
+        "🎨 Fondo de tarjeta (card background, ej: #ffffff)", default="#ffffff"
+    )
+    survey_bg = Prompt.ask(
+        "🎨 Fondo general (survey background, ej: #f0f0f0)", default="#f0f0f0"
+    )
+    border_color = Prompt.ask(
+        "🎨 Color de bordes (border color, ej: #e2e8f0)", default="#e2e8f0"
+    )
+
+    # Build styling object
+    styling = {
+        "brandColor": {"light": brand_color, "dark": brand_color},
+        "cardBackgroundColor": {"light": card_bg, "dark": card_bg},
+        "cardBorderColor": {"light": border_color, "dark": border_color},
+        "surveyBackground": {"bg": survey_bg, "bgType": "color"},
+    }
+
     file_name = LEVEL_FILE_MAP[level]
 
     with open(file_name, "r", encoding="utf-8") as f:
@@ -138,6 +166,7 @@ def main():
         payload["welcomeCard"] = welcome_card
     if endings:
         payload["endings"] = endings
+    payload["styling"] = styling
 
     headers = {
         "Content-Type": "application/json",
@@ -157,6 +186,12 @@ def main():
     if response.ok:
         console.print(
             Panel("✅ Encuesta creada correctamente", border_style=COLORS["green"])
+        )
+        console.print(
+            Panel(
+                "💡 Para integración con SDK: Revisa styles.css para variables CSS opcionales",
+                border_style=COLORS["yellow"],
+            )
         )
     else:
         console.print(Panel("❌ Error al crear encuesta", border_style=COLORS["red"]))

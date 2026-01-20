@@ -1,0 +1,21 @@
+/* Template de estilos para Formbricks - Variables CSS para sobrescribir colores */
+
+/* Añade estas variables a tu hoja de estilos global (globals.css o similar) */
+/* para forzar colores y fondos en las encuestas mostradas con el SDK */
+
+:root {
+  /* Color principal (botones, bordes activos, etc.) */
+  --fb-brand-color: #ff5733;
+
+  /* Color del texto sobre el color principal */
+  --fb-brand-text-color: #ffffff;
+
+  /* Fondo de la tarjeta de la encuesta */
+  --fb-card-bg: #ffffff;
+
+  /* Fondo general (detrás de la tarjeta en encuestas de enlace o modales) */
+  --fb-survey-background-color: #f0f0f0;
+
+  /* Bordes */
+  --fb-border-color: #e2e8f0;
+}
