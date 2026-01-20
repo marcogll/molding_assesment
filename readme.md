@@ -38,4 +38,22 @@ El assessment analiza el desempeño en los siguientes sectores críticos del mol
 - **Parámetros de Proceso**: Presiones, tiempos, temperaturas y perfiles de velocidad.
 - **Hidráulica y Eléctrica**: Funcionamiento interno de la unidad de inyección y cierre.
 - **Sistemas Periféricos**: Operación de robots, secadores, thermoladores y molinos.
-- **Calidad y Defectología**: Ident...
+- **Calidad y Defectología**: Identificación de defectos comunes y sus causas.
+- **Eficiencia y Productividad**: OEE, SMED, tiempos de ciclo y métricas operativas.
+
+## 🔧 Sistema Evaluador (n8n Workflow)
+
+CAROL utiliza un sistema automatizado de evaluación construido con workflows de n8n que procesa las respuestas de las encuestas en tiempo real. El evaluador funciona de la siguiente manera:
+
+- **Recepción de Datos**: Recibe respuestas de encuestas vía webhooks desde Formbricks inmediatamente después de que un empleado completa la evaluación.
+- **Enrutamiento Automático**: Identifica el nivel de la encuesta (L0/L1/L2/L3) basado en el título y dirige los datos al flujo correspondiente.
+- **Extracción de Información**: Procesa los datos incluyendo tiempos de respuesta, respuestas a preguntas y metadatos del empleado.
+- **Almacenamiento Inmediato**: Guarda automáticamente los resultados en hojas de cálculo de Google Sheets, generando reportes en tiempo real sin intervención manual.
+- **Seguridad Multi-tenant**: Soporta múltiples empresas con aislamiento de datos y encriptación.
+
+Los resultados se generan y almacenan de forma inmediata, permitiendo análisis instantáneos del desempeño técnico.
+
+## 🗺️ Roadmap
+
+- **Corto Plazo**: Mejora del evaluador con análisis avanzados y reportes personalizados.
+- **Mediano Plazo**: Desarrollo de un servidor dedicado para el despliegue de encuestas y generación automática de reportes usando los datos almacenados en Google Sheets. El servidor permitirá desplegar encuestas vía API/interfaz web, integrarse con Formbricks, y generar reportes dinámicos (PDFs, dashboards interactivos).
