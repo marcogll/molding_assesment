@@ -1,0 +1,4077 @@
+{
+  "name": "evaluador",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5d3bc604-f7cd-436c-9a3e-695517ad61d1",
+                    "leftValue": "={{ $json.body.data.survey.title }}",
+                    "rightValue": "L0",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Funnel"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.data.survey.title }}",
+                    "rightValue": "L1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "ae4b7487-783c-4301-8157-9c610d2b603b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Basic"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "ba7f9c42-1d66-4a05-9b2c-0bcdf2a6d267",
+                    "leftValue": "={{ $json.body.data.survey.title }}",
+                    "rightValue": "L2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Medium"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8bfcaec3-0f50-4955-b780-206de4aaabb5",
+                    "leftValue": "={{ $json.body.data.survey.title }}",
+                    "rightValue": "L3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Advanced"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        -400
+      ],
+      "id": "818f217a-0059-489c-93e0-605516a88881",
+      "name": "level_check"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n\n  // 1. Configuraci\u00f3n de fecha nativa\n  const dateObj = new Date(payload.createdAt);\n  const timeZone = 'America/Monterrey';\n\n  // 2. Extraer FECHA (YYYY-MM-DD) ajustada a Monterrey\n  const submission_date = dateObj.toLocaleDateString('en-CA', { \n    timeZone: timeZone \n  });\n\n  // 3. Extraer HORA (HH:mm:ss) ajustada a Monterrey\n  const submission_time = dateObj.toLocaleTimeString('en-GB', { \n    timeZone: timeZone,\n    hour12: false \n  });\n\n  return {\n    json: {\n      full_name: answers.full_name,\n      employee_id: answers.employee_id,\n      department: answers.department,\n      job_role: answers.job_role,\n      years_experience: answers.years_experience,\n      self_evaluation: answers.self_evaluation,\n      \n      submission_date: submission_date,\n      submission_time: submission_time\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -656
+      ],
+      "id": "965ac4f1-e028-4e05-b611-751e9696f51f",
+      "name": "funnel_data"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "funnel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "employee_id"
+          ],
+          "schema": [
+            {
+              "id": "full_name",
+              "displayName": "full_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "employee_id",
+              "displayName": "employee_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "department",
+              "displayName": "department",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "job_role",
+              "displayName": "job_role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "years_experience",
+              "displayName": "years_experience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "self_evaluation",
+              "displayName": "self_evaluation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_date",
+              "displayName": "submission_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_time",
+              "displayName": "submission_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        -656
+      ],
+      "id": "c9b7bcc4-2d46-4af3-bf05-ed03fe52d044",
+      "name": "storage_funnel",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  const startObj = new Date(payload.createdAt); // Fecha de creaci\u00f3n (Inicio)\n  const endObj = new Date(payload.updatedAt);   // Fecha de actualizaci\u00f3n (Fin)\n\n  // 1. Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // 2. Hora Inicio (HH:mm:ss)\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // 3. Hora Fin (HH:mm:ss)\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- C\u00c1LCULO DE DURACI\u00d3N ---\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  // Definimos el orden exacto de los encabezados principales\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos que ya usamos o que no sirven\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -464
+      ],
+      "id": "95e08326-acba-4a68-8f19-adfcbdd40d37",
+      "name": "basic_processing"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- 1. CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  \n  // Convertimos las fechas ISO a objetos Date\n  const startObj = new Date(payload.createdAt); // Fecha de creaci\u00f3n (Inicio)\n  const endObj = new Date(payload.updatedAt);   // Fecha de actualizaci\u00f3n (Fin)\n\n  // A. Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // B. Hora Inicio (HH:mm:ss) - Formato 24h\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // C. Hora Fin (HH:mm:ss) - Formato 24h\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- 2. C\u00c1LCULO DE DURACI\u00d3N ---\n  // El valor metrics._total viene en milisegundos\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  \n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- 3. CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  // Definimos el orden exacto de los encabezados principales\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- 4. AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos t\u00e9cnicos que no queremos en el reporte\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  // Recorremos todas las respuestas que vienen en 'answers'\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -272
+      ],
+      "id": "9ffb41b3-efe5-41df-b4ef-a97ceb7a1b6d",
+      "name": "medium_processing"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- 1. CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  \n  const startObj = new Date(payload.createdAt);\n  const endObj = new Date(payload.updatedAt);\n\n  // Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // Hora Inicio (HH:mm:ss)\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // Hora Fin (HH:mm:ss)\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- 2. C\u00c1LCULO DE DURACI\u00d3N ---\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  \n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- 3. CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- 4. AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos no relevantes\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -80
+      ],
+      "id": "8931d1c7-5672-47ca-b66a-f493c6a4daa0",
+      "name": "advanced_processing"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1757095379,
+          "mode": "list",
+          "cachedResultName": "basic",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=1757095379"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "employee_number"
+          ],
+          "schema": [
+            {
+              "id": "employee_number",
+              "displayName": "employee_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_date",
+              "displayName": "submission_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "start_time",
+              "displayName": "start_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "end_time",
+              "displayName": "end_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "time_taken",
+              "displayName": "time_taken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_1",
+              "displayName": "mach_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_2",
+              "displayName": "mach_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_3",
+              "displayName": "mach_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_4",
+              "displayName": "mach_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_5",
+              "displayName": "mach_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_6",
+              "displayName": "mach_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_7",
+              "displayName": "mach_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_8",
+              "displayName": "mach_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_9",
+              "displayName": "mach_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_10",
+              "displayName": "mach_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_11",
+              "displayName": "mach_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_12",
+              "displayName": "mach_12",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_13",
+              "displayName": "mach_13",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_14",
+              "displayName": "mach_14",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_1",
+              "displayName": "proc_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_2",
+              "displayName": "proc_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_3",
+              "displayName": "proc_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_4",
+              "displayName": "proc_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_5",
+              "displayName": "proc_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_6",
+              "displayName": "proc_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_7",
+              "displayName": "proc_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_8",
+              "displayName": "proc_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_9",
+              "displayName": "proc_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_10",
+              "displayName": "proc_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_11",
+              "displayName": "proc_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_1",
+              "displayName": "qual_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_2",
+              "displayName": "qual_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_3",
+              "displayName": "qual_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_4",
+              "displayName": "qual_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_5",
+              "displayName": "qual_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_6",
+              "displayName": "qual_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_7",
+              "displayName": "qual_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_8",
+              "displayName": "qual_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_9",
+              "displayName": "qual_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_10",
+              "displayName": "qual_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_1",
+              "displayName": "wast_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_2",
+              "displayName": "wast_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_3",
+              "displayName": "wast_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_4",
+              "displayName": "wast_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_5",
+              "displayName": "wast_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_6",
+              "displayName": "wast_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_1",
+              "displayName": "mat_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_2",
+              "displayName": "mat_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_5",
+              "displayName": "mat_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_6",
+              "displayName": "mat_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_1",
+              "displayName": "safe_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_2",
+              "displayName": "safe_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_3",
+              "displayName": "safe_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_4",
+              "displayName": "safe_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_5",
+              "displayName": "safe_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_1",
+              "displayName": "eff_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_2",
+              "displayName": "eff_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_3",
+              "displayName": "eff_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_4",
+              "displayName": "eff_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_5",
+              "displayName": "eff_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        -464
+      ],
+      "id": "bd7f8edd-8362-4981-b5ca-cb6f20bad7ee",
+      "name": "storage_basic",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "funnel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "employee_id"
+          ],
+          "schema": [
+            {
+              "id": "employee_number",
+              "displayName": "employee_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_date",
+              "displayName": "submission_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "start_time",
+              "displayName": "start_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "end_time",
+              "displayName": "end_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "time_taken",
+              "displayName": "time_taken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_1",
+              "displayName": "mach_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_2",
+              "displayName": "mach_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_3",
+              "displayName": "mach_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_4",
+              "displayName": "mach_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_5",
+              "displayName": "mach_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_6",
+              "displayName": "mach_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_7",
+              "displayName": "mach_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_8",
+              "displayName": "mach_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_9",
+              "displayName": "mach_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_10",
+              "displayName": "mach_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_11",
+              "displayName": "mach_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_12",
+              "displayName": "mach_12",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_13",
+              "displayName": "mach_13",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_14",
+              "displayName": "mach_14",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_1",
+              "displayName": "proc_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_2",
+              "displayName": "proc_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_3",
+              "displayName": "proc_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_4",
+              "displayName": "proc_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_5",
+              "displayName": "proc_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_6",
+              "displayName": "proc_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_7",
+              "displayName": "proc_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_8",
+              "displayName": "proc_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_9",
+              "displayName": "proc_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_10",
+              "displayName": "proc_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_11",
+              "displayName": "proc_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_1",
+              "displayName": "qual_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_2",
+              "displayName": "qual_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_3",
+              "displayName": "qual_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_4",
+              "displayName": "qual_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_5",
+              "displayName": "qual_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_6",
+              "displayName": "qual_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_7",
+              "displayName": "qual_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_8",
+              "displayName": "qual_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_9",
+              "displayName": "qual_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_10",
+              "displayName": "qual_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_1",
+              "displayName": "wast_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_2",
+              "displayName": "wast_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_3",
+              "displayName": "wast_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_4",
+              "displayName": "wast_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_5",
+              "displayName": "wast_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_6",
+              "displayName": "wast_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_1",
+              "displayName": "mat_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_2",
+              "displayName": "mat_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_5",
+              "displayName": "mat_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_6",
+              "displayName": "mat_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_1",
+              "displayName": "safe_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_2",
+              "displayName": "safe_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_3",
+              "displayName": "safe_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_4",
+              "displayName": "safe_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_5",
+              "displayName": "safe_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_1",
+              "displayName": "eff_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_2",
+              "displayName": "eff_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_3",
+              "displayName": "eff_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_4",
+              "displayName": "eff_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_5",
+              "displayName": "eff_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        -272
+      ],
+      "id": "97829e8a-2bed-43d2-bf70-ee86331d9630",
+      "name": "storage_medium",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "funnel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "employee_id"
+          ],
+          "schema": [
+            {
+              "id": "employee_number",
+              "displayName": "employee_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_date",
+              "displayName": "submission_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "start_time",
+              "displayName": "start_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "end_time",
+              "displayName": "end_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "time_taken",
+              "displayName": "time_taken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_1",
+              "displayName": "mach_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_2",
+              "displayName": "mach_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_3",
+              "displayName": "mach_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_4",
+              "displayName": "mach_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_5",
+              "displayName": "mach_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_6",
+              "displayName": "mach_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_7",
+              "displayName": "mach_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_8",
+              "displayName": "mach_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_9",
+              "displayName": "mach_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_10",
+              "displayName": "mach_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_11",
+              "displayName": "mach_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_12",
+              "displayName": "mach_12",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_13",
+              "displayName": "mach_13",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mach_14",
+              "displayName": "mach_14",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_1",
+              "displayName": "proc_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_2",
+              "displayName": "proc_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_3",
+              "displayName": "proc_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_4",
+              "displayName": "proc_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_5",
+              "displayName": "proc_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_6",
+              "displayName": "proc_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_7",
+              "displayName": "proc_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_8",
+              "displayName": "proc_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_9",
+              "displayName": "proc_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_10",
+              "displayName": "proc_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "proc_11",
+              "displayName": "proc_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_1",
+              "displayName": "qual_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_2",
+              "displayName": "qual_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_3",
+              "displayName": "qual_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_4",
+              "displayName": "qual_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_5",
+              "displayName": "qual_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_6",
+              "displayName": "qual_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_7",
+              "displayName": "qual_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_8",
+              "displayName": "qual_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_9",
+              "displayName": "qual_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "qual_10",
+              "displayName": "qual_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_1",
+              "displayName": "wast_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_2",
+              "displayName": "wast_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_3",
+              "displayName": "wast_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_4",
+              "displayName": "wast_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_5",
+              "displayName": "wast_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "wast_6",
+              "displayName": "wast_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_1",
+              "displayName": "mat_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_2",
+              "displayName": "mat_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_5",
+              "displayName": "mat_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "mat_6",
+              "displayName": "mat_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_1",
+              "displayName": "safe_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_2",
+              "displayName": "safe_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_3",
+              "displayName": "safe_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_4",
+              "displayName": "safe_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "safe_5",
+              "displayName": "safe_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_1",
+              "displayName": "eff_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_2",
+              "displayName": "eff_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_3",
+              "displayName": "eff_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_4",
+              "displayName": "eff_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "eff_5",
+              "displayName": "eff_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        -80
+      ],
+      "id": "e2983164-098c-4fa9-874d-01163e26051c",
+      "name": "storage_advanced",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. BASE DE DATOS DE PREGUNTAS (Master Key)\n// Aqu\u00ed pegamos el JSON con las respuestas correctas y puntajes\nconst questions_db = [\n  { \"id\": \"mach_1\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"El tornillo (husillo)\", \"question\": \"En el sistema de plastificaci\u00f3n...\" },\n  { \"id\": \"mach_2\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"La tolva de alimentaci\u00f3n\", \"question\": \"\u00bfCu\u00e1l es el punto de entrada...\" },\n  { \"id\": \"mach_3\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Mantener el perfil de temperatura del barril\", \"question\": \"\u00bfCu\u00e1l es la funci\u00f3n espec\u00edfica...\" },\n  { \"id\": \"mach_4\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Contrarrestar la fuerza de separaci\u00f3n del molde\", \"question\": \"Durante la etapa de inyecci\u00f3n...\" },\n  { \"id\": \"mach_5\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"El sistema de expulsi\u00f3n (botadores)\", \"question\": \"Al finalizar el ciclo...\" },\n  { \"id\": \"proc_1\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Tiempo transcurrido entre el inicio de una inyecci\u00f3n y la siguiente\", \"question\": \"\u00bfC\u00f3mo se define correctamente...\" },\n  { \"id\": \"qual_1\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Tiro Corto (Short Shot)\", \"question\": \"Si observas una pieza...\" },\n  { \"id\": \"qual_2\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Fuerza de cierre insuficiente para la presi\u00f3n inyectada\", \"question\": \"\u00bfCu\u00e1l es la causa t\u00e9cnica...\" },\n  { \"id\": \"qual_3\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Rechupado (Sink Mark)\", \"question\": \"Identificas una depresi\u00f3n...\" },\n  { \"id\": \"safe_1\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Salpicadura violenta de pol\u00edmero fundido\", \"question\": \"\u00bfCu\u00e1l es el riesgo principal...\" },\n  { \"id\": \"safe_2\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Presionar el bot\u00f3n de paro de emergencia\", \"question\": \"Ante un ruido anormal...\" },\n  { \"id\": \"safe_3\", \"category\": \"Seguridad\", \"score\": 1, \"correct_answer\": \"Asegurar el bloqueo de todas las energ\u00edas peligrosas\", \"question\": \"\u00bfCu\u00e1l es el objetivo del procedimiento LOTO...\" },\n  { \"id\": \"qual_4\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Aire atrapado que se comprimi\u00f3 y quem\u00f3 (Efecto Diesel)\", \"question\": \"Si aparece una mancha negra...\" },\n  { \"id\": \"qual_5\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"L\u00ednea de uni\u00f3n o soldadura (Weld line)\", \"question\": \"\u00bfQu\u00e9 defecto visual se genera...\" },\n  { \"id\": \"mat_1\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Para evitar hidr\u00f3lisis y defectos visuales por humedad\", \"question\": \"T\u00e9cnicamente, \u00bfpor qu\u00e9 es obligatorio...\" },\n  { \"id\": \"mat_2\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Higroscop\u00eda\", \"question\": \"\u00bfC\u00f3mo se le llama a la propiedad...\" },\n  { \"id\": \"proc_2\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Extraer calor del pl\u00e1stico para solidificarlo\", \"question\": \"\u00bfCu\u00e1l es el prop\u00f3sito principal...\" },\n  { \"id\": \"proc_3\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"La pieza se deformar\u00e1 o ser\u00e1 perforada por los botadores\", \"question\": \"Si el operador reduce arbitrariamente...\" },\n  { \"id\": \"proc_4\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Contrapresi\u00f3n (Back pressure)\", \"question\": \"\u00bfQu\u00e9 par\u00e1metro controla la resistencia...\" },\n  { \"id\": \"proc_5\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"El material sobrante delante del husillo para transferir presi\u00f3n\", \"question\": \"\u00bfQu\u00e9 representa el 'coj\u00edn'...\" },\n  { \"id\": \"proc_6\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"Falta de control dimensional y posibles rechupados\", \"question\": \"Al revisar los par\u00e1metros...\" },\n  { \"id\": \"mach_6\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Evacuar el aire desplazado por el pl\u00e1stico entrante\", \"question\": \"Los canales de venteo...\" },\n  { \"id\": \"mat_3\", \"category\": \"Materiales\", \"score\": 1.5, \"correct_answer\": \"Material procesado, recuperado y triturado para reutilizaci\u00f3n\", \"question\": \"En el contexto de producci\u00f3n...\" },\n  { \"id\": \"eff_1\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"Disponibilidad, Desempe\u00f1o y Calidad\", \"question\": \"\u00bfQu\u00e9 factores componen el c\u00e1lculo...\" },\n  { \"id\": \"eff_2\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"Reducir el tiempo de cambio de molde (Set-up)\", \"question\": \"La metodolog\u00eda SMED...\" },\n  { \"id\": \"mach_7\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Garantiza un tiempo de ciclo constante y estable\", \"question\": \"\u00bfCu\u00e1l es la ventaja principal...\" },\n  { \"id\": \"proc_7\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Compensar la contracci\u00f3n volum\u00e9trica mientras el material enfr\u00eda\", \"question\": \"\u00bfCu\u00e1l es el objetivo de la etapa...\" },\n  { \"id\": \"proc_8\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Velocidad de inyecci\u00f3n\", \"question\": \"\u00bfQu\u00e9 variable controla qu\u00e9 tan r\u00e1pido...\" },\n  { \"id\": \"proc_9\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"La m\u00e1quina cambia de control de velocidad a control de presi\u00f3n\", \"question\": \"\u00bfQu\u00e9 sucede exactamente en el 'Punto de Transferencia'...\" },\n  { \"id\": \"qual_6\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Material contaminado con humedad (Hidr\u00f3lisis)\", \"question\": \"Observas marcas plateadas...\" },\n  { \"id\": \"qual_7\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Pandeo o Alabeo (Warpage)\", \"question\": \"Si la pieza sale del molde torcida...\" },\n  { \"id\": \"qual_8\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Contaminaci\u00f3n por mezcla de materiales incompatibles\", \"question\": \"La 'delaminaci\u00f3n' es un defecto...\" },\n  { \"id\": \"mach_8\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"El canal c\u00f3nico principal que conecta la boquilla con los canales\", \"question\": \"\u00bfQu\u00e9 es el 'bebedero'...\" },\n  { \"id\": \"mach_9\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Un defecto est\u00e9tico causado por material solidificado en la boquilla\", \"question\": \"\u00bfQu\u00e9 representa un tap\u00f3n fr\u00edo...\" },\n  { \"id\": \"mach_10\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Defectos cosm\u00e9ticos, debilitamiento y problemas de pintado\", \"question\": \"El uso excesivo de spray...\" },\n  { \"id\": \"mach_11\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Para evitar que la presi\u00f3n de inyecci\u00f3n abra el molde (rebaba)\", \"question\": \"\u00bfPor qu\u00e9 es crucial calcular...\" },\n  { \"id\": \"qual_9\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Purgar la unidad y revisar limpieza del husillo/tolva\", \"question\": \"Detectas puntos negros...\" },\n  { \"id\": \"proc_10\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Al volumen total de pol\u00edmero inyectado en un ciclo\", \"question\": \"\u00bfA qu\u00e9 se refiere el t\u00e9rmino...\" },\n  { \"id\": \"desp_1\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Clasificar, Ordenar, Limpiar, Estandarizar, Disciplina\", \"question\": \"\u00bfCu\u00e1l es la secuencia correcta...\" },\n  { \"id\": \"desp_2\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Producto no conforme que no puede ser reparado\", \"question\": \"En t\u00e9rminos de manufactura esbelta...\" },\n  { \"id\": \"qual_10\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Proveer un est\u00e1ndar de comparaci\u00f3n claro para la inspecci\u00f3n\", \"question\": \"\u00bfCu\u00e1l es el prop\u00f3sito de una 'Ayuda Visual'...\" },\n  { \"id\": \"mat_4\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Aportar color o aditivos concentrados a la resina base\", \"question\": \"\u00bfQu\u00e9 funci\u00f3n cumple el 'Masterbatch'...\" },\n  { \"id\": \"mach_12\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"La fricci\u00f3n entre los pellets y el barril\", \"question\": \"\u00bfQu\u00e9 fuerza f\u00edsica permite que el material...\" },\n  { \"id\": \"mach_13\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Soportar y sujetar las mitades del molde\", \"question\": \"Las 'platinas' (platens)...\" },\n  { \"id\": \"mach_14\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Desalineaci\u00f3n de las mitades y da\u00f1o severo al molde\", \"question\": \"\u00bfQu\u00e9 consecuencia tiene operar...\" },\n  { \"id\": \"proc_11\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Para aliviar presi\u00f3n y prevenir goteo por la boquilla\", \"question\": \"\u00bfPara qu\u00e9 se utiliza la 'descompresi\u00f3n'...\" },\n  { \"id\": \"desp_3\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Subir temperatura y usar material natural o compuesto de purga\", \"question\": \"\u00bfCu\u00e1l es el procedimiento correcto...\" },\n  { \"id\": \"desp_4\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Un desperdicio innecesario de resina y tiempo\", \"question\": \"Observas a un operador purgando...\" },\n  { \"id\": \"desp_5\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Reduce la contaminaci\u00f3n cruzada (puntos negros/rafagas)\", \"question\": \"\u00bfC\u00f3mo impacta directamente...\" },\n  { \"id\": \"desp_6\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Marcarla como Scrap por contaminaci\u00f3n potencial\", \"question\": \"Si una pieza reci\u00e9n inyectada...\" }\n];\n\n// 2. PROCESAMIENTO DE LAS RESPUESTAS\nreturn items.map(item => {\n  const user_data = item.json;\n  \n  let total_score = 0;\n  let max_possible_score = 0;\n  \n  // Array para guardar el detalle pregunta por pregunta\n  const results_breakdown = [];\n  \n  // Objeto para guardar puntaje por categor\u00eda (Ej: Seguridad: 10/10)\n  const category_stats = {};\n\n  // 3. COMPARACI\u00d3N CON LA MASTER KEY\n  questions_db.forEach(q => {\n    // Obtenemos la respuesta del usuario usando el ID (ej: user_data.mach_1)\n    const user_answer = user_data[q.id];\n    \n    // Verificamos si es correcta (comparaci\u00f3n exacta de texto)\n    const is_correct = user_answer === q.correct_answer;\n    \n    // Asignamos puntos\n    const points_earned = is_correct ? q.score : 0;\n    \n    // Acumuladores globales\n    total_score += points_earned;\n    max_possible_score += q.score;\n\n    // L\u00f3gica por Categor\u00eda\n    if (!category_stats[q.category]) {\n      category_stats[q.category] = { earned: 0, total: 0 };\n    }\n    category_stats[q.category].total += q.score;\n    category_stats[q.category].earned += points_earned;\n\n    // Agregamos al detalle\n    results_breakdown.push({\n      question_id: q.id,\n      category: q.category,\n      question_text: q.question,\n      user_response: user_answer || \"No respondido\", // Manejo de respuestas vac\u00edas\n      correct_response: q.correct_answer,\n      status: is_correct ? 'CORRECTO' : 'INCORRECTO',\n      points: points_earned,\n      max_points: q.score\n    });\n  });\n\n  // 4. C\u00c1LCULO DE CALIFICACI\u00d3N FINAL\n  // Evitar divisi\u00f3n por cero\n  const grade_percentage = max_possible_score > 0 \n    ? (total_score / max_possible_score) * 100 \n    : 0;\n\n  // 5. RETORNO DE DATOS ORGANIZADOS\n  return {\n    json: {\n      // Datos del Empleado (Heredados)\n      employee_number: user_data.employee_number,\n      submission_date: user_data.submission_date,\n      time_taken: user_data.time_taken,\n      \n      // Resultados Generales\n      final_score: total_score,\n      max_possible_score: max_possible_score,\n      grade_percentage: parseFloat(grade_percentage.toFixed(2)), // Redondear a 2 decimales\n      passed: grade_percentage >= 80, // Ejemplo: Aprobado si > 80%\n      \n      // Desglose por Categor\u00eda\n      category_performance: category_stats,\n      \n      // Detalle Pregunta por Pregunta (\u00fatil para guardar en otra hoja o BD)\n      detailed_results: results_breakdown\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        -464
+      ],
+      "id": "edf1b92b-fb26-4c6e-896a-7ced8f64f6f0",
+      "name": "basic_eval"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1214096918,
+          "mode": "list",
+          "cachedResultName": "basic_results",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=1214096918"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "employee_id"
+          ],
+          "schema": [
+            {
+              "id": "employee_id",
+              "displayName": "employee_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_date",
+              "displayName": "submission_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "duration",
+              "displayName": "duration",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "total_score_fraction",
+              "displayName": "total_score_fraction",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "final_grade_pct",
+              "displayName": "final_grade_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tech_score_pct",
+              "displayName": "tech_score_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tech_questions_ratio",
+              "displayName": "tech_questions_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "theory_score_pct",
+              "displayName": "theory_score_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "theory_questions_ratio",
+              "displayName": "theory_questions_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_maquina",
+              "displayName": "cat_maquina",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_proceso",
+              "displayName": "cat_proceso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_calidad",
+              "displayName": "cat_calidad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_seguridad",
+              "displayName": "cat_seguridad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_materiales",
+              "displayName": "cat_materiales",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_eficiencia",
+              "displayName": "cat_eficiencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_desperdicios",
+              "displayName": "cat_desperdicios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "error_summary",
+              "displayName": "error_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_1",
+              "displayName": "mach_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_2",
+              "displayName": "mach_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_3",
+              "displayName": "mach_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_4",
+              "displayName": "mach_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_5",
+              "displayName": "mach_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_1",
+              "displayName": "proc_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_1",
+              "displayName": "qual_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_2",
+              "displayName": "qual_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_3",
+              "displayName": "qual_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "safe_1",
+              "displayName": "safe_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "safe_2",
+              "displayName": "safe_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "safe_3",
+              "displayName": "safe_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_4",
+              "displayName": "qual_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_5",
+              "displayName": "qual_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mat_1",
+              "displayName": "mat_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mat_2",
+              "displayName": "mat_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_2",
+              "displayName": "proc_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_3",
+              "displayName": "proc_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_4",
+              "displayName": "proc_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_5",
+              "displayName": "proc_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_6",
+              "displayName": "proc_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_6",
+              "displayName": "mach_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mat_3",
+              "displayName": "mat_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "eff_1",
+              "displayName": "eff_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "eff_2",
+              "displayName": "eff_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_7",
+              "displayName": "mach_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_7",
+              "displayName": "proc_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_8",
+              "displayName": "proc_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_9",
+              "displayName": "proc_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_6",
+              "displayName": "qual_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_7",
+              "displayName": "qual_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_8",
+              "displayName": "qual_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_8",
+              "displayName": "mach_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_9",
+              "displayName": "mach_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_10",
+              "displayName": "mach_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_11",
+              "displayName": "mach_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_9",
+              "displayName": "qual_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_10",
+              "displayName": "proc_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "desp_1",
+              "displayName": "desp_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "desp_2",
+              "displayName": "desp_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qual_10",
+              "displayName": "qual_10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mat_4",
+              "displayName": "mat_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_12",
+              "displayName": "mach_12",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_13",
+              "displayName": "mach_13",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mach_14",
+              "displayName": "mach_14",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "proc_11",
+              "displayName": "proc_11",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "desp_3",
+              "displayName": "desp_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "desp_4",
+              "displayName": "desp_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "desp_5",
+              "displayName": "desp_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "desp_6",
+              "displayName": "desp_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1344,
+        -464
+      ],
+      "id": "8876cbc8-afb2-4b69-af1a-bfdc32b450ab",
+      "name": "basic_scored",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. BASE DE DATOS DE PREGUNTAS (Master Key) - MEDIUM (L2)\nconst questions_db = [\n  { \"id\": \"mach_1\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"La temperatura del acero del barril en ese punto espec\u00edfico\", \"question\": \"\u00bfQu\u00e9 variable f\u00edsica mide realmente un termopar...\" },\n  { \"id\": \"mach_2\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"10,000 PSI (Multiplicaci\u00f3n por \u00e1rea)\", \"question\": \"Si el man\u00f3metro hidr\u00e1ulico marca 1,000 PSI...\" },\n  { \"id\": \"mach_3\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Fuga interna en el anillo de cierre (v\u00e1lvula check)\", \"question\": \"Durante la fase de sostenimiento...\" },\n  { \"id\": \"mach_4\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"El ratio de compresi\u00f3n entre la zona de alimentaci\u00f3n y medici\u00f3n\", \"question\": \"\u00bfQu\u00e9 indica la relaci\u00f3n L/D...\" },\n  { \"id\": \"mach_5\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Puenteo de material (Bridging) y falla de carga\", \"question\": \"Si la temperatura en la garganta de alimentaci\u00f3n...\" },\n  { \"id\": \"mach_6\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"La bomba hidr\u00e1ulica\", \"question\": \"En un sistema hidr\u00e1ulico...\" },\n  { \"id\": \"mach_7\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Platina de Rotaci\u00f3n Axial\", \"question\": \"Identifica cu\u00e1l de las siguientes NO es una platina...\" },\n  { \"id\": \"mach_8\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Lectura err\u00f3nea de temperatura y riesgo de proceso\", \"question\": \"\u00bfQu\u00e9 consecuencia tiene conectar un termopar Tipo J...\" },\n  { \"id\": \"mach_9\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Retraer la placa de botadores al cerrar el molde\", \"question\": \"\u00bfCu\u00e1l es la funci\u00f3n cr\u00edtica de los 'Return Pins'...\" },\n  { \"id\": \"proc_10\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"El cambio de control de Velocidad a control de Presi\u00f3n\", \"question\": \"\u00bfQu\u00e9 define exactamente el punto de conmutaci\u00f3n...\" },\n  { \"id\": \"proc_11\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"5,075 PSI\", \"question\": \"Calcula r\u00e1pidamente: Si tienes 350 Bar...\" },\n  { \"id\": \"proc_12\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"La viscosidad disminuye (fluye m\u00e1s f\u00e1cil)\", \"question\": \"Debido al comportamiento pseudopl\u00e1stico...\" },\n  { \"id\": \"proc_13\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"El tiempo m\u00ednimo de sostenimiento para evitar reflujo\", \"question\": \"\u00bfQu\u00e9 determina un 'Estudio de Sellado de Compuerta'...\" },\n  { \"id\": \"proc_14\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"Porque se pierde el control de la presi\u00f3n sobre la cavidad\", \"question\": \"T\u00e9cnicamente, \u00bfpor qu\u00e9 es grave que el coj\u00edn llegue a cero...\" },\n  { \"id\": \"proc_15\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"La presi\u00f3n de sostenimiento (Packing pressure)\", \"question\": \"\u00bfCu\u00e1l es la variable de proceso m\u00e1s influyente...\" },\n  { \"id\": \"proc_16\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Prevenir el babeo (drooling) de la boquilla\", \"question\": \"\u00bfCu\u00e1l es el prop\u00f3sito t\u00e9cnico de la funci\u00f3n de descompresi\u00f3n...\" },\n  { \"id\": \"proc_17\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"Pobre mezcla, aire atrapado y peso de disparo inconsistente\", \"question\": \"\u00bfQu\u00e9 defecto esperar\u00edas si la contrapresi\u00f3n...\" },\n  { \"id\": \"proc_18\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"El tiempo que el pol\u00edmero pasa expuesto a calor dentro del barril\", \"question\": \"\u00bfQu\u00e9 es el 'Tiempo de Residencia' en inyecci\u00f3n?\" },\n  { \"id\": \"qual_19\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Da\u00f1o en el molde o desalineaci\u00f3n de platinas (Falta de sello)\", \"question\": \"Tienes una pieza con Rebaba (Flash) pero con Peso Bajo...\" },\n  { \"id\": \"qual_20\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Jetting (Efecto Jet)\", \"question\": \"\u00bfQu\u00e9 defecto causa un 'gusanito'...\" },\n  { \"id\": \"qual_21\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Compresi\u00f3n adiab\u00e1tica del aire atrapado\", \"question\": \"\u00bfQu\u00e9 fen\u00f3meno f\u00edsico causa el 'Efecto Diesel'...\" },\n  { \"id\": \"qual_22\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Humedad en el material (Vapor)\", \"question\": \"Las r\u00e1fagas plateadas (Silver streaks) suelen indicar:\" },\n  { \"id\": \"qual_23\", \"category\": \"Calidad\", \"score\": 1, \"correct_answer\": \"El \u00e1ngulo de encuentro de los frentes de flujo (<135\u00b0 vs >135\u00b0)\", \"question\": \"\u00bfCu\u00e1l es la diferencia t\u00e9cnica entre L\u00ednea de Soldadura...\" },\n  { \"id\": \"qual_24\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Equilibrar el enfriamiento entre lado fijo y m\u00f3vil\", \"question\": \"Para corregir un problema de Pandeo (Warpage)...\" },\n  { \"id\": \"qual_25\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Contaminaci\u00f3n con pol\u00edmero incompatible\", \"question\": \"La 'Delaminaci\u00f3n' es s\u00edntoma inequ\u00edvoco de:\" },\n  { \"id\": \"qual_26\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Acumulaci\u00f3n de carb\u00f3n en zonas muertas del barril/husillo\", \"question\": \"\u00bfCu\u00e1l es la fuente m\u00e1s com\u00fan de 'Puntos Negros'...\" },\n  { \"id\": \"qual_27\", \"category\": \"Calidad\", \"score\": 1, \"correct_answer\": \"Gr\u00e1ficos de Control (SPC)\", \"question\": \"\u00bfQu\u00e9 herramienta de Calidad se utiliza para monitorear...\" },\n  { \"id\": \"safe_28\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Aplicar bloqueo y etiquetado (LOTO) de energ\u00edas\", \"question\": \"Antes de meter el cuerpo entre las platinas...\" },\n  { \"id\": \"safe_29\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Por la expansi\u00f3n violenta de gases atrapados a presi\u00f3n\", \"question\": \"\u00bfPor qu\u00e9 la purga de material degradado representa un riesgo...\" },\n  { \"id\": \"safe_30\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Detectar obstrucciones y detener el cierre antes de da\u00f1ar el molde\", \"question\": \"El sistema de 'Protecci\u00f3n de Molde' sirve para:\" },\n  { \"id\": \"safe_31\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Activar el Paro de Emergencia para detener la bomba\", \"question\": \"Ante una ruptura de manguera hidr\u00e1ulica...\" },\n  { \"id\": \"safe_32\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Careta facial completa y guantes t\u00e9rmicos largos\", \"question\": \"Para manipular purgas calientes, el EPP m\u00ednimo incluye:\" },\n  { \"id\": \"safe_33\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Tener capacidad de carga certificada mayor al peso del molde\", \"question\": \"Al izar un molde, \u00bfqu\u00e9 condici\u00f3n deben cumplir los c\u00e1ncamos?\" },\n  { \"id\": \"safe_34\", \"category\": \"Seguridad\", \"score\": 1, \"correct_answer\": \"Detener bomba y movimientos si la puerta es abierta\", \"question\": \"\u00bfQu\u00e9 funci\u00f3n cumple el interbloqueo de la puerta trasera?\" },\n  { \"id\": \"safe_35\", \"category\": \"Seguridad\", \"score\": 1, \"correct_answer\": \"Tipo C (CO2 o Polvo Qu\u00edmico)\", \"question\": \"Para un fuego el\u00e9ctrico en el gabinete de control...\" },\n  { \"id\": \"safe_36\", \"category\": \"Seguridad\", \"score\": 1, \"correct_answer\": \"NOM-004-STPS (Maquinaria y Equipo)\", \"question\": \"En M\u00e9xico, la norma STPS que regula dispositivos...\" },\n  { \"id\": \"mat_37\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Su viscosidad o facilidad para fluir\", \"question\": \"\u00bfQu\u00e9 indica el \u00edndice MFI (Melt Flow Index)...\" },\n  { \"id\": \"mat_38\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Hidr\u00f3lisis (rotura de cadenas moleculares)\", \"question\": \"\u00bfQu\u00e9 fen\u00f3meno qu\u00edmico sufre el Policarbonato...\" },\n  { \"id\": \"mat_39\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Los semicristalinos tienen mayor contracci\u00f3n (shrinkage)\", \"question\": \"Diferencia clave de procesamiento entre amorfos y semicristalinos:\" },\n  { \"id\": \"mat_40\", \"category\": \"Materiales\", \"score\": 1.5, \"correct_answer\": \"P\u00e9rdida de propiedades mec\u00e1nicas e inestabilidad\", \"question\": \"El uso de 'Regrind' por encima del 20% ocasiona:\" },\n  { \"id\": \"mat_41\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Negativo (-40\u00b0C o inferior)\", \"question\": \"Para un secado eficiente, el 'Punto de Roc\u00edo' debe ser:\" },\n  { \"id\": \"mat_42\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"1% a 4%\", \"question\": \"\u00bfCu\u00e1l es el rango t\u00edpico de dosificaci\u00f3n de Masterbatch?\" },\n  { \"id\": \"mat_43\", \"category\": \"Materiales\", \"score\": 1.5, \"correct_answer\": \"Mayor presi\u00f3n de inyecci\u00f3n y temperatura\", \"question\": \"Procesar materiales de alta viscosidad requiere:\" },\n  { \"id\": \"mat_44\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Su desempe\u00f1o t\u00e9rmico y mec\u00e1nico superior\", \"question\": \"\u00bfQu\u00e9 distingue a un pl\u00e1stico de 'Ingenier\u00eda'...\" },\n  { \"id\": \"eff_45\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"Disponibilidad, Desempe\u00f1o, Calidad\", \"question\": \"\u00bfCu\u00e1les son los tres factores que componen el OEE?\" },\n  { \"id\": \"eff_46\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"Convertir cambios de horas en minutos (Single Minute)\", \"question\": \"\u00bfCu\u00e1l es la meta principal de la metodolog\u00eda SMED?\" },\n  { \"id\": \"eff_47\", \"category\": \"Eficiencia\", \"score\": 1.5, \"correct_answer\": \"Desempe\u00f1o (Performance)\", \"question\": \"Si la m\u00e1quina corre a 30s en lugar de 25s...\" },\n  { \"id\": \"eff_48\", \"category\": \"Eficiencia\", \"score\": 1.5, \"correct_answer\": \"Pre-calentar y preparar el molde nuevo mientras la m\u00e1quina trabaja\", \"question\": \"En un cambio SMED, \u00bfqu\u00e9 es una actividad 'Externa'?\" },\n  { \"id\": \"eff_49\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"85% o m\u00e1s\", \"question\": \"\u00bfQu\u00e9 porcentaje de OEE se considera 'Clase Mundial'?\" },\n  { \"id\": \"eff_50\", \"category\": \"Eficiencia\", \"score\": 1.5, \"correct_answer\": \"El costo pieza y la eficiencia del activo\", \"question\": \"Operar un molde de 4 cavidades con 1 bloqueada afecta:\" },\n  { \"id\": \"eff_51\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"El ritmo de producci\u00f3n necesario para cumplir la demanda del cliente\", \"question\": \"\u00bfQu\u00e9 es el 'Takt Time'?\" },\n  { \"id\": \"eff_52\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"Monitoreo de condici\u00f3n (vibraci\u00f3n, calor) para anticipar fallas\", \"question\": \"El Mantenimiento Predictivo se basa en:\" },\n  { \"id\": \"wast_53\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Clasificar, Ordenar, Limpiar, Estandarizar, Disciplina\", \"question\": \"Orden l\u00f3gico de implementaci\u00f3n de 5S:\" },\n  { \"id\": \"wast_54\", \"category\": \"Desperdicios\", \"score\": 1, \"correct_answer\": \"Sobreproducci\u00f3n\", \"question\": \"\u00bfCu\u00e1l se considera el 'peor' desperdicio?\" },\n  { \"id\": \"wast_55\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Sobre-procesamiento (Extra-processing)\", \"question\": \"Recortar rebaba a todas las piezas es ejemplo de:\" },\n  { \"id\": \"wast_56\", \"category\": \"Desperdicios\", \"score\": 1, \"correct_answer\": \"Problemas de flujo de efectivo y riesgo de da\u00f1os/obsolescencia\", \"question\": \"El exceso de Inventario en proceso (WIP) causa:\" },\n  { \"id\": \"wast_57\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Fotos claras de defectos l\u00edmite y criterios de aceptaci\u00f3n\", \"question\": \"\u00bfQu\u00e9 debe contener una Ayuda Visual efectiva?\" },\n  { \"id\": \"wast_58\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Las 5S (Orden y Limpieza)\", \"question\": \"Encontrar herramientas tiradas indica falla en:\" },\n  { \"id\": \"wast_59\", \"category\": \"Desperdicios\", \"score\": 1, \"correct_answer\": \"Hacer imposible cometer un error espec\u00edfico (A prueba de error)\", \"question\": \"Un dispositivo 'Poka-Yoke' sirve para:\" },\n  { \"id\": \"wast_60\", \"category\": \"Desperdicios\", \"score\": 1, \"correct_answer\": \"Aumentar el valor para el cliente y reducir costos\", \"question\": \"El objetivo final de eliminar desperdicios es:\" }\n];\n\n// 2. PROCESAMIENTO DE LAS RESPUESTAS\nreturn items.map(item => {\n  const user_data = item.json;\n  \n  let total_score = 0;\n  let max_possible_score = 0;\n  \n  const results_breakdown = [];\n  const category_stats = {};\n\n  // 3. COMPARACI\u00d3N CON LA MASTER KEY\n  questions_db.forEach(q => {\n    // Obtenemos la respuesta del usuario usando el ID (ej: mach_1, eff_45)\n    const user_answer = user_data[q.id];\n    \n    // Verificamos si es correcta\n    const is_correct = user_answer === q.correct_answer;\n    \n    // Asignamos puntos\n    const points_earned = is_correct ? q.score : 0;\n    \n    // Acumuladores globales\n    total_score += points_earned;\n    max_possible_score += q.score;\n\n    // L\u00f3gica por Categor\u00eda\n    if (!category_stats[q.category]) {\n      category_stats[q.category] = { earned: 0, total: 0 };\n    }\n    category_stats[q.category].total += q.score;\n    category_stats[q.category].earned += points_earned;\n\n    // Detalle para reporte\n    results_breakdown.push({\n      question_id: q.id,\n      category: q.category,\n      question_text: q.question,\n      user_response: user_answer || \"No respondido\",\n      correct_response: q.correct_answer,\n      status: is_correct ? 'CORRECTO' : 'INCORRECTO',\n      points: points_earned,\n      max_points: q.score\n    });\n  });\n\n  // 4. C\u00c1LCULO DE CALIFICACI\u00d3N FINAL\n  const grade_percentage = max_possible_score > 0 \n    ? (total_score / max_possible_score) * 100 \n    : 0;\n\n  // 5. RETORNO DE DATOS ORGANIZADOS\n  return {\n    json: {\n      // Datos heredados\n      employee_number: user_data.employee_number,\n      submission_date: user_data.submission_date,\n      time_taken: user_data.time_taken,\n      \n      // Resultados calculados\n      final_score: total_score,\n      max_possible_score: max_possible_score,\n      grade_percentage: parseFloat(grade_percentage.toFixed(2)),\n      passed: grade_percentage >= 75, // Ajusta este 75 si necesitas otro corte aqu\u00ed tambi\u00e9n\n      \n      // Objetos complejos\n      category_performance: category_stats,\n      detailed_results: results_breakdown\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        -272
+      ],
+      "id": "c977a49a-8708-4523-bfef-df6515a14a09",
+      "name": "medium_eval"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. BASE DE DATOS DE PREGUNTAS (Master Key) - ADVANCED (L3)\nconst questions_db = [\n  { \"id\": \"adv_mach_1\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"15,000 PSI (Multiplicaci\u00f3n por \u00e1rea)\", \"question\": \"Con un ratio de intensificaci\u00f3n de 10:1 y 1,500 PSI...\" },\n  { \"id\": \"adv_mach_2\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Oxidaci\u00f3n y degradaci\u00f3n por entrada de aire al barril\", \"question\": \"\u00bfCu\u00e1l es la consecuencia f\u00edsico-qu\u00edmica de una descompresi\u00f3n...\" },\n  { \"id\": \"adv_mach_3\", \"category\": \"M\u00e1quina\", \"score\": 1.5, \"correct_answer\": \"Fuga en la v\u00e1lvula check (anillo) o desgaste del barril\", \"question\": \"Una variaci\u00f3n del coj\u00edn (cushion) superior a +/- 10%...\" },\n  { \"id\": \"adv_mach_4\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"La repetibilidad del punto de transferencia (VPT)\", \"question\": \"El 'Scan Time' o tiempo de respuesta del controlador...\" },\n  { \"id\": \"adv_mach_5\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Mejor calidad de mezclado y homogeneidad t\u00e9rmica\", \"question\": \"Comparando un husillo L/D 24:1 contra uno 18:1...\" },\n  { \"id\": \"adv_mach_6\", \"category\": \"M\u00e1quina\", \"score\": 1, \"correct_answer\": \"Desgaste acelerado en la punta del husillo y barril\", \"question\": \"Adem\u00e1s de aumentar la temperatura de la masa, \u00bfqu\u00e9 efecto...\" },\n  { \"id\": \"adv_proc_1\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"La viscosidad es estable independientemente del corte (shear)\", \"question\": \"En la curva de viscosidad, la regi\u00f3n 'Newtonian Flat'...\" },\n  { \"id\": \"adv_proc_2\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"La m\u00e1quina tenga ~10% de presi\u00f3n hidr\u00e1ulica de reserva\", \"question\": \"El objetivo de un estudio de 'Ca\u00edda de Presi\u00f3n' es asegurar:\" },\n  { \"id\": \"adv_proc_3\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"Aumento de viscosidad por material fr\u00edo u obstrucci\u00f3n\", \"question\": \"Un aumento repentino en la integral de presi\u00f3n sugiere:\" },\n  { \"id\": \"adv_proc_4\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"Estabilizaci\u00f3n del peso de la pieza vs tiempo de hold\", \"question\": \"El criterio t\u00e9cnico definitivo para confirmar el 'Sellado de Compuerta'...\" },\n  { \"id\": \"adv_proc_5\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Aumento real de la temperatura de la masa fundida\", \"question\": \"Debido al calentamiento por cizalla, aumentar la velocidad provoca:\" },\n  { \"id\": \"adv_proc_6\", \"category\": \"Proceso\", \"score\": 1, \"correct_answer\": \"Porque garantiza un volumen de disparo consistente\", \"question\": \"\u00bfPor qu\u00e9 se prefiere el VPT (Transferencia) por Posici\u00f3n?\" },\n  { \"id\": \"adv_qual_1\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Perfilar la velocidad (lento al inicio) para crear flujo laminar\", \"question\": \"La soluci\u00f3n t\u00e9cnica para eliminar el 'Jetting' es:\" },\n  { \"id\": \"adv_qual_2\", \"category\": \"Calidad\", \"score\": 1, \"correct_answer\": \"La tasa de enfriamiento (Temperatura de molde)\", \"question\": \"En pol\u00edmeros semicristalinos, \u00bfqu\u00e9 factor determina la cristalinidad?\" },\n  { \"id\": \"adv_qual_3\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"El proceso no es capaz; alta probabilidad de defectos\", \"question\": \"Un Cpk de 0.8 en una dimensi\u00f3n cr\u00edtica indica:\" },\n  { \"id\": \"adv_qual_4\", \"category\": \"Calidad\", \"score\": 1, \"correct_answer\": \"La temperatura del frente de flujo es inferior a la Tg al unirse\", \"question\": \"Una l\u00ednea de soldadura se convierte en falla cr\u00edtica si:\" },\n  { \"id\": \"adv_qual_5\", \"category\": \"Calidad\", \"score\": 1.5, \"correct_answer\": \"Compresi\u00f3n adiab\u00e1tica de gases atrapados\", \"question\": \"La causa ra\u00edz termodin\u00e1mica del 'Efecto Diesel' es:\" },\n  { \"id\": \"adv_safe_1\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Liberaci\u00f3n de gas Formaldeh\u00eddo (t\u00f3xico/irritante)\", \"question\": \"Al purgar POM (Acetal) degradado, el riesgo qu\u00edmico es:\" },\n  { \"id\": \"adv_safe_2\", \"category\": \"Seguridad\", \"score\": 1, \"correct_answer\": \"Al ingresar cualquier parte del cuerpo en zona de peligro\", \"question\": \"\u00bfCu\u00e1ndo es obligatorio aplicar LOTO en inyecci\u00f3n?\" },\n  { \"id\": \"adv_safe_3\", \"category\": \"Seguridad\", \"score\": 1.5, \"correct_answer\": \"Energ\u00eda de presi\u00f3n almacenada lista para liberarse\", \"question\": \"El peligro latente de un acumulador hidr\u00e1ulico es:\" },\n  { \"id\": \"adv_safe_4\", \"category\": \"Seguridad\", \"score\": 1, \"correct_answer\": \"Di\u00f3xido de Carbono (CO2) o Agente Limpio\", \"question\": \"Extintor correcto para fuego en tableros electr\u00f3nicos (Clase C):\" },\n  { \"id\": \"adv_mat_1\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Reducci\u00f3n de peso molecular, viscosidad y propiedades mec\u00e1nicas\", \"question\": \"La degradaci\u00f3n por escisi\u00f3n de cadenas resulta en:\" },\n  { \"id\": \"adv_mat_2\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Rompe los enlaces covalentes de la cadena polim\u00e9rica\", \"question\": \"La hidr\u00f3lisis en materiales como PC o PBT es donde el agua:\" },\n  { \"id\": \"adv_mat_3\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Requieren mucha m\u00e1s energ\u00eda para fundir y enfriar que los amorfos\", \"question\": \"Diferencia t\u00e9rmica clave: Los semicristalinos poseen Calor Latente...\" },\n  { \"id\": \"adv_mat_4\", \"category\": \"Materiales\", \"score\": 1, \"correct_answer\": \"Porque es una prueba de bajo cizallamiento (Low Shear)\", \"question\": \"\u00bfPor qu\u00e9 el MFI no es representativo del comportamiento dentro del molde?\" },\n  { \"id\": \"adv_eff_1\", \"category\": \"Eficiencia\", \"score\": 1.5, \"correct_answer\": \"La conductividad t\u00e9rmica del pl\u00e1stico (Tiempo de enfriamiento)\", \"question\": \"El factor limitante f\u00edsico m\u00e1s com\u00fan para reducir el tiempo de ciclo es:\" },\n  { \"id\": \"adv_eff_2\", \"category\": \"Eficiencia\", \"score\": 1.5, \"correct_answer\": \"Asegurar el molde a la platina (Clamping)\", \"question\": \"En SMED, un ejemplo de actividad INTERNA es:\" },\n  { \"id\": \"adv_eff_3\", \"category\": \"Eficiencia\", \"score\": 1.5, \"correct_answer\": \"Desempe\u00f1o (Performance) - Ciclos lentos o micro-paros\", \"question\": \"Si tu OEE es 60% pero Calidad 99% y Disponibilidad 98%:\" },\n  { \"id\": \"adv_eff_4\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"La confiabilidad y frecuencia de fallas del equipo\", \"question\": \"El MTBF (Mean Time Between Failures) mide:\" },\n  { \"id\": \"adv_eff_5\", \"category\": \"Eficiencia\", \"score\": 1, \"correct_answer\": \"Material + Energ\u00eda + Mano de obra + Costo de oportunidad + Riesgo cliente\", \"question\": \"El Costo Real de la 'No Calidad' incluye:\" },\n  { \"id\": \"adv_wast_1\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Sobre-procesamiento y Material\", \"question\": \"El sobre-empaque que causa piezas pesadas es desperdicio de:\" },\n  { \"id\": \"adv_wast_2\", \"category\": \"Desperdicios\", \"score\": 1, \"correct_answer\": \"Oculta ineficiencias del sistema y atrapa flujo de efectivo\", \"question\": \"El exceso de inventario (WIP) es negativo porque:\" },\n  { \"id\": \"adv_wast_3\", \"category\": \"Desperdicios\", \"score\": 1.5, \"correct_answer\": \"Paros no programados para limpieza y scrap por quemaduras\", \"question\": \"Un mantenimiento deficiente de venteos genera desperdicio por:\" },\n  { \"id\": \"adv_wast_4\", \"category\": \"Desperdicios\", \"score\": 1, \"correct_answer\": \"Generaci\u00f3n intr\u00ednseca de desperdicio (scrap/regrind) en cada ciclo\", \"question\": \"T\u00e9cnicamente, usar Colada Fr\u00eda en lugar de Colada Caliente implica:\" },\n  { \"id\": \"adv_spec_1\", \"category\": \"Ingenier\u00eda Moldes\", \"score\": 1, \"correct_answer\": \"Flujo Turbulento (M\u00e1xima eficiencia de transferencia de calor)\", \"question\": \"En refrigeraci\u00f3n de moldes, un N\u00famero de Reynolds > 4,000 garantiza:\" },\n  { \"id\": \"adv_spec_2\", \"category\": \"Ingenier\u00eda Moldes\", \"score\": 1.5, \"correct_answer\": \"Deformaci\u00f3n el\u00e1stica de la platina que abre el molde en el centro\", \"question\": \"La 'Deflexi\u00f3n de Platinas' causa rebaba central debido a:\" },\n  { \"id\": \"adv_spec_3\", \"category\": \"Ingenier\u00eda Moldes\", \"score\": 1, \"correct_answer\": \"En la fase de dise\u00f1o de pieza y molde (previo al corte de acero)\", \"question\": \"\u00bfEn qu\u00e9 etapa es m\u00e1s rentable utilizar simulaci\u00f3n CAE?\" },\n  { \"id\": \"adv_spec_4\", \"category\": \"Ingenier\u00eda Moldes\", \"score\": 1, \"correct_answer\": \"Control independiente del flujo y mejor acabado cosm\u00e9tico (sin vestigio)\", \"question\": \"La ventaja t\u00e9cnica principal de una compuerta valvulada es:\" },\n  { \"id\": \"adv_spec_5\", \"category\": \"Ingenier\u00eda Moldes\", \"score\": 1.5, \"correct_answer\": \"Hay mayor masa de pl\u00e1stico transfiriendo calor a menor \u00e1rea de acero\", \"question\": \"El 'Efecto de Esquina' provoca puntos calientes porque:\" },\n  { \"id\": \"adv_spec_6\", \"category\": \"Proceso\", \"score\": 1.5, \"correct_answer\": \"Porque confirma que hubo material suficiente para transferir la presi\u00f3n de empaque\", \"question\": \"\u00bfPor qu\u00e9 el monitoreo del 'Coj\u00edn' es m\u00e1s cr\u00edtico que el 'Tiempo de Inyecci\u00f3n'?\" }\n];\n\n// 2. PROCESAMIENTO DE LAS RESPUESTAS\nreturn items.map(item => {\n  const user_data = item.json;\n  \n  let total_score = 0;\n  let max_possible_score = 0;\n  \n  const results_breakdown = [];\n  const category_stats = {};\n\n  // 3. COMPARACI\u00d3N CON LA MASTER KEY\n  questions_db.forEach(q => {\n    // Obtenemos la respuesta del usuario usando el ID (ej: adv_mach_1)\n    const user_answer = user_data[q.id];\n    \n    // Verificamos si es correcta\n    const is_correct = user_answer === q.correct_answer;\n    \n    // Asignamos puntos\n    const points_earned = is_correct ? q.score : 0;\n    \n    // Acumuladores globales\n    total_score += points_earned;\n    max_possible_score += q.score;\n\n    // L\u00f3gica por Categor\u00eda\n    if (!category_stats[q.category]) {\n      category_stats[q.category] = { earned: 0, total: 0 };\n    }\n    category_stats[q.category].total += q.score;\n    category_stats[q.category].earned += points_earned;\n\n    // Detalle para reporte\n    results_breakdown.push({\n      question_id: q.id,\n      category: q.category,\n      question_text: q.question,\n      user_response: user_answer || \"No respondido\",\n      correct_response: q.correct_answer,\n      status: is_correct ? 'CORRECTO' : 'INCORRECTO',\n      points: points_earned,\n      max_points: q.score\n    });\n  });\n\n  // 4. C\u00c1LCULO DE CALIFICACI\u00d3N FINAL\n  const grade_percentage = max_possible_score > 0 \n    ? (total_score / max_possible_score) * 100 \n    : 0;\n\n  // 5. RETORNO DE DATOS ORGANIZADOS\n  return {\n    json: {\n      // Datos heredados\n      employee_number: user_data.employee_number,\n      submission_date: user_data.submission_date,\n      time_taken: user_data.time_taken,\n      \n      // Resultados calculados\n      final_score: total_score,\n      max_possible_score: max_possible_score,\n      grade_percentage: parseFloat(grade_percentage.toFixed(2)),\n      passed: grade_percentage >= 75,\n      \n      // Objetos complejos\n      category_performance: category_stats,\n      detailed_results: results_breakdown\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        -80
+      ],
+      "id": "143565f1-0889-4c7b-8f25-a697c1c254c7",
+      "name": "advanced_eval"
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- CONFIGURACI\u00d3N ---\nconst MIN_PASSING_SCORE = 75; // <--- M\u00ednimo para aprobar (Ajustable)\n\nreturn items.map(item => {\n  const data = item.json;\n\n  // 1. RE-EVALUAR ESTATUS\n  const is_passed = data.grade_percentage >= MIN_PASSING_SCORE;\n\n  // 2. CONTADORES (Puntos y Cantidad de Preguntas)\n  let tech_pts_earned = 0, tech_pts_max = 0;\n  let tech_q_correct = 0, tech_q_total = 0;\n\n  let theory_pts_earned = 0, theory_pts_max = 0;\n  let theory_q_correct = 0, theory_q_total = 0;\n\n  data.detailed_results.forEach(q => {\n    const is_correct = q.status === 'CORRECTO';\n\n    if (q.max_points === 1.5) {\n      tech_pts_earned += q.points;\n      tech_pts_max += q.max_points;\n      tech_q_total++;\n      if (is_correct) tech_q_correct++;\n    } \n    else if (q.max_points === 1) {\n      theory_pts_earned += q.points;\n      theory_pts_max += q.max_points;\n      theory_q_total++;\n      if (is_correct) theory_q_correct++;\n    }\n  });\n\n  // 3. C\u00c1LCULO DE PORCENTAJES GLOBALES\n  const tech_pct = tech_pts_max > 0 \n    ? parseFloat(((tech_pts_earned / tech_pts_max) * 100).toFixed(2)) \n    : 0;\n\n  const theory_pct = theory_pts_max > 0 \n    ? parseFloat(((theory_pts_earned / theory_pts_max) * 100).toFixed(2)) \n    : 0;\n\n  // 4. CONSTRUCCI\u00d3N DEL REPORTE\n  const report = {\n    employee_id: data.employee_number,\n    submission_date: data.submission_date,\n    duration: data.time_taken,\n    \n    // Globales\n    total_score_fraction: `${data.final_score}/${data.max_possible_score}`,\n    final_grade_pct: `${data.grade_percentage}%`,\n    status: is_passed ? \"\u2705 PASSED\" : \"\u274c FAILED\",\n\n    // Technical Stats\n    tech_score_pct: `${tech_pct}%`,\n    tech_questions_ratio: `${tech_q_correct}/${tech_q_total}`,\n\n    // Theoretical Stats\n    theory_score_pct: `${theory_pct}%`,\n    theory_questions_ratio: `${theory_q_correct}/${theory_q_total}`\n  };\n\n  // 5. CATEGOR\u00cdAS (Puntaje Y Porcentaje)\n  const cleanKey = (str) => {\n    return str.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\")\n              .toLowerCase().replace(/\\s+/g, '_');\n  };\n\n  for (const catName in data.category_performance) {\n    const cat = data.category_performance[catName];\n    const key = cleanKey(catName);\n\n    // Columna 1: Fracci\u00f3n (10/12)\n    report[`cat_${key}`] = `${cat.earned}/${cat.total}`;\n\n    // Columna 2: Porcentaje (83.33%) <-- NUEVO\n    const catPct = cat.total > 0 \n      ? parseFloat(((cat.earned / cat.total) * 100).toFixed(2)) \n      : 0;\n      \n    report[`cat_${key}_pct`] = `${catPct}%`;\n  }\n\n  // 6. RESUMEN DE ERRORES\n  const failures = data.detailed_results.filter(q => q.status !== 'CORRECTO');\n  \n  report.error_summary = failures.length === 0 \n    ? \"\u2728 Perfect Score\" \n    : failures.map(f => `[${f.question_id}] Ans: ${f.user_response}`).join(' || ');\n\n  // 7. DETALLE POR PREGUNTA (Emojis)\n  data.detailed_results.forEach(q => {\n    report[q.question_id] = q.status === 'CORRECTO' ? '\u2705' : '\u274c';\n  });\n\n  return {\n    json: report\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        -272
+      ],
+      "id": "8d1e93e0-e1f9-4277-9609-b02f017fbe46",
+      "name": "medium_scoring"
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- CONFIGURACI\u00d3N ---\nconst MIN_PASSING_SCORE = 75; // <--- M\u00ednimo para aprobar (Ajustable)\n\nreturn items.map(item => {\n  const data = item.json;\n\n  // 1. RE-EVALUAR ESTATUS\n  const is_passed = data.grade_percentage >= MIN_PASSING_SCORE;\n\n  // 2. CONTADORES (Puntos y Cantidad de Preguntas)\n  let tech_pts_earned = 0, tech_pts_max = 0;\n  let tech_q_correct = 0, tech_q_total = 0;\n\n  let theory_pts_earned = 0, theory_pts_max = 0;\n  let theory_q_correct = 0, theory_q_total = 0;\n\n  data.detailed_results.forEach(q => {\n    const is_correct = q.status === 'CORRECTO';\n\n    // Preguntas T\u00e9cnicas/Pr\u00e1cticas (Valen 1.5)\n    if (q.max_points === 1.5) {\n      tech_pts_earned += q.points;\n      tech_pts_max += q.max_points;\n      tech_q_total++;\n      if (is_correct) tech_q_correct++;\n    } \n    // Preguntas Te\u00f3ricas (Valen 1.0)\n    else if (q.max_points === 1) {\n      theory_pts_earned += q.points;\n      theory_pts_max += q.max_points;\n      theory_q_total++;\n      if (is_correct) theory_q_correct++;\n    }\n  });\n\n  // 3. C\u00c1LCULO DE PORCENTAJES DE SCORE\n  const tech_pct = tech_pts_max > 0 \n    ? parseFloat(((tech_pts_earned / tech_pts_max) * 100).toFixed(2)) \n    : 0;\n\n  const theory_pct = theory_pts_max > 0 \n    ? parseFloat(((theory_pts_earned / theory_pts_max) * 100).toFixed(2)) \n    : 0;\n\n  // 4. CONSTRUCCI\u00d3N DEL REPORTE (Snake Case & English)\n  const report = {\n    employee_id: data.employee_number,\n    submission_date: data.submission_date,\n    duration: data.time_taken,\n    \n    // Globales\n    total_score_fraction: `${data.final_score}/${data.max_possible_score}`,\n    final_grade_pct: `${data.grade_percentage}%`,\n    status: is_passed ? \"\u2705 PASSED\" : \"\u274c FAILED\",\n\n    // Technical Stats\n    tech_score_pct: `${tech_pct}%`,\n    tech_questions_ratio: `${tech_q_correct}/${tech_q_total}`,\n\n    // Theoretical Stats\n    theory_score_pct: `${theory_pct}%`,\n    theory_questions_ratio: `${theory_q_correct}/${theory_q_total}`\n  };\n\n  // 5. CATEGOR\u00cdAS (PUNTAJE Y PORCENTAJE)\n  const cleanKey = (str) => {\n    return str.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\")\n              .toLowerCase().replace(/\\s+/g, '_');\n  };\n\n  for (const catName in data.category_performance) {\n    const cat = data.category_performance[catName];\n    const key = cleanKey(catName);\n\n    // Columna 1: Fracci\u00f3n (ej: 10/12)\n    report[`cat_${key}`] = `${cat.earned}/${cat.total}`;\n\n    // Columna 2: Porcentaje (ej: 83.33%) <-- NUEVO\n    const catPct = cat.total > 0 \n      ? parseFloat(((cat.earned / cat.total) * 100).toFixed(2)) \n      : 0;\n\n    report[`cat_${key}_pct`] = `${catPct}%`;\n  }\n\n  // 6. RESUMEN DE ERRORES (ERROR SUMMARY)\n  const failures = data.detailed_results.filter(q => q.status !== 'CORRECTO');\n  \n  report.error_summary = failures.length === 0 \n    ? \"\u2728 Perfect Score\" \n    : failures.map(f => `[${f.question_id}] Ans: ${f.user_response}`).join(' || ');\n\n  // 7. DETALLE POR PREGUNTA (Solo Emojis)\n  data.detailed_results.forEach(q => {\n    report[q.question_id] = q.status === 'CORRECTO' ? '\u2705' : '\u274c';\n  });\n\n  return {\n    json: report\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        -464
+      ],
+      "id": "663a800f-4dca-413e-9e30-ed0ab669d2a5",
+      "name": "basic_scoring"
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- CONFIGURACI\u00d3N ---\nconst MIN_PASSING_SCORE = 75; // <--- M\u00ednimo para aprobar\n\nreturn items.map(item => {\n  const data = item.json;\n\n  // 1. RE-EVALUAR ESTATUS\n  const is_passed = data.grade_percentage >= MIN_PASSING_SCORE;\n\n  // 2. CONTADORES (Puntos y Cantidad de Preguntas)\n  let tech_pts_earned = 0, tech_pts_max = 0;\n  let tech_q_correct = 0, tech_q_total = 0;\n\n  let theory_pts_earned = 0, theory_pts_max = 0;\n  let theory_q_correct = 0, theory_q_total = 0;\n\n  data.detailed_results.forEach(q => {\n    const is_correct = q.status === 'CORRECTO';\n\n    if (q.max_points === 1.5) {\n      tech_pts_earned += q.points;\n      tech_pts_max += q.max_points;\n      tech_q_total++;\n      if (is_correct) tech_q_correct++;\n    } \n    else if (q.max_points === 1) {\n      theory_pts_earned += q.points;\n      theory_pts_max += q.max_points;\n      theory_q_total++;\n      if (is_correct) theory_q_correct++;\n    }\n  });\n\n  // 3. C\u00c1LCULO DE PORCENTAJES GLOBALES\n  const tech_pct = tech_pts_max > 0 \n    ? parseFloat(((tech_pts_earned / tech_pts_max) * 100).toFixed(2)) \n    : 0;\n\n  const theory_pct = theory_pts_max > 0 \n    ? parseFloat(((theory_pts_earned / theory_pts_max) * 100).toFixed(2)) \n    : 0;\n\n  // 4. CONSTRUCCI\u00d3N DEL REPORTE\n  const report = {\n    employee_id: data.employee_number,\n    submission_date: data.submission_date,\n    duration: data.time_taken,\n    \n    // Globales\n    total_score_fraction: `${data.final_score}/${data.max_possible_score}`,\n    final_grade_pct: `${data.grade_percentage}%`,\n    status: is_passed ? \"\u2705 PASSED\" : \"\u274c FAILED\",\n\n    // Technical vs Theory Stats\n    tech_score_pct: `${tech_pct}%`,\n    tech_questions_ratio: `${tech_q_correct}/${tech_q_total}`,\n    theory_score_pct: `${theory_pct}%`,\n    theory_questions_ratio: `${theory_q_correct}/${theory_q_total}`\n  };\n\n  // 5. CATEGOR\u00cdAS (PUNTAJE + PORCENTAJE)\n  const cleanKey = (str) => {\n    return str.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\")\n              .toLowerCase().replace(/\\s+/g, '_');\n  };\n\n  for (const catName in data.category_performance) {\n    const cat = data.category_performance[catName];\n    const key = cleanKey(catName); // ej: \"maquina\"\n\n    // Columna 1: Fracci\u00f3n (ej: 10/12)\n    report[`cat_${key}`] = `${cat.earned}/${cat.total}`;\n    \n    // Columna 2: Porcentaje (ej: 83.33%)\n    const catPct = cat.total > 0 \n      ? parseFloat(((cat.earned / cat.total) * 100).toFixed(2)) \n      : 0;\n    \n    report[`cat_${key}_pct`] = `${catPct}%`;\n  }\n\n  // 6. RESUMEN DE ERRORES\n  const failures = data.detailed_results.filter(q => q.status !== 'CORRECTO');\n  \n  report.error_summary = failures.length === 0 \n    ? \"\u2728 Perfect Score\" \n    : failures.map(f => `[${f.question_id}] Ans: ${f.user_response}`).join(' || ');\n\n  // 7. DETALLE POR PREGUNTA (Emojis)\n  data.detailed_results.forEach(q => {\n    report[q.question_id] = q.status === 'CORRECTO' ? '\u2705' : '\u274c';\n  });\n\n  return {\n    json: report\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        -80
+      ],
+      "id": "5c41f20b-2634-4a02-b732-053784ce8d0b",
+      "name": "advenced_scoring"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1726302191,
+          "mode": "list",
+          "cachedResultName": "medium_results",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=1726302191"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "headers",
+              "displayName": "headers",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "params",
+              "displayName": "params",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "body",
+              "displayName": "body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "webhookUrl",
+              "displayName": "webhookUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "executionMode",
+              "displayName": "executionMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "myNewField",
+              "displayName": "myNewField",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1344,
+        -272
+      ],
+      "id": "8f41048d-63f6-4f96-9cd1-205026e45815",
+      "name": "medium_scored",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc",
+          "mode": "list",
+          "cachedResultName": "molding_assement",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1575503621,
+          "mode": "list",
+          "cachedResultName": "advanced_results",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16fvNVn7C4r0gJJIxpsP0qQP20d2vlVmSMDylNoBgMFc/edit#gid=1575503621"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "employee_id"
+          ],
+          "schema": [
+            {
+              "id": "employee_id",
+              "displayName": "employee_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submission_date",
+              "displayName": "submission_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "duration",
+              "displayName": "duration",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "total_score_fraction",
+              "displayName": "total_score_fraction",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "final_grade_pct",
+              "displayName": "final_grade_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tech_score_pct",
+              "displayName": "tech_score_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tech_questions_ratio",
+              "displayName": "tech_questions_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "theory_score_pct",
+              "displayName": "theory_score_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "theory_questions_ratio",
+              "displayName": "theory_questions_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_maquina",
+              "displayName": "cat_maquina",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_maquina_pct",
+              "displayName": "cat_maquina_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_proceso",
+              "displayName": "cat_proceso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_proceso_pct",
+              "displayName": "cat_proceso_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_calidad",
+              "displayName": "cat_calidad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_calidad_pct",
+              "displayName": "cat_calidad_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_seguridad",
+              "displayName": "cat_seguridad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_seguridad_pct",
+              "displayName": "cat_seguridad_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_materiales",
+              "displayName": "cat_materiales",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_materiales_pct",
+              "displayName": "cat_materiales_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_eficiencia",
+              "displayName": "cat_eficiencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_eficiencia_pct",
+              "displayName": "cat_eficiencia_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_desperdicios",
+              "displayName": "cat_desperdicios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_desperdicios_pct",
+              "displayName": "cat_desperdicios_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_ingenieria_moldes",
+              "displayName": "cat_ingenieria_moldes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "cat_ingenieria_moldes_pct",
+              "displayName": "cat_ingenieria_moldes_pct",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "error_summary",
+              "displayName": "error_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mach_1",
+              "displayName": "adv_mach_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mach_2",
+              "displayName": "adv_mach_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mach_3",
+              "displayName": "adv_mach_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mach_4",
+              "displayName": "adv_mach_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mach_5",
+              "displayName": "adv_mach_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mach_6",
+              "displayName": "adv_mach_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_proc_1",
+              "displayName": "adv_proc_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_proc_2",
+              "displayName": "adv_proc_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_proc_3",
+              "displayName": "adv_proc_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_proc_4",
+              "displayName": "adv_proc_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_proc_5",
+              "displayName": "adv_proc_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_proc_6",
+              "displayName": "adv_proc_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_qual_1",
+              "displayName": "adv_qual_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_qual_2",
+              "displayName": "adv_qual_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_qual_3",
+              "displayName": "adv_qual_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_qual_4",
+              "displayName": "adv_qual_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_qual_5",
+              "displayName": "adv_qual_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_safe_1",
+              "displayName": "adv_safe_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_safe_2",
+              "displayName": "adv_safe_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_safe_3",
+              "displayName": "adv_safe_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_safe_4",
+              "displayName": "adv_safe_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mat_1",
+              "displayName": "adv_mat_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mat_2",
+              "displayName": "adv_mat_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mat_3",
+              "displayName": "adv_mat_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_mat_4",
+              "displayName": "adv_mat_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_eff_1",
+              "displayName": "adv_eff_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_eff_2",
+              "displayName": "adv_eff_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_eff_3",
+              "displayName": "adv_eff_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_eff_4",
+              "displayName": "adv_eff_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_eff_5",
+              "displayName": "adv_eff_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_wast_1",
+              "displayName": "adv_wast_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_wast_2",
+              "displayName": "adv_wast_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_wast_3",
+              "displayName": "adv_wast_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_wast_4",
+              "displayName": "adv_wast_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_spec_1",
+              "displayName": "adv_spec_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_spec_2",
+              "displayName": "adv_spec_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_spec_3",
+              "displayName": "adv_spec_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_spec_4",
+              "displayName": "adv_spec_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_spec_5",
+              "displayName": "adv_spec_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "adv_spec_6",
+              "displayName": "adv_spec_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1344,
+        -80
+      ],
+      "id": "e7eebb75-459e-4e90-9d85-f9387f476f57",
+      "name": "advanced_scored",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "LoMbrgH2rQ0a1ari",
+          "name": "Sheets MG "
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "YRjw9xlTTSe",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        -368
+      ],
+      "id": "b264e375-4d94-4c52-a26c-24290c316b7c",
+      "name": "form_webhook",
+      "webhookId": "f3119627-14be-4400-95dd-47d4e1a445fb"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "level_check": {
+      "main": [
+        [
+          {
+            "node": "funnel_data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "basic_processing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "medium_processing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "advanced_processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "funnel_data": {
+      "main": [
+        [
+          {
+            "node": "storage_funnel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "basic_processing": {
+      "main": [
+        [
+          {
+            "node": "storage_basic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "medium_processing": {
+      "main": [
+        [
+          {
+            "node": "storage_medium",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "advanced_processing": {
+      "main": [
+        [
+          {
+            "node": "storage_advanced",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "storage_basic": {
+      "main": [
+        [
+          {
+            "node": "basic_eval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "basic_eval": {
+      "main": [
+        [
+          {
+            "node": "basic_scoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "storage_medium": {
+      "main": [
+        [
+          {
+            "node": "medium_eval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "storage_advanced": {
+      "main": [
+        [
+          {
+            "node": "advanced_eval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "medium_eval": {
+      "main": [
+        [
+          {
+            "node": "medium_scoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "basic_scoring": {
+      "main": [
+        [
+          {
+            "node": "basic_scored",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "advanced_eval": {
+      "main": [
+        [
+          {
+            "node": "advenced_scoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "medium_scoring": {
+      "main": [
+        [
+          {
+            "node": "medium_scored",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "advenced_scoring": {
+      "main": [
+        [
+          {
+            "node": "advanced_scored",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "form_webhook": {
+      "main": [
+        [
+          {
+            "node": "level_check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "413102e1-969c-47aa-9188-b9093da942ff",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1273fc0a299b5d86c18b83139898c705285f2556bb96d65ecaccb13873295d38"
+  },
+  "id": "sLoacT71cHP8diaW",
+  "tags": []
+}

@@ -58,4 +58,5 @@ def modify_md(file_path):
 
 
 if __name__ == "__main__":
-    modify_md("markdown/Basic_assesment.md")
+    modify_md("markdown/Medium_assesment.md")
+    modify_md("markdown/Advanced_assesment.md")
