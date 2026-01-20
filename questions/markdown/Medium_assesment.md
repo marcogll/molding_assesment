@@ -4,7 +4,7 @@
 ## ℹ️ Información General
 Esta evaluación está diseñada para certificar las competencias de técnicos de proceso y supervisores con experiencia en moldeo por inyección. Se enfoca en diagnóstico de problemas, ajuste de parámetros y conocimientos técnicos profundos.
 
-Total de preguntas: 60
+Total de preguntas: 61
 Puntaje Máximo Posible: 76 puntos
 Tiempo Estimado: 60 minutos
 🏆 Passing Score (Aprobatorio): 75% (57 puntos mínimo)

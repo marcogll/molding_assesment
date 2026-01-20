@@ -4,7 +4,7 @@
 ## ℹ️ Información General
 Esta evaluación está diseñada para certificar las competencias de ingenieros de procesos, líderes técnicos y especialistas en moldeo por inyección. Se enfoca en análisis profundo de termodinámica, estadística de calidad y optimización avanzada.
 
-Total de preguntas: 43
+Total de preguntas: 44
 Puntaje Máximo Posible: 52.5 puntos
 Tiempo Estimado: 75 minutos
 🏆 Passing Score (Aprobatorio): 80% (42 puntos mínimo)

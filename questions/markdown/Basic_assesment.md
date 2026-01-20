@@ -4,7 +4,7 @@
 ## ℹ️ Información General
 Esta evaluación está diseñada para certificar las competencias fundamentales del personal operativo de piso. Se centra en la seguridad, la operación básica de la máquina y la identificación visual de defectos.
 
-Total de preguntas: 55
+Total de preguntas: 58
 Puntaje Máximo Posible: 64.5 puntos
 Tiempo Estimado: 50 minutos
 🏆 Passing Score (Aprobatorio): 75% (49 puntos mínimo)
