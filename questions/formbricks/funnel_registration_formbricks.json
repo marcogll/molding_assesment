@@ -201,6 +201,50 @@
       "backButtonLabel": {
         "default": "Anterior"
       }
+    },
+    {
+      "id": "facility",
+      "type": "multipleChoiceSingle",
+      "headline": {
+        "default": "Instalación/Facility"
+      },
+      "subheader": {
+        "default": ""
+      },
+      "required": true,
+      "choices": [
+        {
+          "id": "c0",
+          "label": {
+            "default": "Planta 1"
+          }
+        },
+        {
+          "id": "c1",
+          "label": {
+            "default": "Planta 2"
+          }
+        },
+        {
+          "id": "c2",
+          "label": {
+            "default": "Planta 3"
+          }
+        },
+        {
+          "id": "c3",
+          "label": {
+            "default": "Planta 4"
+          }
+        }
+      ],
+      "buttonLabel": {
+        "default": "Siguiente"
+      },
+      "backButtonLabel": {
+        "default": "Anterior"
+      },
+      "shuffleOption": "none"
     }
   ],
   "endings": [

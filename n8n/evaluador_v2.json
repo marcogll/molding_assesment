@@ -116,7 +116,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n\n  // 1. Configuraci\u00f3n de fecha nativa\n  const dateObj = new Date(payload.createdAt);\n  const timeZone = 'America/Monterrey';\n\n  // 2. Extraer FECHA (YYYY-MM-DD) ajustada a Monterrey\n  const submission_date = dateObj.toLocaleDateString('en-CA', { \n    timeZone: timeZone \n  });\n\n  // 3. Extraer HORA (HH:mm:ss) ajustada a Monterrey\n  const submission_time = dateObj.toLocaleTimeString('en-GB', { \n    timeZone: timeZone,\n    hour12: false \n  });\n\n  return {\n    json: {\n      full_name: answers.full_name,\n      employee_id: answers.employee_id,\n      department: answers.department,\n      job_role: answers.job_role,\n      years_experience: answers.years_experience,\n      self_evaluation: answers.self_evaluation,\n      \n      submission_date: submission_date,\n      submission_time: submission_time\n    }\n  };\n});"
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n\n  // 1. Configuraci\u00f3n de fecha nativa\n  const dateObj = new Date(payload.createdAt);\n  const timeZone = 'America/Monterrey';\n\n  // 2. Extraer FECHA (YYYY-MM-DD) ajustada a Monterrey\n  const submission_date = dateObj.toLocaleDateString('en-CA', { \n    timeZone: timeZone \n  });\n\n  // 3. Extraer HORA (HH:mm:ss) ajustada a Monterrey\n  const submission_time = dateObj.toLocaleTimeString('en-GB', { \n    timeZone: timeZone,\n    hour12: false \n  });\n\n  return {\n    json: {\n      full_name: answers.full_name.trim(),\n      employee_id: answers.employee_id.trim(),\n      department: answers.department,\n      job_role: answers.job_role,\n      years_experience: answers.years_experience.trim(),\n      self_evaluation: answers.self_evaluation.trim(),\n      facility: answers.facility,\n      \n      submission_date: submission_date,\n      submission_time: submission_time\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -201,16 +201,26 @@
               "canBeUsedToMatch": true,
               "removed": false
             },
-            {
-              "id": "self_evaluation",
-              "displayName": "self_evaluation",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
+             {
+               "id": "self_evaluation",
+               "displayName": "self_evaluation",
+               "required": false,
+               "defaultMatch": false,
+               "display": true,
+               "type": "string",
+               "canBeUsedToMatch": true,
+               "removed": false
+             },
+             {
+               "id": "facility",
+               "displayName": "facility",
+               "required": false,
+               "defaultMatch": false,
+               "display": true,
+               "type": "string",
+               "canBeUsedToMatch": false,
+               "removed": false
+             },
             {
               "id": "submission_date",
               "displayName": "submission_date",
@@ -254,7 +264,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  const startObj = new Date(payload.createdAt); // Fecha de creaci\u00f3n (Inicio)\n  const endObj = new Date(payload.updatedAt);   // Fecha de actualizaci\u00f3n (Fin)\n\n  // 1. Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // 2. Hora Inicio (HH:mm:ss)\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // 3. Hora Fin (HH:mm:ss)\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- C\u00c1LCULO DE DURACI\u00d3N ---\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  // Definimos el orden exacto de los encabezados principales\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos que ya usamos o que no sirven\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  const startObj = new Date(payload.createdAt); // Fecha de creaci\u00f3n (Inicio)\n  const endObj = new Date(payload.updatedAt);   // Fecha de actualizaci\u00f3n (Fin)\n\n  // 1. Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // 2. Hora Inicio (HH:mm:ss)\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // 3. Hora Fin (HH:mm:ss)\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- C\u00c1LCULO DE DURACI\u00d3N ---\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  // Definimos el orden exacto de los encabezados principales\n  const final_data = {\n    employee_number: answers.employee_number.trim(),\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos que ya usamos o que no sirven\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = typeof answers[key] === 'string' ? answers[key].trim() : answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -267,7 +277,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- 1. CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  \n  // Convertimos las fechas ISO a objetos Date\n  const startObj = new Date(payload.createdAt); // Fecha de creaci\u00f3n (Inicio)\n  const endObj = new Date(payload.updatedAt);   // Fecha de actualizaci\u00f3n (Fin)\n\n  // A. Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // B. Hora Inicio (HH:mm:ss) - Formato 24h\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // C. Hora Fin (HH:mm:ss) - Formato 24h\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- 2. C\u00c1LCULO DE DURACI\u00d3N ---\n  // El valor metrics._total viene en milisegundos\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  \n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- 3. CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  // Definimos el orden exacto de los encabezados principales\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- 4. AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos t\u00e9cnicos que no queremos en el reporte\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  // Recorremos todas las respuestas que vienen en 'answers'\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- 1. CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  \n  // Convertimos las fechas ISO a objetos Date\n  const startObj = new Date(payload.createdAt); // Fecha de creaci\u00f3n (Inicio)\n  const endObj = new Date(payload.updatedAt);   // Fecha de actualizaci\u00f3n (Fin)\n\n  // A. Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // B. Hora Inicio (HH:mm:ss) - Formato 24h\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // C. Hora Fin (HH:mm:ss) - Formato 24h\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- 2. C\u00c1LCULO DE DURACI\u00d3N ---\n  // El valor metrics._total viene en milisegundos\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  \n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- 3. CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  // Definimos el orden exacto de los encabezados principales\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- 4. AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos t\u00e9cnicos que no queremos en el reporte\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  // Recorremos todas las respuestas que vienen en 'answers'\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = typeof answers[key] === 'string' ? answers[key].trim() : answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -280,7 +290,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- 1. CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  \n  const startObj = new Date(payload.createdAt);\n  const endObj = new Date(payload.updatedAt);\n\n  // Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // Hora Inicio (HH:mm:ss)\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // Hora Fin (HH:mm:ss)\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- 2. C\u00c1LCULO DE DURACI\u00d3N ---\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  \n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- 3. CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  const final_data = {\n    employee_number: answers.employee_number,\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- 4. AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos no relevantes\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
+        "jsCode": "return items.map(item => {\n  const payload = item.json.body.data;\n  const answers = payload.data;\n  const metrics = payload.ttc;\n\n  // --- 1. CONFIGURACI\u00d3N DE ZONA HORARIA Y FECHAS ---\n  const timeZone = 'America/Monterrey';\n  \n  const startObj = new Date(payload.createdAt);\n  const endObj = new Date(payload.updatedAt);\n\n  // Fecha (YYYY-MM-DD)\n  const submission_date = startObj.toLocaleDateString('en-CA', { timeZone });\n\n  // Hora Inicio (HH:mm:ss)\n  const start_time = startObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // Hora Fin (HH:mm:ss)\n  const end_time = endObj.toLocaleTimeString('en-GB', { \n    timeZone, \n    hour12: false \n  });\n\n  // --- 2. C\u00c1LCULO DE DURACI\u00d3N ---\n  const total_ms = metrics._total || 0;\n  const total_seconds = Math.floor(total_ms / 1000);\n  const minutes = Math.floor(total_seconds / 60);\n  const seconds = total_seconds % 60;\n  \n  const time_taken = `${minutes} min ${seconds} seg`;\n\n  // --- 3. CONSTRUCCI\u00d3N DEL OBJETO FINAL ---\n  const final_data = {\n    employee_number: answers.employee_number.trim(),\n    submission_date: submission_date,\n    start_time: start_time,\n    end_time: end_time,\n    time_taken: time_taken\n  };\n\n  // --- 4. AGREGAR PREGUNTAS DIN\u00c1MICAMENTE ---\n  // Excluimos campos no relevantes\n  const excluded_fields = ['employee_number', 'welcomeCard'];\n\n  for (const key in answers) {\n    if (!excluded_fields.includes(key)) {\n      final_data[key] = typeof answers[key] === 'string' ? answers[key].trim() : answers[key];\n    }\n  }\n\n  return {\n    json: final_data\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
