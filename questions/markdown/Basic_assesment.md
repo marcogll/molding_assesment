@@ -56,7 +56,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** El husillo es el componente rotativo que utiliza fricción y calor para plastificar el material.
 
 
-</details>### 2. ¿En qué parte de la máquina se deposita la materia prima (pellets) antes de entrar al barril?
+</details>
+
+---
+### 2. ¿En qué parte de la máquina se deposita la materia prima (pellets) antes de entrar al barril?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** Antes de entrar al cañón, el material debe estar disponible en la máquina. **Puntos:** 1 pts **ID:** mach_2
 
 - En la boquilla
@@ -73,7 +76,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** La tolva es el contenedor de suministro que alimenta el material por gravedad.
 
 
-</details>### 3. ¿Para qué sirven las bandas calefactoras del barril?
+</details>
+
+---
+### 3. ¿Para qué sirven las bandas calefactoras del barril?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** El control térmico es fundamental a lo largo del cilindro de inyección. **Puntos:** 1 pts **ID:** mach_3
 
 - Para enfriar el plástico
@@ -90,7 +96,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Las bandas mantienen la temperatura del barril para asegurar la fusión del polímero.
 
 
-</details>### 4. ¿Cuál es la función principal de la unidad de cierre?
+</details>
+
+---
+### 4. ¿Cuál es la función principal de la unidad de cierre?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** La máquina se divide principalmente en unidad de inyección y unidad de cierre. **Puntos:** 1 pts **ID:** mach_4
 
 - Inyectar el plástico
@@ -107,7 +116,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Debe proporcionar suficiente fuerza para vencer la presión interna que genera el plástico al entrar.
 
 
-</details>### 5. ¿Qué componente del molde permite que la pieza sea expulsada?
+</details>
+
+---
+### 5. ¿Qué componente del molde permite que la pieza sea expulsada?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** Una vez que la pieza se ha enfriado y el molde se abre, el proceso debe continuar. **Puntos:** 1 pts **ID:** mach_5
 
 - Los venteos
@@ -124,7 +136,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Son pernos mecánicos que empujan la pieza fuera de la cavidad.
 
 
-</details>### 6. ¿Para qué sirven los venteos (vents) del molde?
+</details>
+
+---
+### 6. ¿Para qué sirven los venteos (vents) del molde?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** El molde requiere mecanismos para gestionar los gases presentes en la cavidad. **Puntos:** 1 pts **ID:** mach_6
 
 - Para que entre aire a la pieza
@@ -141,7 +156,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Evitan quemaduras y facilitan el llenado.
 
 
-</details>### 7. ¿Cuál es la función del robot en una celda de moldeo?
+</details>
+
+---
+### 7. ¿Cuál es la función del robot en una celda de moldeo?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** La automatización de la extracción de piezas influye en la estabilidad del proceso. **Puntos:** 1 pts **ID:** mach_7
 
 - Platicar con el operador
@@ -158,7 +176,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Asegura la estabilidad del ciclo y seguridad del operador.
 
 
-</details>### 8. ¿Qué es el 'bebedero' (sprue)?
+</details>
+
+---
+### 8. ¿Qué es el 'bebedero' (sprue)?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** El sistema de alimentación del molde consta de varios componentes de distribución. **Puntos:** 1 pts **ID:** mach_8
 
 - Donde toma agua el operador
@@ -175,7 +196,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Parte de la arquitectura básica del molde.
 
 
-</details>### 9. ¿Qué es una 'colada fría'?
+</details>
+
+---
+### 9. ¿Qué es una 'colada fría'?
 **Categoría:** Máquina **Tipo:** Práctico **Description:** El control de la temperatura en la boquilla es crítico al inicio de la inyección. **Puntos:** 1.5 pts **ID:** mach_9
 
 - Un helado
@@ -192,7 +216,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Identificación de desperdicios en piso para reciclaje.
 
 
-</details>### 10. ¿Para qué se usa el desmoldante?
+</details>
+
+---
+### 10. ¿Para qué se usa el desmoldante?
 **Categoría:** Máquina **Tipo:** Práctico **Description:** El uso de químicos auxiliares en el molde tiene efectos secundarios en la pieza final. **Puntos:** 1.5 pts **ID:** mach_10
 
 - Para limpiar la máquina
@@ -209,7 +236,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Herramienta auxiliar de uso diario en piso.
 
 
-</details>### 11. ¿Qué es la 'fuerza de cierre' (clamping force)?
+</details>
+
+---
+### 11. ¿Qué es la 'fuerza de cierre' (clamping force)?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** El cálculo correcto de los parámetros de cierre previene problemas de calidad. **Puntos:** 1 pts **ID:** mach_11
 
 - La fuerza del brazo del operador
@@ -226,7 +256,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Concepto técnico de capacidad de máquina.
 
 
-</details>### 12. ¿Qué componente de la máquina jala el material de la tolva?
+</details>
+
+---
+### 12. ¿Qué componente de la máquina jala el material de la tolva?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** El transporte de sólidos dentro del barril depende de principios físicos mecánicos. **Puntos:** 1 pts **ID:** mach_12
 
 - La boquilla
@@ -243,7 +276,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Mecánica básica de alimentación.
 
 
-</details>### 13. ¿Qué es una 'platina'?
+</details>
+
+---
+### 13. ¿Qué es una 'platina'?
 **Categoría:** Máquina **Tipo:** Teórico **Description:** La estructura de la máquina debe soportar los componentes principales del herramental. **Puntos:** 1 pts **ID:** mach_13
 
 - Un plato de comida
@@ -260,7 +296,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Componente estructural de la prensa.
 
 
-</details>### 14. ¿Qué es un 'perno guía'?
+</details>
+
+---
+### 14. ¿Qué es un 'perno guía'?
 **Categoría:** Máquina **Tipo:** Práctico **Description:** El mantenimiento de los componentes móviles del molde evita daños catastróficos. **Puntos:** 1.5 pts **ID:** mach_14
 
 - Un tornillo largo
@@ -278,7 +317,11 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 
 ### ⚙️ Proceso (11 preguntas)
 
-</details>### 15. ¿Qué es el 'tiempo de ciclo'?
+</details>
+
+---
+### ⚙️ Proceso (11 preguntas)
+### 15. ¿Qué es el 'tiempo de ciclo'?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** La productividad se mide mediante la duración total de cada proceso de fabricación. **Puntos:** 1 pts **ID:** proc_1
 
 - El tiempo que el operador descansa
@@ -295,7 +338,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Es el tiempo transcurrido desde que inicia un ciclo hasta que la máquina está lista para el siguiente.
 
 
-</details>### 16. ¿Cuál es la función del enfriamiento en el molde?
+</details>
+
+---
+### 16. ¿Cuál es la función del enfriamiento en el molde?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** El control térmico del molde es esencial para la estabilidad del ciclo. **Puntos:** 1 pts **ID:** proc_2
 
 - Solidificar el plástico para que la pieza pueda ser expulsada
@@ -312,7 +358,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** El calor debe ser extraído para dar rigidez a la pieza.
 
 
-</details>### 17. ¿Qué sucede si el tiempo de enfriamiento es muy corto?
+</details>
+
+---
+### 17. ¿Qué sucede si el tiempo de enfriamiento es muy corto?
 **Categoría:** Proceso **Tipo:** Práctico **Description:** Modificar los tiempos del ciclo afecta directamente la integridad física del producto. **Puntos:** 1.5 pts **ID:** proc_3
 
 - La pieza sale más brillante
@@ -329,7 +378,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Impacto directo en la calidad física de la pieza durante la producción.
 
 
-</details>### 18. ¿Qué es la 'contrapresión' (back pressure)?
+</details>
+
+---
+### 18. ¿Qué es la 'contrapresión' (back pressure)?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** Durante la carga de material, existen fuerzas que actúan sobre el husillo en retroceso. **Puntos:** 1 pts **ID:** proc_4
 
 - Presión para cerrar el molde
@@ -346,7 +398,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Concepto técnico sobre el control del husillo durante la carga.
 
 
-</details>### 19. ¿Qué es el 'cojín' (cushion)?
+</details>
+
+---
+### 19. ¿Qué es el 'cojín' (cushion)?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** La posición final del husillo tras la inyección es un indicador de proceso clave. **Puntos:** 1 pts **ID:** proc_5
 
 - Una almohada para el operador
@@ -363,7 +418,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Es una métrica fundamental para asegurar que hubo transferencia de presión.
 
 
-</details>### 20. ¿Qué indica un cojín de 0 (cero)?
+</details>
+
+---
+### 20. ¿Qué indica un cojín de 0 (cero)?
 **Categoría:** Proceso **Tipo:** Práctico **Description:** La estabilidad de la posición final del husillo afecta la calidad de la pieza. **Puntos:** 1.5 pts **ID:** proc_6
 
 - Que la máquina es muy eficiente
@@ -380,7 +438,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Un cojín en cero es una señal de alerta operativa crítica.
 
 
-</details>### 21. ¿Qué es la 'presión de sostenimiento' (hold pressure)?
+</details>
+
+---
+### 21. ¿Qué es la 'presión de sostenimiento' (hold pressure)?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** Una vez que la cavidad está llena, el proceso requiere una etapa adicional antes del enfriamiento. **Puntos:** 1 pts **ID:** proc_7
 
 - La presión para abrir el molde
@@ -397,7 +458,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Fase del proceso para asegurar dimensiones.
 
 
-</details>### 22. ¿Qué es la 'velocidad de inyección'?
+</details>
+
+---
+### 22. ¿Qué es la 'velocidad de inyección'?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** El movimiento de avance del husillo durante el llenado se regula mediante parámetros específicos. **Puntos:** 1 pts **ID:** proc_8
 
 - Qué tan rápido gira el tornillo
@@ -414,7 +478,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Control de llenado dinámico.
 
 
-</details>### 23. ¿Qué es la 'posición de transferencia' (V-P)?
+</details>
+
+---
+### 23. ¿Qué es la 'posición de transferencia' (V-P)?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** El proceso de inyección consta de dos fases dinámicas principales que deben alternarse. **Puntos:** 1 pts **ID:** proc_9
 
 - Cuando cambias de turno
@@ -431,7 +498,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Punto de control crítico en el llenado.
 
 
-</details>### 24. ¿Qué significa el término 'disparo' (shot)?
+</details>
+
+---
+### 24. ¿Qué significa el término 'disparo' (shot)?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** La dosificación de material debe corresponder a la capacidad requerida por el molde. **Puntos:** 1 pts **ID:** proc_10
 
 - Un ruido fuerte
@@ -448,7 +518,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Unidad de medida de producción.
 
 
-</details>### 25. ¿Qué es la 'descompresión' (suck back)?
+</details>
+
+---
+### 25. ¿Qué es la 'descompresión' (suck back)?
 **Categoría:** Proceso **Tipo:** Teórico **Description:** Al finalizar la carga, se realiza un movimiento específico del husillo. **Puntos:** 1 pts **ID:** proc_11
 
 - Quitarle el aire a la máquina
@@ -466,7 +539,11 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 
 ### 💎 Calidad (10 preguntas)
 
-</details>### 26. ¿Qué es un 'tiro corto' (short shot)?
+</details>
+
+---
+### 💎 Calidad (10 preguntas)
+### 26. ¿Qué es un 'tiro corto' (short shot)?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** La inspección visual permite identificar problemas de llenado en la pieza. **Puntos:** 1.5 pts **ID:** qual_1
 
 - Una pieza que pesa demasiado
@@ -483,7 +560,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Identificar este defecto en piso es crucial para evitar embarques de material incompleto.
 
 
-</details>### 27. ¿Qué causa comúnmente la 'rebaba' (flash)?
+</details>
+
+---
+### 27. ¿Qué causa comúnmente la 'rebaba' (flash)?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** El equilibrio entre la fuerza de la máquina y la presión del plástico es crítico. **Puntos:** 1.5 pts **ID:** qual_2
 
 - Falta de material
@@ -500,7 +580,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Requiere diagnóstico práctico sobre la presión de inyección o el estado del molde.
 
 
-</details>### 28. ¿Qué es el 'rechupado' (sink mark)?
+</details>
+
+---
+### 28. ¿Qué es el 'rechupado' (sink mark)?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** Las variaciones de espesor en la pieza pueden generar defectos superficiales específicos. **Puntos:** 1.5 pts **ID:** qual_3
 
 - Una mancha negra
@@ -517,7 +600,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Es un defecto visual común que requiere ajustar el empaque o enfriamiento en piso.
 
 
-</details>### 29. ¿Qué es una 'quemadura' (burn mark) en la pieza?
+</details>
+
+---
+### 29. ¿Qué es una 'quemadura' (burn mark) en la pieza?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** El aire atrapado dentro de la cavidad reacciona ante la alta presión de inyección. **Puntos:** 1.5 pts **ID:** qual_4
 
 - Mancha causada por gas atrapado que se comprime y se calienta
@@ -534,7 +620,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Defecto operativo que indica falta de venteo o exceso de velocidad de inyección.
 
 
-</details>### 30. ¿Qué son las 'líneas de unión' (weld lines)?
+</details>
+
+---
+### 30. ¿Qué son las 'líneas de unión' (weld lines)?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** La geometría de la pieza obliga al plástico a separarse y volver a unirse. **Puntos:** 1.5 pts **ID:** qual_5
 
 - Cables eléctricos
@@ -551,7 +640,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Defecto común en piezas con geometrías complejas.
 
 
-</details>### 31. ¿Qué causa la 'ráfaga' (splay) en la pieza?
+</details>
+
+---
+### 31. ¿Qué causa la 'ráfaga' (splay) en la pieza?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** Ciertas condiciones del material generan marcas visuales características en la superficie. **Puntos:** 1.5 pts **ID:** qual_6
 
 - Exceso de presión
@@ -568,7 +660,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Defecto visual recurrente en piso que requiere acción correctiva.
 
 
-</details>### 32. ¿Qué es el 'pandeo' (warpage)?
+</details>
+
+---
+### 32. ¿Qué es el 'pandeo' (warpage)?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** La estabilidad dimensional de la pieza puede verse comprometida al salir del molde. **Puntos:** 1.5 pts **ID:** qual_7
 
 - Una mancha de aceite
@@ -585,7 +680,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Requiere evaluación de la estabilidad dimensional de la pieza.
 
 
-</details>### 33. ¿Qué es la 'delaminación'?
+</details>
+
+---
+### 33. ¿Qué es la 'delaminación'?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** La cohesión estructural del material inyectado puede fallar bajo ciertas condiciones. **Puntos:** 1.5 pts **ID:** qual_8
 
 - Cuando la pieza brilla mucho
@@ -602,7 +700,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Falla de calidad crítica que indica contaminación grave.
 
 
-</details>### 34. ¿Qué es un 'punto negro' (black speck)?
+</details>
+
+---
+### 34. ¿Qué es un 'punto negro' (black speck)?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** La limpieza del sistema de plastificación impacta en la pureza visual del producto. **Puntos:** 1.5 pts **ID:** qual_9
 
 - Una marca del molde
@@ -619,7 +720,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Defecto que requiere limpieza (purga) o revisión del husillo.
 
 
-</details>### 35. ¿Qué es una 'ayuda visual'?
+</details>
+
+---
+### 35. ¿Qué es una 'ayuda visual'?
 **Categoría:** Calidad **Tipo:** Práctico **Description:** Los operadores requieren herramientas de referencia para evaluar la calidad. **Puntos:** 1.5 pts **ID:** qual_10
 
 - Unos lentes
@@ -637,7 +741,11 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 
 ### 🗑️ Desperdicios (6 preguntas)
 
-</details>### 36. ¿Cuál es el orden de las 5S?
+</details>
+
+---
+### 🗑️ Desperdicios (6 preguntas)
+### 36. ¿Cuál es el orden de las 5S?
 **Categoría:** Desperdicios **Tipo:** Práctico **Description:** La metodología de organización industrial sigue una secuencia lógica de pasos. **Puntos:** 1.5 pts **ID:** wast_1
 
 - Seleccionar, Ordenar, Limpiar, Estandarizar, Disciplina
@@ -654,7 +762,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Metodología de orden aplicada a la estación de trabajo.
 
 
-</details>### 37. ¿Qué es el 'scrap'?
+</details>
+
+---
+### 37. ¿Qué es el 'scrap'?
 **Categoría:** Desperdicios **Tipo:** Práctico **Description:** La clasificación de productos no conformes es esencial para la contabilidad de producción. **Puntos:** 1.5 pts **ID:** wast_2
 
 - Material nuevo
@@ -671,7 +782,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Término fundamental para el manejo de mermas.
 
 
-</details>### 38. ¿Qué es el 'purgado'?
+</details>
+
+---
+### 38. ¿Qué es el 'purgado'?
 **Categoría:** Desperdicios **Tipo:** Práctico **Description:** La transición entre diferentes materiales o colores requiere un procedimiento técnico. **Puntos:** 1.5 pts **ID:** wast_3
 
 - Limpiar el sistema inyectando material nuevo
@@ -688,7 +802,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Actividad de limpieza necesaria en cambios de turno o material.
 
 
-</details>### 39. Un exceso de purga durante los arranques se considera:
+</details>
+
+---
+### 39. Un exceso de purga durante los arranques se considera:
 **Categoría:** Desperdicios **Tipo:** Práctico **Description:** La eficiencia en los procedimientos de limpieza afecta los indicadores de producción. **Puntos:** 1.5 pts **ID:** wast_4
 
 - Una buena práctica
@@ -705,7 +822,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Cultura de ahorro y reducción de mermas.
 
 
-</details>### 40. ¿Cómo ayuda el orden y limpieza (5S) a reducir desperdicios?
+</details>
+
+---
+### 40. ¿Cómo ayuda el orden y limpieza (5S) a reducir desperdicios?
 **Categoría:** Desperdicios **Tipo:** Práctico **Description:** El entorno de trabajo influye directamente en los defectos de las piezas. **Puntos:** 1.5 pts **ID:** wast_5
 
 - Evita contaminación y pérdida de herramientas
@@ -722,7 +842,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Prevención de riesgos y defectos por suciedad.
 
 
-</details>### 41. Si una pieza cae al suelo lleno de aceite, ¿qué se debe hacer?
+</details>
+
+---
+### 41. Si una pieza cae al suelo lleno de aceite, ¿qué se debe hacer?
 **Categoría:** Desperdicios **Tipo:** Práctico **Description:** El manejo de producto terminado requiere protocolos de higiene estrictos. **Puntos:** 1.5 pts **ID:** wast_6
 
 - Limpiarla con un trapo
@@ -740,7 +863,11 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 
 ### 📦 Materiales (4 preguntas)
 
-</details>### 42. ¿Por qué es importante el secado del material?
+</details>
+
+---
+### 📦 Materiales (4 preguntas)
+### 42. ¿Por qué es importante el secado del material?
 **Categoría:** Materiales **Tipo:** Teórico **Description:** La preparación de la materia prima es un paso previo esencial al procesamiento. **Puntos:** 1 pts **ID:** mat_1
 
 - Para que no pese tanto
@@ -757,7 +884,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** La humedad genera vapor y fallas estructurales por hidrólisis.
 
 
-</details>### 43. ¿Qué es un material 'higroscópico'?
+</details>
+
+---
+### 43. ¿Qué es un material 'higroscópico'?
 **Categoría:** Materiales **Tipo:** Teórico **Description:** Los polímeros interactúan de diferentes maneras con el ambiente que los rodea. **Puntos:** 1 pts **ID:** mat_2
 
 - Un material que repele el agua
@@ -774,7 +904,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Conocimiento técnico sobre las propiedades de absorción de agua de los polímeros.
 
 
-</details>### 44. ¿Cuál es la diferencia visual principal entre el material virgen y el material molido (regrind)?
+</details>
+
+---
+### 44. ¿Cuál es la diferencia visual principal entre el material virgen y el material molido (regrind)?
 **Categoría:** Materiales **Tipo:** Práctico **Description:** El operador debe ser capaz de distinguir visualmente la calidad de la materia prima. **Puntos:** 1 pts **ID:** mat_5
 
 - El material virgen es siempre más oscuro que el molido
@@ -791,7 +924,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** El material virgen viene cortado de fábrica uniformemente; el molido proviene de una trituradora, resultando en geometría irregular.
 
 
-</details>### 45. Si el contenedor de material no tiene tapa, ¿qué problema es más probable que ocurra?
+</details>
+
+---
+### 45. Si el contenedor de material no tiene tapa, ¿qué problema es más probable que ocurra?
 **Categoría:** Materiales **Tipo:** Práctico **Description:** La contaminación física en la tolva es una causa común de defectos. **Puntos:** 1 pts **ID:** mat_6
 
 - Sobrecalentamiento de la resina
@@ -809,7 +945,11 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 
 ### 🦺 Seguridad (5 preguntas)
 
-</details>### 46. ¿Cuál es el riesgo de purgar la máquina sin protección?
+</details>
+
+---
+### 🦺 Seguridad (5 preguntas)
+### 46. ¿Cuál es el riesgo de purgar la máquina sin protección?
 **Categoría:** Seguridad **Tipo:** Práctico **Description:** El mantenimiento y limpieza de la unidad de inyección conllevan riesgos específicos. **Puntos:** 1.5 pts **ID:** safe_1
 
 - Que la pieza salga fea
@@ -826,7 +966,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Es una situación de riesgo directo en la operación diaria.
 
 
-</details>### 47. ¿Para qué sirve el botón de paro de emergencia?
+</details>
+
+---
+### 47. ¿Para qué sirve el botón de paro de emergencia?
 **Categoría:** Seguridad **Tipo:** Práctico **Description:** Las situaciones de peligro requieren una reacción inmediata del operador. **Puntos:** 1.5 pts **ID:** safe_2
 
 - Para abrir la puerta
@@ -843,7 +986,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Uso crítico del equipo de seguridad ante incidentes.
 
 
-</details>### 48. ¿Qué significa 'LOTO' en seguridad industrial?
+</details>
+
+---
+### 48. ¿Qué significa 'LOTO' en seguridad industrial?
 **Categoría:** Seguridad **Tipo:** Teórico **Description:** Existen protocolos estandarizados para garantizar la seguridad durante intervenciones. **Puntos:** 1 pts **ID:** safe_3
 
 - Lotería de seguridad
@@ -860,7 +1006,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Conocimiento de la normativa estándar de seguridad (Lockout/Tagout).
 
 
-</details>### 49. ¿Cuál es la característica visual estándar de un botón de Paro de Emergencia?
+</details>
+
+---
+### 49. ¿Cuál es la característica visual estándar de un botón de Paro de Emergencia?
 **Categoría:** Seguridad **Tipo:** Práctico **Description:** Los dispositivos de seguridad críticos deben ser universalmente reconocibles. **Puntos:** 1 pts **ID:** safe_4
 
 - Botón verde pequeño oculto bajo el panel
@@ -877,7 +1026,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Por normativa internacional, el paro de emergencia debe ser rojo, prominente y sobre fondo amarillo para fácil detección.
 
 
-</details>### 50. Además del material fundido, ¿qué componente de la máquina presenta un alto riesgo de quemaduras por contacto?
+</details>
+
+---
+### 50. Además del material fundido, ¿qué componente de la máquina presenta un alto riesgo de quemaduras por contacto?
 **Categoría:** Seguridad **Tipo:** Práctico **Description:** Existen zonas de la máquina que operan a altas temperaturas durante el funcionamiento normal. **Puntos:** 1 pts **ID:** safe_5
 
 - El panel de control (HMI)
@@ -895,7 +1047,11 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 
 ### ⚡ Eficiencia (5 preguntas)
 
-</details>### 51. ¿Qué factores componen el cálculo del OEE (Eficiencia General de los Equipos)?
+</details>
+
+---
+### ⚡ Eficiencia (5 preguntas)
+### 51. ¿Qué factores componen el cálculo del OEE (Eficiencia General de los Equipos)?
 **Categoría:** Eficiencia **Tipo:** Teórico **Description:** La eficiencia industrial se mide mediante indicadores estandarizados globalmente. **Puntos:** 1 pts **ID:** eff_1
 
 - Seguridad, Medio Ambiente y Costo
@@ -912,7 +1068,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** Es el estándar industrial: ¿La máquina funcionó? (Disp), ¿A qué velocidad? (Desemp), ¿Salieron bien? (Calidad).
 
 
-</details>### 52. ¿Para qué sirve la metodología SMED en inyección?
+</details>
+
+---
+### 52. ¿Para qué sirve la metodología SMED en inyección?
 **Categoría:** Eficiencia **Tipo:** Teórico **Description:** Existen metodologías específicas para optimizar los tiempos de preparación de máquina. **Puntos:** 1 pts **ID:** eff_2
 
 - Para reducir el consumo eléctrico
@@ -929,7 +1088,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** SMED (Single Minute Exchange of Die) busca cambios rápidos para aumentar la disponibilidad.
 
 
-</details>### 53. ¿Qué se entiende por 'Tiempo Muerto' (Downtime) en producción?
+</details>
+
+---
+### 53. ¿Qué se entiende por 'Tiempo Muerto' (Downtime) en producción?
 **Categoría:** Eficiencia **Tipo:** Práctico **Description:** Las paradas no planificadas afectan directamente la capacidad productiva. **Puntos:** 1 pts **ID:** eff_3
 
 - El tiempo en que la máquina está apagada por ser fin de semana
@@ -946,7 +1108,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** El tiempo muerto es improductivo y reduce la disponibilidad del equipo para manufacturar.
 
 
-</details>### 54. ¿Cuál es la diferencia básica entre un ciclo 'Automático' y uno 'Semi-automático'?
+</details>
+
+---
+### 54. ¿Cuál es la diferencia básica entre un ciclo 'Automático' y uno 'Semi-automático'?
 **Categoría:** Eficiencia **Tipo:** Teórico **Description:** La operación continua de la máquina tiene diferentes modalidades de ejecución. **Puntos:** 1 pts **ID:** eff_4
 
 - En automático el operador abre la puerta; en semi-automático no
@@ -963,7 +1128,10 @@ Práctico (1.5 pts): Situaciones de decisión en piso, seguridad y calidad
 **Racional:** El ciclo automático permite producción continua sin intervención; el semi-automático requiere que el operador valide cada pieza y reinicie.
 
 
-</details>### 55. ¿Por qué es importante que el operador registre la cantidad de Scrap (desperdicio) generado?
+</details>
+
+---
+### 55. ¿Por qué es importante que el operador registre la cantidad de Scrap (desperdicio) generado?
 **Categoría:** Eficiencia **Tipo:** Práctico **Description:** El registro preciso de lo producido es vital para el control de costos. **Puntos:** 1 pts **ID:** eff_5
 
 - Para culpar directamente al departamento de mantenimiento
@@ -988,3 +1156,5 @@ Consulta con tu supervisor cualquier duda sobre los procedimientos de seguridad
 ¡Buena suerte en tu evaluación! 🎯
 
 </details>
+
+---
