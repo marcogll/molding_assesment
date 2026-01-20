@@ -24,9 +24,35 @@ El nombre representa los pilares fundamentales del proyecto:
 
 Los assessments están disponibles en los siguientes niveles:
 
-- **[Nivel Básico](questions/markdown/Basic_assesment.md)**: Evaluación para operadores de piso y personal de nuevo ingreso.
-- **[Nivel Intermedio](questions/markdown/Medium_assesment.md)**: Evaluación para técnicos de procesos y ajustadores.
-- **[Nivel Avanzado](questions/markdown/Advanced_assesment.md)**: Evaluación para ingenieros de procesos y gerentes.
+### Nivel Básico
+- **Público Objetivo**: Operadores de piso y personal de nuevo ingreso.
+- **Duración**: Aproximadamente 42 minutos.
+- **Preguntas**: 58 preguntas prácticas y teóricas.
+- **Enfoque**: Conocimientos fundamentales de seguridad, operación de máquinas, identificación de defectos y procedimientos básicos.
+- **Encuesta de Prueba**: [Acceder a la evaluación](https://feedback.soul23.cloud/s/cmkmsz9z8000dp201ozdoprxq)
+- **Documento Detallado**: [Ver preguntas completas](questions/markdown/Basic_assesment.md)
+
+### Nivel Intermedio
+- **Público Objetivo**: Técnicos de procesos y ajustadores con experiencia.
+- **Duración**: Aproximadamente 45 minutos.
+- **Preguntas**: 61 preguntas avanzadas.
+- **Enfoque**: Diagnóstico de fallas, ajuste de parámetros de proceso, eficiencia operativa y resolución de problemas técnicos.
+- **Encuesta de Prueba**: [Acceder a la evaluación](https://feedback.soul23.cloud/s/cmkmszaz1000ep20178nzwcyd)
+- **Documento Detallado**: [Ver preguntas completas](questions/markdown/Medium_assesment.md)
+
+### Nivel Avanzado
+- **Público Objetivo**: Ingenieros de procesos y gerentes técnicos.
+- **Duración**: Aproximadamente 32 minutos.
+- **Preguntas**: 44 preguntas especializadas.
+- **Enfoque**: Optimización de procesos, reología avanzada, defectos complejos, diseño de moldes y análisis estadístico de calidad.
+- **Encuesta de Prueba**: [Acceder a la evaluación](https://feedback.soul23.cloud/s/cmkmszbs1000fp2014xg03qbe)
+- **Documento Detallado**: [Ver preguntas completas](questions/markdown/Advanced_assesment.md)
+
+### Nivel Funnel (Registro)
+- **Propósito**: Captura de datos iniciales del empleado para personalización.
+- **Duración**: 2-3 minutos.
+- **Preguntas**: Información básica (nombre, ID, departamento, puesto, experiencia).
+- **Encuesta de Prueba**: [Acceder al registro](https://feedback.soul23.cloud/s/cmkmsz982000cp201l0boo1ek)
 
 ## 🧠 Áreas Técnicas a Evaluar
 
