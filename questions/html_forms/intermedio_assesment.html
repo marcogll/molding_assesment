@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAROL - Evaluación Técnica de Moldeo</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+.container { max-width: 900px; margin: 0 auto; }
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #a6d189, #8caaee, #f4b8e4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    text-align: center;
+    color: #a5adce;
+    margin-bottom: 2rem;
+}
+.score-info {
+    text-align: center;
+    background: rgba(138, 170, 238, 0.1);
+    border: 1px solid #8caaee44;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+.card {
+    background: rgba(65, 69, 89, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid #414559;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s;
+}
+.card:hover { border-color: #8caaee88; }
+.card-header {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.badge-cat { background: #8caaee33; color: #8caaee; }
+.badge-type { background: #a6d18933; color: #a6d189; }
+.badge-score { background: #f4b8e433; color: #f4b8e4; }
+.description {
+    font-size: 0.9rem;
+    color: #a5adce;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+}
+.question-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(30, 30, 60, 0.5);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.option:hover { background: rgba(138, 170, 238, 0.15); }
+.option.correct {
+    background: rgba(166, 209, 137, 0.15);
+    border: 1px solid #a6d18944;
+}
+.option input[type="radio"] {
+    accent-color: #8caaee;
+    width: 16px; height: 16px;
+}
+.reasoning {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(244, 184, 228, 0.08);
+    border-left: 3px solid #f4b8e4;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #b5bfe2;
+}
+.filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #414559;
+    border-radius: 20px;
+    background: transparent;
+    color: #a5adce;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: #8caaee33;
+    border-color: #8caaee;
+    color: #8caaee;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.stat-box {
+    background: rgba(65, 69, 89, 0.5);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+}
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #8caaee;
+}
+.stat-label {
+    font-size: 0.8rem;
+    color: #a5adce;
+    margin-top: 0.25rem;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>CAROL - Evaluación Técnica de Moldeo</h1>
+    <p class="subtitle">Assessment Técnico de Moldeo por Inyección - Intermedio</p>
+    
+    <div class="stats">
+        <div class="stat-box"><div class="stat-value">60</div><div class="stat-label">Preguntas</div></div>
+        <div class="stat-box"><div class="stat-value">76.0</div><div class="stat-label">Puntaje Total</div></div>
+        <div class="stat-box"><div class="stat-value">7</div><div class="stat-label">Categorías</div></div>
+    </div>
+    <div class="stats"><div class="stat-box"><div class="stat-value">8</div><div class="stat-label">Efficiency</div></div><div class="stat-box"><div class="stat-value">9</div><div class="stat-label">Machine</div></div><div class="stat-box"><div class="stat-value">8</div><div class="stat-label">Materials</div></div><div class="stat-box"><div class="stat-value">9</div><div class="stat-label">Process</div></div><div class="stat-box"><div class="stat-value">9</div><div class="stat-label">Quality</div></div><div class="stat-box"><div class="stat-value">9</div><div class="stat-label">Safety</div></div><div class="stat-box"><div class="stat-value">8</div><div class="stat-label">Waste</div></div></div>
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCards('all')">Todas</button>
+        <button class="filter-btn" onclick="filterCards('Machine')">Máquina</button>
+        <button class="filter-btn" onclick="filterCards('Process')">Proceso</button>
+        <button class="filter-btn" onclick="filterCards('Quality')">Calidad</button>
+        <button class="filter-btn" onclick="filterCards('Safety')">Seguridad</button>
+        <button class="filter-btn" onclick="filterCards('Materials')">Materiales</button>
+        <button class="filter-btn" onclick="filterCards('Efficiency')">Eficiencia</button>
+        <button class="filter-btn" onclick="filterCards('Waste')">Desperdicios</button>
+    </div>
+    <div class="cards">
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Los sensores de temperatura son los ojos del sistema de control.</div>
+            <div class="question-text">¿Qué variable física mide realmente un termopar insertado en una zona del barril de plastificación?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_1" value="0" >
+                <span>La temperatura del núcleo de la masa de plástico fundido</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_1" value="1" checked>
+                <span>La temperatura del acero del barril en ese punto específico</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_1" value="2" >
+                <span>La temperatura superficial de la resistencia calefactora</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_1" value="3" >
+                <span>La temperatura generada por la fricción de cizalla del husillo</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El termopar toca el metal del barril. La temperatura del plástico es una consecuencia, pero no es lo que el sensor mide directamente.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La presión hidráulica no es equivalente a la presión ejercida sobre el polímero.</div>
+            <div class="question-text">Si el manómetro hidráulico marca 1,000 PSI y la máquina tiene un ratio de intensificación de 10:1, ¿cuál es la presión plástica aplicada?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_2" value="0" >
+                <span>100 PSI (Reducción por fricción mecánica)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_2" value="1" >
+                <span>1,000 PSI (Relación directa hidráulica 1:1)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_2" value="2" checked>
+                <span>10,000 PSI (Multiplicación por área del pistón)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_2" value="3" >
+                <span>11,000 PSI (Suma acumulada de presiones)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La presión sobre el plástico es mayor que la hidráulica debido a la diferencia de áreas entre el pistón hidráulico y la punta del husillo.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La válvula antirretorno es crítica para mantener la presión durante el empaque.</div>
+            <div class="question-text">Durante la fase de sostenimiento, observas que el husillo sigue avanzando lentamente (creeping) sin detenerse. Diagnóstico probable:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_3" value="0" >
+                <span>La compuerta del molde se congeló prematuramente por enfriamiento</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_3" value="1" checked>
+                <span>Fuga interna en el anillo de cierre (válvula check)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_3" value="2" >
+                <span>Exceso de contrapresión programada durante la carga</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_3" value="3" >
+                <span>El perfil de temperaturas del barril está invertido</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si el husillo avanza en 'Hold', significa que el material se está fugando hacia atrás a través del anillo check desgastado.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La geometría del tornillo determina su capacidad para fundir y mezclar.</div>
+            <div class="question-text">¿Qué indica la relación L/D (Longitud/Diámetro) en la especificación de un husillo?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_4" value="0" >
+                <span>La capacidad máxima de inyección calculada en gramos</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_4" value="1" checked>
+                <span>La longitud de vuelo del husillo dividida por su diámetro</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_4" value="2" >
+                <span>La distancia máxima de apertura permitida de la prensa</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_4" value="3" >
+                <span>El ratio de compresión entre zona de alimentación y medición</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es una medida geométrica clave (ej. 20:1) que determina la capacidad de mezclado y plastificación.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La alimentación del material depende de condiciones específicas de fricción y temperatura.</div>
+            <div class="question-text">Si la temperatura en la garganta de alimentación no se controla y sube demasiado, ¿qué problema de proceso se genera?</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="mach_5" value="0" checked>
+                <span>Puenteo de material (Bridging) y falla de carga</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_5" value="1" >
+                <span>Degradación inmediata del pigmento en la tolva</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_5" value="2" >
+                <span>Aumento descontrolado de la presión hidráulica</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_5" value="3" >
+                <span>Cristalización prematura del polímero en el husillo</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Los pellets se ablandan y se pegan entre sí en la garganta, bloqueando el paso hacia el tornillo.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La unidad de potencia es la encargada de convertir energía eléctrica en energía de fluido.</div>
+            <div class="question-text">En un sistema hidráulico, ¿qué componente es responsable de generar el caudal necesario para el movimiento?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_6" value="0" >
+                <span>La válvula proporcional de flujo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_6" value="1" >
+                <span>El acumulador de nitrógeno a presión</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_6" value="2" checked>
+                <span>La bomba hidráulica principal</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_6" value="3" >
+                <span>El cilindro de inyección trasero</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La bomba convierte energía mecánica en energía hidráulica (caudal); las válvulas solo lo regulan.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La integridad estructural de la máquina depende de placas de acero específicas.</div>
+            <div class="question-text">Identifica cuál de las siguientes NO es una platina estándar en una inyectora:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_7" value="0" >
+                <span>Platina Fija (Lado A)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_7" value="1" >
+                <span>Platina Móvil (Lado B)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_7" value="2" checked>
+                <span>Platina de Rotación Axial</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_7" value="3" >
+                <span>Platina Trasera o de Soporte</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Las platinas estándar son fija, móvil y de soporte. La rotación axial no es un componente estructural estándar.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La compatibilidad entre sensores y controladores es esencial para lecturas precisas.</div>
+            <div class="question-text">¿Qué consecuencia tiene conectar un termopar Tipo J en una tarjeta configurada para Tipo K?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_8" value="0" >
+                <span>Ninguna, ambos miden la temperatura de la misma forma</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_8" value="1" checked>
+                <span>Lectura errónea de temperatura y riesgo de proceso</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_8" value="2" >
+                <span>Daño permanente e irreversible al PLC de la máquina</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_8" value="3" >
+                <span>El calentamiento será mucho más lento pero preciso</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Las curvas de voltaje/temperatura son diferentes. El controlador leerá una temperatura falsa, pudiendo sobrecalentar o enfriar el sistema.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Los mecanismos del molde deben coordinarse para evitar colisiones internas.</div>
+            <div class="question-text">¿Cuál es la función crítica de los 'Return Pins' (Pernos de retorno) en el molde?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_9" value="0" >
+                <span>Empujar la pieza fuera del molde al abrir</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_9" value="1" checked>
+                <span>Retraer la placa de botadores al cerrar el molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_9" value="2" >
+                <span>Guiar la alineación fina entre cavidad y corazón</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_9" value="3" >
+                <span>Soportar la presión de inyección en la placa trasera</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Aseguran mecánicamente que los botadores regresen a posición cero antes de inyectar, evitando choques.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La inyección se divide en dos fases de control distintas.</div>
+            <div class="question-text">¿Qué define exactamente el punto de conmutación o transferencia (VPT)?</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="proc_10" value="0" checked>
+                <span>El cambio de control de Velocidad a control de Presión</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_10" value="1" >
+                <span>El momento exacto en que el molde se llena al 100%</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_10" value="2" >
+                <span>El inicio inmediato del tiempo de enfriamiento del ciclo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_10" value="3" >
+                <span>El punto donde se activa la contrapresión del husillo</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es la transición crítica donde la máquina deja de empujar por velocidad (llenado) y empieza a empacar por presión.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La maquinaria global requiere manejar diferentes sistemas de unidades.</div>
+            <div class="question-text">Calcula rápidamente: Si tienes 350 Bar, ¿cuál es su equivalente aproximado en PSI? (Factor x14.5)</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_11" value="0" >
+                <span>2,400 PSI</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_11" value="1" >
+                <span>3,500 PSI</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_11" value="2" checked>
+                <span>5,075 PSI</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_11" value="3" >
+                <span>50,000 PSI</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Cálculo directo: 350 * 14.5 = 5,075. Es vital para operadores que manejan máquinas con diferentes unidades.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El comportamiento del plástico fundido no es lineal como el del agua.</div>
+            <div class="question-text">Debido al comportamiento pseudoplástico (Shear Thinning), ¿qué pasa con la viscosidad al aumentar la velocidad de inyección?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_12" value="0" >
+                <span>La viscosidad aumenta (se hace más espeso)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_12" value="1" checked>
+                <span>La viscosidad disminuye (fluye más fácil)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_12" value="2" >
+                <span>La viscosidad permanece constante (Newtoniano)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_12" value="3" >
+                <span>El material se degrada instantáneamente</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Los polímeros adelgazan por cizallamiento; a mayor velocidad, las cadenas se alinean y la resistencia al flujo baja.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Determinar el tiempo correcto de sostenimiento es un proceso científico.</div>
+            <div class="question-text">¿Qué determina un 'Estudio de Sellado de Compuerta' (Gate Freeze Study)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_13" value="0" >
+                <span>La temperatura exacta de fusión del material</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_13" value="1" checked>
+                <span>El tiempo mínimo de sostenimiento para evitar reflujo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_13" value="2" >
+                <span>La presión máxima que soporta el molde sin abrirse</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_13" value="3" >
+                <span>El tiempo total de enfriamiento requerido por la pieza</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Busca el punto en el tiempo donde la entrada se solidifica y el peso de la pieza se estabiliza.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La transferencia efectiva de presión requiere un colchón de material.</div>
+            <div class="question-text">Técnicamente, ¿por qué es grave que el cojín llegue a cero durante el proceso?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_14" value="0" >
+                <span>Porque el impacto metal-metal daña la punta del husillo</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_14" value="1" checked>
+                <span>Porque se pierde el control de la presión sobre la cavidad</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_14" value="2" >
+                <span>Porque el sistema hidráulico entra en cavitación y pierde potencia</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_14" value="3" >
+                <span>Porque aumenta el tiempo de ciclo innecesariamente</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si el tornillo toca fondo, la presión hidráulica se transfiere al metal, no al plástico, dejando la pieza 'suelta'.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El plástico reduce su volumen significativamente al enfriarse.</div>
+            <div class="question-text">¿Cuál es la variable de proceso más influyente para controlar la contracción final de la pieza?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_15" value="0" >
+                <span>La temperatura de la zona de alimentación</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_15" value="1" >
+                <span>La velocidad de rotación del husillo</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_15" value="2" checked>
+                <span>La presión de sostenimiento (Packing pressure)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_15" value="3" >
+                <span>La velocidad de apertura del molde</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El empaque introduce material adicional para compensar la reducción de volumen al enfriar.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El control del estado del material fundido al finalizar la dosificación evita problemas en el siguiente ciclo.</div>
+            <div class="question-text">¿Qué defecto en la pieza o problema en el molde se genera por una falta de descompresión (suck-back)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_16" value="0" >
+                <span>Tiro corto en la pieza por falta de carga</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_16" value="1" checked>
+                <span>Hilos o babeo en la boquilla que obstruyen la entrada</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_16" value="2" >
+                <span>Quemaduras por efecto diesel en el molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_16" value="3" >
+                <span>Deformación severa de la pieza al expulsar</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Sin descompresión, la presión residual hace que el plástico gotee (babeo), creando hilos fríos que bloquean el siguiente disparo.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La compactación del fundido antes de la inyección asegura la consistencia.</div>
+            <div class="question-text">¿Qué defecto esperarías si la contrapresión (Back Pressure) es excesivamente baja?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_17" value="0" >
+                <span>Rebaba excesiva en la línea de partición</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_17" value="1" checked>
+                <span>Pobre mezcla, aire atrapado y peso inconsistente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_17" value="2" >
+                <span>Degradación del material por cizallamiento y fricción</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_17" value="3" >
+                <span>Dificultad para expulsar la pieza por vacío</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La contrapresión compacta el fundido. Sin ella, entra aire y la densidad del disparo varía.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La historia térmica del material afecta sus propiedades finales.</div>
+            <div class="question-text">¿Qué es el 'Tiempo de Residencia' en inyección?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_18" value="0" >
+                <span>El tiempo total del ciclo de inyección completo</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_18" value="1" checked>
+                <span>El tiempo que el polímero pasa expuesto a calor en el barril</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_18" value="2" >
+                <span>El tiempo que tarda la pieza en solidificar</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_18" value="3" >
+                <span>El tiempo de vida útil estimado del molde</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es crucial para materiales sensibles; demasiado tiempo de residencia degrada el polímero.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Defectos contradictorios suelen apuntar a problemas mecánicos del herramental.</div>
+            <div class="question-text">Tienes una pieza con Rebaba (Flash) pero con Peso Bajo (Short shot). ¿Qué indica esta contradicción?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_19" value="0" >
+                <span>Exceso de presión de sostenimiento aplicada tardíamente</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_19" value="1" checked>
+                <span>Daño en el molde o desalineación de platinas (Falta de sello)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_19" value="2" >
+                <span>Material demasiado viscoso para la temperatura actual</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_19" value="3" >
+                <span>Tiempo de inyección programado muy corto</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Significa que el material se escapa antes de llenar la pieza. El molde no está sellando correctamente.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El comportamiento del flujo depende de la velocidad de entrada a la cavidad.</div>
+            <div class="question-text">¿Qué defecto causa un 'gusanito' o serpenteo visible en la superficie de la pieza frente a la compuerta?</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="qual_20" value="0" checked>
+                <span>Jetting (Efecto Jet)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_20" value="1" >
+                <span>Splay (Ráfagas)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_20" value="2" >
+                <span>Weld Line (Línea de unión)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_20" value="3" >
+                <span>Sink Mark (Rechupado)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Ocurre cuando el plástico entra muy rápido a una cavidad abierta y no se pega a las paredes, 'volando' a través de ella.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La compresión rápida de gases genera temperaturas extremas.</div>
+            <div class="question-text">¿Qué fenómeno físico causa el 'Efecto Diesel' (quemadura en el borde de la pieza)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_21" value="0" >
+                <span>Oxidación acelerada del metal del molde</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_21" value="1" checked>
+                <span>Compresión adiabática del aire atrapado</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_21" value="2" >
+                <span>Reacción química exotérmica del masterbatch</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_21" value="3" >
+                <span>Fricción excesiva del husillo contra el barril</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El aire atrapado se comprime tan rápido que eleva su temperatura hasta incendiar el plástico (como un motor diesel).</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Los volátiles en el material se expanden violentamente al perder presión.</div>
+            <div class="question-text">Las ráfagas plateadas (Silver streaks) distribuidas por toda la pieza suelen indicar:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_22" value="0" >
+                <span>Exceso de fuerza de cierre en la máquina</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_22" value="1" checked>
+                <span>Humedad en el material (Vapor)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_22" value="2" >
+                <span>Falta de velocidad de inyección</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_22" value="3" >
+                <span>Temperatura de molde demasiado fría</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La humedad explota en vapor al inyectarse, dejando estelas plateadas en la dirección del flujo.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La forma en que se unen los frentes de flujo determina la resistencia mecánica.</div>
+            <div class="question-text">¿Cuál es la diferencia técnica entre Línea de Soldadura (Weld) y Línea de Fusión (Meld)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_23" value="0" >
+                <span>No existe diferencia, son sinónimos técnicos</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_23" value="1" checked>
+                <span>El ángulo de encuentro de los frentes de flujo (<135° vs >135°)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_23" value="2" >
+                <span>La temperatura del molde en el punto de contacto</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_23" value="3" >
+                <span>El tipo de material amorfo vs semicristalino</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> En la 'Weld' los frentes chocan de frente (más débil); en la 'Meld' fluyen paralelos y se unen lateralmente.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El enfriamiento desigual crea tensiones internas que deforman la pieza.</div>
+            <div class="question-text">Para corregir un problema de Pandeo (Warpage) en una pieza plana, ¿qué ajuste es más efectivo?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_24" value="0" >
+                <span>Aumentar significativamente la temperatura de la masa</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_24" value="1" checked>
+                <span>Equilibrar el enfriamiento entre lado fijo y móvil</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_24" value="2" >
+                <span>Incrementar la fuerza de cierre al máximo disponible</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_24" value="3" >
+                <span>Reducir el tiempo de ciclo a la mitad</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El pandeo ocurre por enfriamiento diferencial; igualar las temperaturas de las caras del molde reduce la tensión interna.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La compatibilidad química es esencial para que el material se funda como una sola masa.</div>
+            <div class="question-text">La 'Delaminación' (capas que se desprenden) es síntoma inequívoco de:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="qual_25" value="0" checked>
+                <span>Contaminación con polímero incompatible</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_25" value="1" >
+                <span>Velocidad de inyección excesivamente lenta</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_25" value="2" >
+                <span>Presión de sostenimiento inusualmente alta</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_25" value="3" >
+                <span>Temperatura de molde peligrosamente baja</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Materiales como PE y ABS no se mezclan; forman capas separadas que se pelan como una cebolla.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El material degradado puede acumularse en el sistema y desprenderse aleatoriamente.</div>
+            <div class="question-text">¿Cuál es la fuente más común de 'Puntos Negros' aleatorios en producción continua?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_26" value="0" >
+                <span>Suciedad y sarro en el sistema de agua de enfriamiento</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_26" value="1" checked>
+                <span>Acumulación de carbón en zonas muertas del barril/husillo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_26" value="2" >
+                <span>Falla intermitente en el sensor de presión de cavidad</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_26" value="3" >
+                <span>Exceso de aditivo estabilizador UV en la mezcla</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Material estancado se degrada a carbón y se desprende poco a poco, contaminando disparos aleatorios.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La calidad moderna se basa en datos y prevención, no solo en inspección.</div>
+            <div class="question-text">¿Qué herramienta de Calidad se utiliza para monitorear la estabilidad estadística (Cpk) del proceso?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_27" value="0" >
+                <span>Diagrama de Causa y Efecto (Ishikawa)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_27" value="1" checked>
+                <span>Gráficos de Control Estadístico (SPC)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_27" value="2" >
+                <span>Análisis de Modo y Efecto de Falla (AMEF)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_27" value="3" >
+                <span>Metodología de orden y limpieza (5S)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El SPC permite ver si el proceso varía dentro de límites naturales o si hay causas especiales actuando.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Los dispositivos electrónicos pueden fallar; las barreras físicas son la única garantía.</div>
+            <div class="question-text">Antes de meter el cuerpo entre las platinas para mantenimiento, ¿qué paso es INNEGOCIABLE?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_28" value="0" >
+                <span>Colocar un letrero visible de 'No Operar'</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_28" value="1" checked>
+                <span>Aplicar bloqueo y etiquetado (LOTO) de energías</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_28" value="2" >
+                <span>Avisar verbalmente al supervisor de turno</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_28" value="3" >
+                <span>Confiar en que el sensor de seguridad funciona</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Confiar en sensores o letreros es causa de muerte. Solo el bloqueo físico de energía garantiza seguridad.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La descomposición térmica de polímeros genera presión interna peligrosa.</div>
+            <div class="question-text">¿Por qué la purga de material degradado representa un riesgo de explosión?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_29" value="0" >
+                <span>Por una reacción química exotérmica con el oxígeno</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_29" value="1" checked>
+                <span>Por la expansión violenta de gases atrapados a presión</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_29" value="2" >
+                <span>Por el contacto térmico con el agua de refrigeración</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_29" value="3" >
+                <span>Por la electricidad estática generada por fricción</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El material descompuesto genera gases. Si la boquilla está tapada o fría, al destaparla, el gas expande violentamente.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El cierre del molde debe ser monitoreado para evitar daños costosos.</div>
+            <div class="question-text">El sistema de 'Protección de Molde' (baja presión) sirve para:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_30" value="0" >
+                <span>Ahorrar energía eléctrica durante la fase de cierre</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_30" value="1" checked>
+                <span>Detectar obstrucciones y detener el cierre antes de dañar el molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_30" value="2" >
+                <span>Mejorar el tiempo de ciclo en moldes de apertura rápida</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_30" value="3" >
+                <span>Aumentar la vida útil del aceite hidráulico del sistema</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si el molde encuentra resistencia (pieza atorada) durante el cierre a baja presión, debe abortar para no aplastarla.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Los fluidos a alta presión pueden causar lesiones graves e incendios.</div>
+            <div class="question-text">Ante una ruptura de manguera hidráulica con fuga de aceite a alta presión, lo primero es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_31" value="0" >
+                <span>Intentar tapar la fuga manualmente con un trapo</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_31" value="1" checked>
+                <span>Activar el Paro de Emergencia para detener la bomba</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_31" value="2" >
+                <span>Colocar material absorbente en el piso</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_31" value="3" >
+                <span>Buscar al técnico de mantenimiento especializado</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El aceite a presión inyecta la piel y es inflamable. Cortar la fuente de energía (bomba) es prioridad.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El equipo de protección estándar es insuficiente para temperaturas extremas.</div>
+            <div class="question-text">Para manipular purgas calientes, el EPP mínimo requerido incluye:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_32" value="0" >
+                <span>Guantes de látex desechables y lentes oscuros</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_32" value="1" checked>
+                <span>Careta facial completa y guantes térmicos largos</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_32" value="2" >
+                <span>Mascarilla para polvos finos y tapones auditivos</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_32" value="3" >
+                <span>Guantes de carnaza cortos y lentes de seguridad claros</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Se requiere protección contra calor extremo y salpicaduras a la cara/cuello.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El izaje de cargas pesadas requiere componentes certificados.</div>
+            <div class="question-text">Al izar un molde, ¿qué condición deben cumplir los cáncamos (eyebolts)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_33" value="0" >
+                <span>Estar soldados permanentemente a la placa del molde</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_33" value="1" checked>
+                <span>Tener capacidad de carga certificada mayor al peso del molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_33" value="2" >
+                <span>Ser fabricados de acero inoxidable obligatoriamente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_33" value="3" >
+                <span>Estar pintados de color amarillo seguridad brillante</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El fallo de un cáncamo subdimensionado es catastrófico. La carga nominal debe exceder el peso total.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Las zonas no visibles de la máquina requieren sistemas de seguridad automáticos.</div>
+            <div class="question-text">¿Qué función cumple el interbloqueo (interlock) de la puerta trasera?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_34" value="0" >
+                <span>Mantener la puerta cerrada mediante electroimanes</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_34" value="1" checked>
+                <span>Detener bomba y movimientos si la puerta es abierta</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_34" value="2" >
+                <span>Encender la luz de alarma estroboscópica</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_34" value="3" >
+                <span>Registrar el evento de apertura en el sistema</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es una zona ciega para el operador. Si se abre, la máquina debe morir instantáneamente.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El agente extintor incorrecto puede agravar un incendio eléctrico.</div>
+            <div class="question-text">Para un fuego eléctrico en el gabinete de control, ¿qué extintor usas?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_35" value="0" >
+                <span>Tipo A (Agua presurizada)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_35" value="1" checked>
+                <span>Tipo C (CO2 o Polvo Químico)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_35" value="2" >
+                <span>Tipo K (Acetato de Potasio)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_35" value="3" >
+                <span>Tipo D (Polvo para metales)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El Tipo C es no conductivo. Usar agua en un tablero energizado causa electrocución.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Las regulaciones locales dictan los estándares mínimos de protección.</div>
+            <div class="question-text">En México, la norma STPS que regula los dispositivos de seguridad en maquinaria es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_36" value="0" >
+                <span>NOM-017-STPS (Equipo de Protección Personal)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_36" value="1" checked>
+                <span>NOM-004-STPS (Maquinaria y Equipo)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_36" value="2" >
+                <span>NOM-002-STPS (Prevención de Incendios)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_36" value="3" >
+                <span>NOM-029-STPS (Mantenimiento Eléctrico)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La NOM-004 establece la obligación de guardas, paros de emergencia y bloqueos.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La fluidez es una propiedad fundamental para determinar la procesabilidad.</div>
+            <div class="question-text">¿Qué indica el índice MFI (Melt Flow Index) de una resina?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_37" value="0" >
+                <span>Su resistencia al impacto según prueba Izod</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_37" value="1" checked>
+                <span>Su viscosidad o facilidad para fluir</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_37" value="2" >
+                <span>Su temperatura de transición vítrea específica</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_37" value="3" >
+                <span>Su porcentaje de carga de fibra de vidrio</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> MFI alto = material muy fluido (baja viscosidad); MFI bajo = material duro (alta viscosidad).</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Ciertos polímeros sufren daños moleculares irreversibles en presencia de agua.</div>
+            <div class="question-text">¿Qué fenómeno químico sufre el Policarbonato (PC) o Nylon (PA) si se inyecta húmedo?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_38" value="0" >
+                <span>Polimerización (endurecimiento de la cadena)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_38" value="1" checked>
+                <span>Hidrólisis (rotura de cadenas moleculares)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_38" value="2" >
+                <span>Oxidación (cambio de coloración)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_38" value="3" >
+                <span>Reticulación (cross-linking de enlaces)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El agua corta las cadenas del polímero, destruyendo sus propiedades mecánicas irreversiblemente.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La estructura molecular define cómo cambia el volumen al solidificar.</div>
+            <div class="question-text">Diferencia clave de procesamiento entre amorfos (ej. ABS) y semicristalinos (ej. PP):</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_39" value="0" >
+                <span>Los amorfos requieren temperaturas de molde superiores</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_39" value="1" checked>
+                <span>Los semicristalinos tienen mayor contracción (shrinkage)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_39" value="2" >
+                <span>Los amorfos son siempre transparentes y rígidos</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_39" value="3" >
+                <span>Los semicristalinos presentan menor resistencia al impacto</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Al cristalizar, las moléculas se empaquetan densamente, reduciendo volumen significativamente más que los amorfos.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El reprocesamiento de material afecta la integridad de las cadenas poliméricas.</div>
+            <div class="question-text">El uso de 'Regrind' (molido) por encima del 20% suele ocasionar:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_40" value="0" >
+                <span>Mejora en el brillo superficial por cristalización</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_40" value="1" checked>
+                <span>Pérdida de propiedades mecánicas e inestabilidad</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_40" value="2" >
+                <span>Reducción en la temperatura de fusión requerida</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_40" value="3" >
+                <span>Aumento considerable en la fuerza de cierre</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El material reprocesado tiene historias térmicas previas (degradación) y cadenas más cortas.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El aire de secado debe tener muy baja humedad relativa para ser efectivo.</div>
+            <div class="question-text">Para un secado eficiente, el 'Punto de Rocío' (Dew Point) del aire debe ser:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_41" value="0" >
+                <span>Positivo (+10°C) para evitar condensación</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_41" value="1" checked>
+                <span>Negativo (-40°C o inferior)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_41" value="2" >
+                <span>Igual a la temperatura ambiente del taller</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_41" value="3" >
+                <span>Igual a la temperatura de fusión del material</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Se requiere aire extremadamente seco para 'robarle' la humedad al plástico.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Los concentrados de color son potentes y deben usarse con precisión.</div>
+            <div class="question-text">¿Cuál es el rango típico de dosificación de Masterbatch (color)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_42" value="0" >
+                <span>10% a 15%</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_42" value="1" checked>
+                <span>1% a 4%</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_42" value="2" >
+                <span>0.01% a 0.05%</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_42" value="3" >
+                <span>50% (mitad y mitad)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El masterbatch es muy concentrado. Usar más del 5% altera la química base del material y es costoso.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La resistencia al flujo del material dicta los requisitos de la máquina.</div>
+            <div class="question-text">Procesar materiales de alta viscosidad (duros de fluir) requiere:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="mat_43" value="0" checked>
+                <span>Mayor presión de inyección y temperatura</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_43" value="1" >
+                <span>Mayor velocidad de enfriamiento en el molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_43" value="2" >
+                <span>Menor fuerza de cierre en la unidad de cierre</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_43" value="3" >
+                <span>Husillos con bajo ratio de compresión</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Necesitas más energía (calor y fuerza) para empujar un fluido espeso dentro del molde.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La clasificación de los plásticos depende de sus prestaciones mecánicas y térmicas.</div>
+            <div class="question-text">¿Qué distingue a un plástico de 'Ingeniería' de un 'Commodity'?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_44" value="0" >
+                <span>El precio de mercado internacional únicamente</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_44" value="1" checked>
+                <span>Su desempeño térmico y mecánico superior</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_44" value="2" >
+                <span>Su facilidad para ser reciclado químicamente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_44" value="3" >
+                <span>Su disponibilidad en colores naturales</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Los de ingeniería (PC, PA, POM) soportan cargas y temperaturas donde los commodities (PE, PP) fallan.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El OEE se ve afectado cuando la máquina no opera a su velocidad de diseño.</div>
+            <div class="question-text">Si una máquina produce piezas buenas, pero corre a 30s de ciclo en lugar de los 25s estándar, ¿qué factor del OEE cae?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_45" value="0" >
+                <span>Disponibilidad (Availability)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_45" value="1" checked>
+                <span>Desempeño (Performance)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_45" value="2" >
+                <span>Calidad (Quality)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_45" value="3" >
+                <span>Ninguno, todo está bien</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El Desempeño mide la velocidad real vs la velocidad teórica/estándar.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Clasificar las tareas de preparación es el primer paso para reducir tiempos.</div>
+            <div class="question-text">En la técnica SMED, ¿cómo se define una operación 'Interna'?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_46" value="0" >
+                <span>Aquella que se puede ejecutar con la máquina en ciclo automático</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_46" value="1" checked>
+                <span>Aquella que solo se puede realizar con la máquina detenida</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_46" value="2" >
+                <span>La que realiza el operador interno de la planta</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_46" value="3" >
+                <span>La limpieza profunda del interior del molde</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Las actividades internas son el cuello de botella del cambio, ya que requieren parar el equipo.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La pérdida de velocidad es uno de los desperdicios más difíciles de detectar.</div>
+            <div class="question-text">Si la máquina produce piezas buenas, pero corre a 30s de ciclo en lugar de los 25s estándar, ¿qué indicador del OEE cae?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_47" value="0" >
+                <span>Disponibilidad (Availability)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_47" value="1" checked>
+                <span>Desempeño (Performance)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_47" value="2" >
+                <span>Calidad (Quality)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_47" value="3" >
+                <span>Ninguno, todo está bien</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El Desempeño mide la velocidad real vs la velocidad teórica/estándar.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La preparación anticipada es clave para minimizar el tiempo de paro.</div>
+            <div class="question-text">En un cambio SMED, ¿qué es una actividad 'Externa'?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_48" value="0" >
+                <span>Desmontar el molde viejo de la platina</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_48" value="1" checked>
+                <span>Pre-calentar y preparar el molde nuevo mientras la máquina trabaja</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_48" value="2" >
+                <span>Limpiar la platina con la máquina parada</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_48" value="3" >
+                <span>Ajustar los botadores con la puerta abierta</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Son tareas que se hacen 'fuera' del tiempo de paro, sin detener la producción actual.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La comparación con los mejores de la industria establece la meta a seguir.</div>
+            <div class="question-text">¿Qué porcentaje de OEE se considera 'Clase Mundial'?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_49" value="0" >
+                <span>60% o más</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_49" value="1" checked>
+                <span>85% o más</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_49" value="2" >
+                <span>99.9%</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_49" value="3" >
+                <span>100%</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> 85% es el benchmark de excelencia aceptado internacionalmente.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Ignorar la capacidad total del molde tiene costos ocultos altos.</div>
+            <div class="question-text">Operar un molde de 4 cavidades con 1 cavidad bloqueada afecta principalmente:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_50" value="0" >
+                <span>La calidad dimensional de las otras 3 piezas restantes</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_50" value="1" checked>
+                <span>El costo pieza y la eficiencia del activo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_50" value="2" >
+                <span>La vida útil del husillo y la válvula check</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_50" value="3" >
+                <span>El consumo de energía eléctrica del motor principal</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Estás usando el 100% de la máquina para sacar el 75% de la producción. Es una pérdida financiera directa.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El ritmo de producción debe sincronizarse con la demanda del cliente.</div>
+            <div class="question-text">¿Qué es el 'Takt Time'?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_51" value="0" >
+                <span>El tiempo mínimo que la máquina puede correr</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_51" value="1" checked>
+                <span>El ritmo de producción necesario para cumplir la demanda del cliente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_51" value="2" >
+                <span>El tiempo que tarda el cambio de turno</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_51" value="3" >
+                <span>El tiempo de enfriamiento calculado</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es una métrica de demanda, no de capacidad de máquina. (Tiempo disponible / Demanda).</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El mantenimiento moderno se basa en datos reales, no en suposiciones.</div>
+            <div class="question-text">El Mantenimiento Predictivo se basa en:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_52" value="0" >
+                <span>Reparar inmediatamente cuando la máquina falla</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_52" value="1" checked>
+                <span>Monitoreo de condición (vibración, calor) para anticipar fallas</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_52" value="2" >
+                <span>Cambiar piezas por calendario fijo anual</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_52" value="3" >
+                <span>Inspección visual diaria por parte del operador</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Usa datos para predecir cuándo fallará un componente antes de que suceda.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La limpieza profunda revela anomalías antes de que causen fallas.</div>
+            <div class="question-text">¿Qué principio de las 5S implica que limpiar no es solo embellecer, sino inspeccionar fallas potenciales?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_53" value="0" >
+                <span>Seiri (Clasificar)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_53" value="1" checked>
+                <span>Seiso (Limpiar)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_53" value="2" >
+                <span>Seiton (Ordenar)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_53" value="3" >
+                <span>Shitsuke (Disciplina)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Limpiar es inspeccionar. Al limpiar detectas fugas, tornillos sueltos o cables pelados.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Producir más de lo necesario genera una cadena de problemas ocultos.</div>
+            <div class="question-text">¿Cuál se considera el 'peor' desperdicio porque oculta a los demás?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_54" value="0" >
+                <span>Transporte innecesario de material</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_54" value="1" checked>
+                <span>Sobreproducción</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_54" value="2" >
+                <span>Movimientos excesivos del operador</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_54" value="3" >
+                <span>Esperas y tiempos muertos en línea</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Hacer de más genera inventario, que esconde defectos, paros y problemas de flujo.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Realizar tareas que el cliente no valora es una pérdida neta.</div>
+            <div class="question-text">Tener que recortar rebaba a todas las piezas saliendo de la máquina es un ejemplo de:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_55" value="0" >
+                <span>Valor Agregado al producto</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_55" value="1" checked>
+                <span>Sobre-procesamiento (Extra-processing)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_55" value="2" >
+                <span>Eficiencia operativa en acabado</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_55" value="3" >
+                <span>Control de Calidad en línea</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es trabajo extra que el cliente no paga y que no debería existir si el proceso fuera correcto.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El material estancado representa capital inmovilizado y riesgo.</div>
+            <div class="question-text">El exceso de Inventario en proceso (WIP) causa:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_56" value="0" >
+                <span>Mayor flexibilidad de producción diaria</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_56" value="1" checked>
+                <span>Problemas de flujo de efectivo y riesgo de daños/obsolescencia</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_56" value="2" >
+                <span>Reducción significativa de tiempos de entrega</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_56" value="3" >
+                <span>Mejor utilización del espacio de planta</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El inventario es dinero estancado en el piso que puede dañarse o perderse.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Las herramientas de estandarización deben estar vigentes para ser útiles.</div>
+            <div class="question-text">¿Qué hace que una Ayuda Visual sea ineficaz o peligrosa para la calidad?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_57" value="0" >
+                <span>Que tenga demasiados colores o gráficos</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_57" value="1" checked>
+                <span>Que no esté actualizada o no muestre límites claros de aceptación</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_57" value="2" >
+                <span>Que esté plastificada para protección</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_57" value="3" >
+                <span>Que incluya fotos reales del producto</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Una ayuda visual obsoleta puede inducir al operador a aceptar piezas malas o rechazar buenas.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El desorden en el área de trabajo es un indicador de falta de disciplina.</div>
+            <div class="question-text">Encontrar herramientas tiradas y piezas mezcladas bajo la máquina indica falla en:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_58" value="0" >
+                <span>La programación de producción semanal</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_58" value="1" checked>
+                <span>Las 5S (Orden y Limpieza)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_58" value="2" >
+                <span>El mantenimiento preventivo mensual</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_58" value="3" >
+                <span>La calidad de la materia prima entrante</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Evidencia falta de Seiton (Orden) y Seiso (Limpieza).</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Los sistemas a prueba de error previenen defectos desde su origen.</div>
+            <div class="question-text">Un dispositivo 'Poka-Yoke' sirve para:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_59" value="0" >
+                <span>Aumentar la velocidad de la banda transportadora</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_59" value="1" checked>
+                <span>Hacer imposible cometer un error específico (A prueba de error)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_59" value="2" >
+                <span>Medir la eficiencia del operador en tiempo real</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_59" value="3" >
+                <span>Limpiar las piezas automáticamente al salir</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Ejemplo: Un conector que solo entra en una posición para evitar polaridad invertida.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La filosofía Lean busca la optimización de los recursos.</div>
+            <div class="question-text">El objetivo final de eliminar desperdicios (Muda) es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_60" value="0" >
+                <span>Despedir personal sobrante en la planta</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_60" value="1" checked>
+                <span>Aumentar el valor para el cliente y reducir costos</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_60" value="2" >
+                <span>Tener la fábrica más bonita estéticamente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_60" value="3" >
+                <span>Cumplir con normas gubernamentales básicas</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Lean Manufacturing busca maximizar el valor entregado minimizando los recursos usados.</div>
+        </div></div>
+</div>
+<script>
+function filterCards(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.card').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.category === cat) ? 'block' : 'none';
+    });
+}
+</script>
+</body>
+</html>

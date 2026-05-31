@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAROL - Evaluación Técnica de Moldeo</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+.container { max-width: 900px; margin: 0 auto; }
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #a6d189, #8caaee, #f4b8e4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    text-align: center;
+    color: #a5adce;
+    margin-bottom: 2rem;
+}
+.score-info {
+    text-align: center;
+    background: rgba(138, 170, 238, 0.1);
+    border: 1px solid #8caaee44;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+.card {
+    background: rgba(65, 69, 89, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid #414559;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s;
+}
+.card:hover { border-color: #8caaee88; }
+.card-header {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.badge-cat { background: #8caaee33; color: #8caaee; }
+.badge-type { background: #a6d18933; color: #a6d189; }
+.badge-score { background: #f4b8e433; color: #f4b8e4; }
+.description {
+    font-size: 0.9rem;
+    color: #a5adce;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+}
+.question-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(30, 30, 60, 0.5);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.option:hover { background: rgba(138, 170, 238, 0.15); }
+.option.correct {
+    background: rgba(166, 209, 137, 0.15);
+    border: 1px solid #a6d18944;
+}
+.option input[type="radio"] {
+    accent-color: #8caaee;
+    width: 16px; height: 16px;
+}
+.reasoning {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(244, 184, 228, 0.08);
+    border-left: 3px solid #f4b8e4;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #b5bfe2;
+}
+.filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #414559;
+    border-radius: 20px;
+    background: transparent;
+    color: #a5adce;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: #8caaee33;
+    border-color: #8caaee;
+    color: #8caaee;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.stat-box {
+    background: rgba(65, 69, 89, 0.5);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+}
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #8caaee;
+}
+.stat-label {
+    font-size: 0.8rem;
+    color: #a5adce;
+    margin-top: 0.25rem;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>CAROL - Evaluación Técnica de Moldeo</h1>
+    <p class="subtitle">Assessment Técnico de Moldeo por Inyección - Avanzado</p>
+    
+    <div class="stats">
+        <div class="stat-box"><div class="stat-value">43</div><div class="stat-label">Preguntas</div></div>
+        <div class="stat-box"><div class="stat-value">52.5</div><div class="stat-label">Puntaje Total</div></div>
+        <div class="stat-box"><div class="stat-value">8</div><div class="stat-label">Categorías</div></div>
+    </div>
+    <div class="stats"><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Efficiency</div></div><div class="stat-box"><div class="stat-value">6</div><div class="stat-label">Machine</div></div><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Materials</div></div><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Mold Engineering</div></div><div class="stat-box"><div class="stat-value">7</div><div class="stat-label">Process</div></div><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Quality</div></div><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Safety</div></div><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Waste</div></div></div>
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCards('all')">Todas</button>
+        <button class="filter-btn" onclick="filterCards('Machine')">Máquina</button>
+        <button class="filter-btn" onclick="filterCards('Process')">Proceso</button>
+        <button class="filter-btn" onclick="filterCards('Quality')">Calidad</button>
+        <button class="filter-btn" onclick="filterCards('Safety')">Seguridad</button>
+        <button class="filter-btn" onclick="filterCards('Materials')">Materiales</button>
+        <button class="filter-btn" onclick="filterCards('Efficiency')">Eficiencia</button>
+        <button class="filter-btn" onclick="filterCards('Waste')">Desperdicios</button>
+    </div>
+    <div class="cards">
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La presión hidráulica se multiplica en la punta del husillo debido a la Ley de Pascal y la diferencia de áreas.</div>
+            <div class="question-text">Con un ratio de intensificación de 10:1 y 1,500 PSI en el manómetro hidráulico, calcula la presión específica sobre el plástico:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_1" value="0" >
+                <span>1,500 PSI (Relación directa 1:1)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_1" value="1" >
+                <span>150 PSI (Reducción por fricción del husillo)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_1" value="2" checked>
+                <span>15,000 PSI (Multiplicación por área)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_1" value="3" >
+                <span>16,500 PSI (Suma de presión absoluta + relativa)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La presión específica es el resultado de la presión hidráulica multiplicada por el ratio de área entre el pistón y el husillo (1500 * 10).</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El oxígeno a altas temperaturas reacciona rápidamente con polímeros orgánicos.</div>
+            <div class="question-text">¿Cuál es la consecuencia físico-química de una descompresión (suck-back) excesiva en resinas sensibles como el Nylon?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_2" value="0" >
+                <span>Cristalización inducida por choque térmico en la boquilla</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_2" value="1" checked>
+                <span>Oxidación y degradación por entrada de aire al barril</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_2" value="2" >
+                <span>Aumento exponencial de la viscosidad intrínseca</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_2" value="3" >
+                <span>Generación de vacío absoluto en la cavidad del molde</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El retroceso excesivo aspira oxígeno atmosférico hacia la cámara caliente, provocando oxidación inmediata y manchas (splay).</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La consistencia del cojín es el mejor indicador de la repetibilidad volumétrica del proceso.</div>
+            <div class="question-text">Una variación del cojín (cushion) superior a +/- 10% ciclo a ciclo es un indicador primario de:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_3" value="0" >
+                <span>Desviación en el algoritmo PID de temperatura de zonas</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_3" value="1" checked>
+                <span>Fuga en la válvula check (anillo) o desgaste del barril</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_3" value="2" >
+                <span>Variación en la velocidad de apertura de la rodillera</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_3" value="3" >
+                <span>Fluctuación turbulenta en la presión de la red de agua</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La inestabilidad del cojín implica que el volumen de material delante del tornillo no se mantiene, fugándose hacia atrás durante la inyección.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La velocidad de procesamiento de la CPU de la máquina influye en la precisión milimétrica.</div>
+            <div class="question-text">El 'Scan Time' o tiempo de respuesta del controlador de la máquina afecta críticamente a:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_4" value="0" >
+                <span>La eficiencia energética del motor eléctrico principal</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_4" value="1" checked>
+                <span>La repetibilidad del punto de transferencia (VPT)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_4" value="2" >
+                <span>La capacidad máxima de tonelaje de cierre</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_4" value="3" >
+                <span>La temperatura operativa del aceite hidráulico</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Un escaneo lento provoca que la máquina reaccione tarde al alcanzar la posición de corte, variando el volumen inyectado.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La geometría del husillo determina la calidad de la homogeneización térmica.</div>
+            <div class="question-text">Comparando un husillo L/D 24:1 contra uno 18:1, la principal ventaja técnica del 24:1 es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mach_5" value="0" >
+                <span>Mayor capacidad de transmisión de presión hidráulica</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mach_5" value="1" checked>
+                <span>Mejor calidad de mezclado y homogeneidad térmica</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_5" value="2" >
+                <span>Menor tiempo de residencia del material en el barril</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_5" value="3" >
+                <span>Reducción significativa del torque requerido para girar</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Mayor longitud permite zonas de transición más suaves y mejor distribución de calor, resultando en un fundido (melt) más uniforme.</div>
+        </div>
+        <div class="card" data-category="Machine">
+            <div class="card-header">
+                <span class="badge badge-cat">Machine</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La contrapresión genera calor por fricción, pero también estrés mecánico.</div>
+            <div class="question-text">Además de aumentar la temperatura de la masa, ¿qué efecto mecánico negativo tiene la contrapresión excesiva?</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="mach_6" value="0" checked>
+                <span>Desgaste acelerado en la punta del husillo y barril</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_6" value="1" >
+                <span>Reducción de la fuerza de cierre disponible en la prensa</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_6" value="2" >
+                <span>Fugas de aceite en el sistema de expulsión hidráulico</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mach_6" value="3" >
+                <span>Deformación elástica permanente de las barras (tie-bars)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Aumenta la carga axial y la fricción del tornillo contra la pared del barril y el material, acelerando la abrasión.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La reología de polímeros estudia cómo fluye la materia bajo fuerzas aplicadas.</div>
+            <div class="question-text">En la curva de viscosidad, la región 'Newtonian Flat' (Meseta Newtoniana) se caracteriza porque:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_1" value="0" >
+                <span>La viscosidad cae drásticamente con la velocidad de corte</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_1" value="1" checked>
+                <span>La viscosidad es estable independientemente del corte (shear)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_1" value="2" >
+                <span>El material comienza a degradarse térmicamente por fricción</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_1" value="3" >
+                <span>La presión de inyección requerida es cercana a cero</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es la zona de baja cizalla donde el polímero se comporta como un fluido newtoniano antes de empezar a adelgazar (shear thinning).</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Operar al límite de la capacidad de presión elimina la capacidad de control del proceso.</div>
+            <div class="question-text">El objetivo de un estudio de 'Caída de Presión' (Pressure Drop) es asegurar que:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="proc_2" value="0" checked>
+                <span>La máquina tenga ~10% de presión hidráulica de reserva</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_2" value="1" >
+                <span>El molde soporte la fuerza de cierre máxima sin abrirse</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_2" value="2" >
+                <span>El tiempo de ciclo sea lo más corto físicamente posible</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_2" value="3" >
+                <span>La temperatura del agua mantenga un flujo turbulento</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si la máquina usa el 100% de su presión para llenar, pierde control sobre la velocidad (Process Limited). Se requiere un margen de seguridad.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El área bajo la curva de presión refleja la energía consumida para llenar el molde.</div>
+            <div class="question-text">Un aumento repentino en la integral de presión o 'Trabajo de Inyección' sugiere:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_3" value="0" >
+                <span>Una fuga interna en la válvula check o anillo</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_3" value="1" checked>
+                <span>Aumento de viscosidad por material frío u obstrucción</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_3" value="2" >
+                <span>Disminución drástica de la fuerza de cierre real</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_3" value="3" >
+                <span>Aumento inusual en la temperatura de las resistencias</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Más trabajo para llegar a la misma posición indica mayor resistencia al flujo (viscosidad alta o canal bloqueado).</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Determinar cuándo se corta físicamente la conexión entre la pieza y el sistema de alimentación.</div>
+            <div class="question-text">El criterio técnico definitivo para confirmar el 'Sellado de Compuerta' (Gate Freeze) es:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="proc_4" value="0" checked>
+                <span>Estabilización del peso de la pieza vs tiempo de hold</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_4" value="1" >
+                <span>Enfriamiento de la colada a temperatura ambiente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_4" value="2" >
+                <span>Finalización del tiempo de dosificación del husillo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_4" value="3" >
+                <span>Ausencia total de rechupados en la superficie</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Se grafica peso vs tiempo. Cuando el peso deja de subir, la compuerta se ha cerrado físicamente y ya no entra material.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La fricción molecular a altas velocidades se convierte en energía térmica.</div>
+            <div class="question-text">Debido al calentamiento por cizalla (Shear Heating), aumentar la velocidad de inyección provoca:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_5" value="0" >
+                <span>Enfriamiento adiabático del frente de flujo por expansión</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_5" value="1" checked>
+                <span>Aumento real de la temperatura de la masa fundida</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_5" value="2" >
+                <span>Aumento de la densidad del material por compactación</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_5" value="3" >
+                <span>Reducción inmediata del índice de fluidez (MFI)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La fricción molecular a alta velocidad genera calor interno, reduciendo la viscosidad efectiva.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La consistencia del proceso depende de cómo se controla el volumen inyectado.</div>
+            <div class="question-text">¿Por qué se prefiere el VPT (Transferencia) por Posición en lugar de por Tiempo o Presión?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="proc_6" value="0" >
+                <span>Porque es más fácil de programar en el controlador</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="proc_6" value="1" checked>
+                <span>Porque garantiza un volumen de disparo consistente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_6" value="2" >
+                <span>Porque protege el molde de picos de sobrepresión</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="proc_6" value="3" >
+                <span>Porque reduce el consumo energético del motor</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La posición correlaciona directamente con el volumen desplazado. El tiempo varía si cambia la viscosidad, causando inestabilidad.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El flujo laminar es deseable para evitar marcas superficiales en la pieza.</div>
+            <div class="question-text">La solución técnica para eliminar el 'Jetting' (gusanito) es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_1" value="0" >
+                <span>Aumentar drásticamente la temperatura de boquilla y molde</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_1" value="1" checked>
+                <span>Perfilar la velocidad (lento al inicio) para crear flujo laminar</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_1" value="2" >
+                <span>Aumentar la contrapresión al máximo posible</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_1" value="3" >
+                <span>Reducir el tiempo de enfriamiento para congelar el flujo</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Entrar lento permite que el material toque las paredes y se expanda progresivamente (Fountain Flow) en lugar de dispararse.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La estructura molecular de los semicristalinos depende del tiempo que tienen para ordenarse.</div>
+            <div class="question-text">En polímeros semicristalinos, ¿qué factor determina el grado de cristalinidad y la contracción final?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_2" value="0" >
+                <span>La presión de inyección máxima alcanzada</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_2" value="1" checked>
+                <span>La tasa de enfriamiento (Temperatura de molde)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_2" value="2" >
+                <span>La velocidad de rotación del husillo en la carga</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_2" value="3" >
+                <span>El porcentaje de carga de fibra de vidrio añadido</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Un enfriamiento lento (molde caliente) permite a las moléculas ordenarse en cristales, aumentando la densidad y contracción.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Los índices de capacidad estadística predicen la tasa de rechazo a largo plazo.</div>
+            <div class="question-text">Un Cpk de 0.8 en una dimensión crítica indica estadísticamente que:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_3" value="0" >
+                <span>El proceso es capaz y está perfectamente centrado</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_3" value="1" checked>
+                <span>El proceso no es capaz; alta probabilidad de defectos</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_3" value="2" >
+                <span>El instrumento de medición requiere calibración urgente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_3" value="3" >
+                <span>La varianza del proceso es menor a la tolerancia permitida</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Cpk < 1.33 se considera no capaz. La curva de distribución del proceso excede los límites de especificación.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La fusión de frentes de flujo requiere energía térmica para entrelazar las cadenas moleculares.</div>
+            <div class="question-text">Una línea de soldadura (Weld Line) se convierte en una falla estructural crítica si:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_4" value="0" >
+                <span>Es visible a simple vista bajo luz normal</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_4" value="1" checked>
+                <span>La temperatura del frente de flujo es inferior a la Tg al unirse</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_4" value="2" >
+                <span>Se encuentra ubicada en una zona estética clase A</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_4" value="3" >
+                <span>El molde tiene una textura superficial muy rugosa</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si el material está demasiado frío, no hay entrelazamiento molecular (difusión) entre los frentes, creando una grieta potencial.</div>
+        </div>
+        <div class="card" data-category="Quality">
+            <div class="card-header">
+                <span class="badge badge-cat">Quality</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">En zonas ciegas donde no es posible mecanizar un venteo tradicional, se requieren materiales especiales.</div>
+            <div class="question-text">Para prevenir el 'Efecto Diesel' en una costilla ciega (blind rib) donde no hay salida de aire, la solución de ingeniería es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="qual_5" value="0" >
+                <span>Aumentar la velocidad de inyección para llenar rápido</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="qual_5" value="1" checked>
+                <span>Uso de insertos de acero poroso sinterizado</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_5" value="2" >
+                <span>Bajar la temperatura del molde drásticamente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="qual_5" value="3" >
+                <span>Aplicar vacío general a toda la máquina</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El acero poroso permite que el gas escape a través de la estructura del metal mientras retiene el plástico.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Ciertos materiales liberan gases altamente peligrosos al descomponerse.</div>
+            <div class="question-text">Al purgar POM (Acetal) degradado, el riesgo químico específico es:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="safe_1" value="0" checked>
+                <span>Liberación de gas Formaldehído (tóxico/irritante)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_1" value="1" >
+                <span>Formación de ácido clorhídrico altamente corrosivo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_1" value="2" >
+                <span>Generación de monóxido de carbono inodoro</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_1" value="3" >
+                <span>Explosión por partículas de polvo en suspensión</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El POM se descompone en formaldehído, que ataca ojos y vías respiratorias severamente. Requiere ventilación.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La seguridad moderna requiere validación activa, no solo colocar un candado.</div>
+            <div class="question-text">En un procedimiento LOTO avanzado, después de colocar el candado, ¿cuál es el paso final de verificación?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_2" value="0" >
+                <span>Firmar la bitácora de mantenimiento en la oficina</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_2" value="1" checked>
+                <span>Intentar arrancar el equipo para confirmar 'Energía Cero'</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_2" value="2" >
+                <span>Avisar verbalmente al gerente de planta</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_2" value="3" >
+                <span>Tomar una fotografía del candado colocado</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El paso crítico de 'Try-out' o prueba de arranque confirma que el bloqueo fue efectivo y no hay energía residual.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La energía hidráulica puede almacenarse incluso sin energía eléctrica.</div>
+            <div class="question-text">El peligro latente de un acumulador hidráulico, incluso con la máquina apagada, es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_3" value="0" >
+                <span>Alta temperatura residual en las líneas</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_3" value="1" checked>
+                <span>Energía de presión almacenada lista para liberarse</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_3" value="2" >
+                <span>Generación de campos magnéticos permanentes</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_3" value="3" >
+                <span>Fugas de gas nitrógeno que causan asfixia</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El acumulador mantiene aceite a presión. Si se desconecta una manguera sin drenarlo, puede causar inyección de fluido letal.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El uso de agua en incendios eléctricos es fatal; se requieren agentes limpios.</div>
+            <div class="question-text">Extintor correcto para fuego en tableros electrónicos (Clase C):</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_4" value="0" >
+                <span>Agua a presión (Tipo A) con aditivo penetrante</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_4" value="1" checked>
+                <span>Dióxido de Carbono (CO2) o Agente Limpio</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_4" value="2" >
+                <span>Espuma formadora de película acuosa (AFFF)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_4" value="3" >
+                <span>Polvo especial para metales combustibles (Tipo D)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Agentes no conductores y que no dejen residuo corrosivo son esenciales para equipo electrónico.</div>
+        </div>
+        <div class="card" data-category="Safety">
+            <div class="card-header">
+                <span class="badge badge-cat">Safety</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La integración de robots requiere protocolos de comunicación de seguridad estandarizados.</div>
+            <div class="question-text">Según la norma Euromap 67, ¿cuál es la función de los canales de seguridad redundantes (doble canal)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="safe_5" value="0" >
+                <span>Aumentar la velocidad de transmisión de datos al robot</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="safe_5" value="1" checked>
+                <span>Asegurar que si un canal falla, el otro detenga la máquina</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_5" value="2" >
+                <span>Permitir el control remoto inalámbrico desde la oficina</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="safe_5" value="3" >
+                <span>Reducir la cantidad de cableado en la instalación</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La redundancia es clave en seguridad (Categoría 3/4); el sistema debe detectar fallos en su propia supervisión.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El corte de las cadenas poliméricas cambia radicalmente la reología del material.</div>
+            <div class="question-text">La degradación por escisión de cadenas (Chain Scission) resulta en:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_1" value="0" >
+                <span>Aumento de peso molecular y viscosidad</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_1" value="1" checked>
+                <span>Reducción de peso molecular, viscosidad y propiedades</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_1" value="2" >
+                <span>Mejora significativa en la resistencia al impacto</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_1" value="3" >
+                <span>Reticulación (cross-linking) de la estructura molecular</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Al romperse las cadenas largas, el material se vuelve más líquido (fluye más) pero pierde su fuerza estructural.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El agua actúa como un agente reactivo que destruye el polímero a nivel molecular.</div>
+            <div class="question-text">La hidrólisis en materiales como PC o PBT es una reacción química donde el agua:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_2" value="0" >
+                <span>Actúa como un lubricante externo temporal</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_2" value="1" checked>
+                <span>Rompe los enlaces covalentes de la cadena polimérica</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_2" value="2" >
+                <span>Se evapora rápidamente sin afectar la estructura</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_2" value="3" >
+                <span>Genera únicamente burbujas superficiales cosméticas</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es una degradación química irreversible a nivel molecular, no solo un defecto cosmético.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El cambio de fase de sólido a líquido requiere más energía en materiales ordenados.</div>
+            <div class="question-text">Diferencia térmica clave: Los semicristalinos poseen Calor Latente de Fusión, lo que implica:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_3" value="0" >
+                <span>Requieren menos energía térmica debido a su estructura</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_3" value="1" checked>
+                <span>Requieren mucha más energía para fundir y enfriar que los amorfos</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_3" value="2" >
+                <span>Se enfrían instantáneamente al tocar el molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_3" value="3" >
+                <span>No tienen temperatura de fusión (Tm) definida</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Se necesita energía extra para romper la estructura cristalina al fundir, y hay que extraer esa energía al enfriar.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Las pruebas de laboratorio estáticas no siempre reflejan la realidad dinámica de la inyección.</div>
+            <div class="question-text">¿Por qué el MFI no es representativo del comportamiento dentro del molde?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_4" value="0" >
+                <span>Porque se mide a una temperatura demasiado baja</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_4" value="1" checked>
+                <span>Porque es una prueba de bajo cizallamiento (Low Shear)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_4" value="2" >
+                <span>Porque usa un peso estándar no calibrado</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_4" value="3" >
+                <span>Porque el material utilizado suele estar contaminado</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La inyección es un proceso de ALTO cizallamiento. El MFI mide flujo casi estático, ignorando el adelgazamiento por corte.</div>
+        </div>
+        <div class="card" data-category="Materials">
+            <div class="card-header">
+                <span class="badge badge-cat">Materials</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El comportamiento pvT (Presión-Volumen-Temperatura) es fundamental para predecir dimensiones.</div>
+            <div class="question-text">En un diagrama pvT, ¿qué representa la 'rodilla' o cambio brusco de pendiente en la curva de enfriamiento isobárico?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="mat_5" value="0" >
+                <span>El punto crítico de degradación térmica del polímero</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="mat_5" value="1" checked>
+                <span>La temperatura de transición vítrea (Tg) o cristalización</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_5" value="2" >
+                <span>El momento exacto en que se abre el molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="mat_5" value="3" >
+                <span>La presión máxima alcanzada por la máquina</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es el punto donde el material cambia de estado (fase), alterando drásticamente su volumen específico.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La termodinámica impone límites físicos a la velocidad de producción.</div>
+            <div class="question-text">El factor limitante físico (Cuello de botella) más común para reducir el tiempo de ciclo es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_1" value="0" >
+                <span>La velocidad de inyección máxima de la máquina</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_1" value="1" checked>
+                <span>La conductividad térmica del plástico (Tiempo de enfriamiento)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_1" value="2" >
+                <span>La velocidad de los movimientos mecánicos del molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_1" value="3" >
+                <span>El tiempo de reacción del robot de extracción</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El plástico es un aislante térmico. Extraer el calor del centro de la pared es el proceso más lento por física pura.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Distinguir entre tareas que detienen la máquina y las que no es la base del SMED.</div>
+            <div class="question-text">En SMED, un ejemplo de actividad INTERNA es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_2" value="0" >
+                <span>Precalentar el molde en un banco externo de pruebas</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_2" value="1" checked>
+                <span>Asegurar el molde a la platina (Clamping)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_2" value="2" >
+                <span>Buscar las llaves y herramientas necesarias</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_2" value="3" >
+                <span>Organizar las mangueras de agua antes del cambio</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Actividad Interna = Máquina detenida forzosamente. No puedes atornillar el molde si la máquina está produciendo.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">El cálculo del OEE revela dónde se pierden las oportunidades de producción.</div>
+            <div class="question-text">Si tu OEE es 60% pero la Calidad es 99% y la Disponibilidad 98%, el problema está en:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="eff_3" value="0" checked>
+                <span>Desempeño (Performance) - Ciclos lentos o micro-paros</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_3" value="1" >
+                <span>Calidad - Piezas defectuosas ocultas en el proceso</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_3" value="2" >
+                <span>Disponibilidad - Tiempos muertos largos no reportados</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_3" value="3" >
+                <span>Planeación - Falta de órdenes de producción</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Matemáticamente: Si AxQ son altos, P debe ser muy bajo para arrastrar el promedio a 60%.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La confiabilidad del equipo se mide por la frecuencia de sus averías.</div>
+            <div class="question-text">El MTBF (Mean Time Between Failures) mide:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_4" value="0" >
+                <span>La velocidad promedio de reparación del equipo</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_4" value="1" checked>
+                <span>La confiabilidad y frecuencia de fallas del equipo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_4" value="2" >
+                <span>El tiempo total de vida útil de la máquina</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_4" value="3" >
+                <span>La eficiencia promedio del operador de turno</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Indica qué tan seguido se rompe la máquina. Clave para programar mantenimiento preventivo.</div>
+        </div>
+        <div class="card" data-category="Efficiency">
+            <div class="card-header">
+                <span class="badge badge-cat">Efficiency</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Los costos de mala calidad van mucho más allá del material tirado.</div>
+            <div class="question-text">El Costo Real de la 'No Calidad' incluye:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="eff_5" value="0" >
+                <span>Únicamente el valor de la resina desperdiciada</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="eff_5" value="1" checked>
+                <span>Material + Energía + Mano de obra + Costo de oportunidad + Riesgo cliente</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_5" value="2" >
+                <span>El salario del departamento de calidad + Auditorías</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="eff_5" value="3" >
+                <span>El costo de la disposición de basura + Fletes</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Producir basura cuesta lo mismo o más que producir piezas buenas, más el lucro cesante.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">Agregar valor es lo único por lo que el cliente paga; el resto es desperdicio.</div>
+            <div class="question-text">El sobre-empaque (overpacking) que causa piezas pesadas y estrés interno es un desperdicio de tipo:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_1" value="0" >
+                <span>Transporte y Movimiento innecesario</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_1" value="1" checked>
+                <span>Sobre-procesamiento y Material</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_1" value="2" >
+                <span>Espera e Inventario acumulado</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_1" value="3" >
+                <span>Talento Humano subutilizado</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Usas más material del necesario y aplicas más presión (proceso) de la requerida, agregando costo sin valor.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El inventario excesivo actúa como un amortiguador que esconde problemas operativos.</div>
+            <div class="question-text">El exceso de inventario (WIP o Terminado) es negativo porque:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="wast_2" value="0" checked>
+                <span>Oculta ineficiencias del sistema y atrapa flujo de efectivo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_2" value="1" >
+                <span>Mejora la respuesta ante variaciones de demanda imprevistas</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_2" value="2" >
+                <span>Asegura que los operadores siempre tengan trabajo disponible</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_2" value="3" >
+                <span>Aumenta el valor de los activos circulantes de la empresa</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Es la analogía del 'río y las rocas'. El nivel alto de agua (inventario) tapa los problemas (rocas) del fondo.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La falta de mantenimiento preventivo en moldes genera tiempos muertos reactivos.</div>
+            <div class="question-text">Un mantenimiento deficiente de venteos genera desperdicio principalmente por:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_3" value="0" >
+                <span>Aumento en el consumo de energía eléctrica del motor</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_3" value="1" checked>
+                <span>Paros no programados para limpieza y scrap por quemaduras</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_3" value="2" >
+                <span>Desgaste prematuro del aceite hidráulico por calor</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_3" value="3" >
+                <span>Reducción significativa de la fuerza de cierre</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Los venteos sucios obligan a detener la producción para limpiar (Disponibilidad) y generan defectos (Calidad).</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">El diseño del sistema de alimentación impacta la eficiencia del material.</div>
+            <div class="question-text">Técnicamente, usar Colada Fría en lugar de Colada Caliente implica:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_4" value="0" >
+                <span>Mayor eficiencia energética del sistema</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_4" value="1" checked>
+                <span>Generación intrínseca de desperdicio (scrap/regrind) en cada ciclo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_4" value="2" >
+                <span>Mejor control de la temperatura de masa fundida</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_4" value="3" >
+                <span>Menor tiempo de ciclo total de enfriamiento</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La colada fría es material que se calienta y enfría solo para ser tirado o re-molido, lo cual es ineficiente termodinámicamente.</div>
+        </div>
+        <div class="card" data-category="Waste">
+            <div class="card-header">
+                <span class="badge badge-cat">Waste</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La eficiencia energética es un indicador clave de sostenibilidad y costo.</div>
+            <div class="question-text">¿Qué métrica se utiliza comúnmente para comparar la eficiencia energética entre diferentes máquinas de inyección?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="wast_5" value="0" >
+                <span>Caballos de fuerza (HP) del motor principal</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="wast_5" value="1" checked>
+                <span>Consumo Específico de Energía (kWh/kg de material procesado)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_5" value="2" >
+                <span>Amperaje máximo del tablero de control</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="wast_5" value="3" >
+                <span>Voltaje de alimentación trifásico (220V vs 440V)</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El kWh/kg normaliza el consumo respecto a la producción, permitiendo comparar máquinas grandes y pequeñas.</div>
+        </div>
+        <div class="card" data-category="Mold Engineering">
+            <div class="card-header">
+                <span class="badge badge-cat">Mold Engineering</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La dinámica de fluidos dicta la eficiencia de la transferencia de calor.</div>
+            <div class="question-text">En refrigeración de moldes, un Número de Reynolds > 4,000 garantiza:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="spec_1" value="0" >
+                <span>Flujo Laminar (Estabilidad de presión sin turbulencia)</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="spec_1" value="1" checked>
+                <span>Flujo Turbulento (Máxima eficiencia de transferencia de calor)</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_1" value="2" >
+                <span>Presión excesiva que puede dañar las mangueras</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_1" value="3" >
+                <span>Ausencia total de corrosión galvánica en los canales</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> La turbulencia rompe la capa límite aislante del agua contra el metal, extrayendo calor mucho más rápido.</div>
+        </div>
+        <div class="card" data-category="Mold Engineering">
+            <div class="card-header">
+                <span class="badge badge-cat">Mold Engineering</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La rigidez de la máquina interactúa con la estructura del molde.</div>
+            <div class="question-text">La 'Deflexión de Platinas' causa rebaba central aunque el tonelaje sea correcto debido a:</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="spec_2" value="0" checked>
+                <span>Deformación elástica de la platina que abre el molde en el centro</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_2" value="1" >
+                <span>Expansión térmica incontrolada de las placas del molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_2" value="2" >
+                <span>Compresión plástica excesiva del acero del molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_2" value="3" >
+                <span>Falta de paralelismo severo en las guías de las barras</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si el molde es pequeño, la platina se 'dobla' alrededor de él como una hoja de papel, perdiendo presión de sello en el centro.</div>
+        </div>
+        <div class="card" data-category="Mold Engineering">
+            <div class="card-header">
+                <span class="badge badge-cat">Mold Engineering</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">La simulación predictiva ahorra costos al identificar errores antes de cortar acero.</div>
+            <div class="question-text">¿En qué etapa es más rentable utilizar simulación CAE (Moldflow)?</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="spec_3" value="0" >
+                <span>Durante la producción masiva para corregir fallas</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="spec_3" value="1" checked>
+                <span>En la fase de diseño de pieza y molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_3" value="2" >
+                <span>Después de fabricar el molde para validarlo</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_3" value="3" >
+                <span>Al cotizar el precio final de la resina</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> El costo de corregir un error en diseño es despreciable comparado con modificar acero endurecido.</div>
+        </div>
+        <div class="card" data-category="Mold Engineering">
+            <div class="card-header">
+                <span class="badge badge-cat">Mold Engineering</span>
+                <span class="badge badge-type">Teórico</span>
+                <span class="badge badge-score">1 pt(s)</span>
+            </div>
+            <div class="description">Los sistemas de colada caliente avanzados permiten control secuencial.</div>
+            <div class="question-text">La ventaja técnica principal de una compuerta valvulada (Valve Gate) es:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="spec_4" value="0" >
+                <span>Menor costo operativo por eliminación de canales fríos</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="spec_4" value="1" checked>
+                <span>Control independiente del flujo y mejor acabado cosmético</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_4" value="2" >
+                <span>Eliminación total del sistema de enfriamiento del molde</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_4" value="3" >
+                <span>Reducción significativa de la fuerza de cierre requerida</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Permite abrir/cerrar la entrada a voluntad (secuenciado) y deja una marca casi invisible en la pieza.</div>
+        </div>
+        <div class="card" data-category="Mold Engineering">
+            <div class="card-header">
+                <span class="badge badge-cat">Mold Engineering</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La geometría de la pieza afecta la disipación de calor.</div>
+            <div class="question-text">El 'Efecto de Esquina' (Corner Effect) en refrigeración provoca puntos calientes porque:</div>
+            <div class="options">
+            <label class="option ">
+                <input type="radio" name="spec_5" value="0" >
+                <span>El agua fluye mucho más lento en las esquinas agudas</span>
+            </label>
+            <label class="option correct">
+                <input type="radio" name="spec_5" value="1" checked>
+                <span>Hay mayor masa de plástico transfiriendo calor a menor área de acero</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_5" value="2" >
+                <span>El acero es estructuralmente más delgado en las esquinas</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_5" value="3" >
+                <span>La fricción del flujo genera calor adicional en los bordes</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Geometría básica: El calor converge desde dos lados hacia una esquina interna que tiene poca superficie para disiparlo.</div>
+        </div>
+        <div class="card" data-category="Process">
+            <div class="card-header">
+                <span class="badge badge-cat">Process</span>
+                <span class="badge badge-type">Práctico</span>
+                <span class="badge badge-score">1.5 pt(s)</span>
+            </div>
+            <div class="description">La presión efectiva sobre la pieza depende de la reserva de material.</div>
+            <div class="question-text">¿Por qué el monitoreo del 'Cojín' es más crítico que el 'Tiempo de Inyección' para la consistencia dimensional?</div>
+            <div class="options">
+            <label class="option correct">
+                <input type="radio" name="spec_6" value="0" checked>
+                <span>Porque confirma que hubo material suficiente para transferir la presión</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_6" value="1" >
+                <span>Porque es un parámetro más fácil de visualizar en la pantalla</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_6" value="2" >
+                <span>Porque el tiempo de inyección nunca varía en máquinas modernas</span>
+            </label>
+            <label class="option ">
+                <input type="radio" name="spec_6" value="3" >
+                <span>Porque el cojín determina la velocidad de enfriamiento de la pieza</span>
+            </label></div>
+            <div class="reasoning"><strong>Explicación:</strong> Si no hay cojín, no hay presión hidráulica sobre la pieza (presión efectiva = 0), causando rechupados y medidas cortas.</div>
+        </div></div>
+</div>
+<script>
+function filterCards(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.card').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.category === cat) ? 'block' : 'none';
+    });
+}
+</script>
+</body>
+</html>
